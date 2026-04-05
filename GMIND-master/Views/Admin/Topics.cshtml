@@ -1,0 +1,173 @@
+@model Gamingv1.Models.DynamicSection
+@{
+    ViewData["Title"] = "Manage Topics";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-list-alt"></i> Topics for Section: @Model.Name
+        </h1>
+        <div>
+            <a href="@Url.Action("DynamicSections")" class="btn btn-secondary btn-sm">
+                <i class="fas fa-arrow-left"></i> Back to Sections
+            </a>
+            <a href="@Url.Action("CreateTopic", new { sectionId = Model.SectionId })" class="btn btn-primary btn-sm">
+                <i class="fas fa-plus"></i> Add New Topic
+            </a>
+        </div>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle"></i> @TempData["Success"]
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-triangle"></i> @TempData["Error"]
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">
+                Topics (@Model.DynamicTopics.Count)
+            </h6>
+        </div>
+        <div class="card-body">
+            @if (Model.DynamicTopics.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="topicsTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Content</th>
+                                <th>Created</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var topic in Model.DynamicTopics)
+                            {
+                                <tr>
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(topic.ImageUrl))
+                                        {
+                                            <img src="@topic.ImageUrl" alt="@topic.Title" 
+                                                 class="img-thumbnail" style="width: 60px; height: 60px; object-fit: cover;">
+                                        }
+                                        else
+                                        {
+                                            <div class="bg-light d-flex align-items-center justify-content-center" 
+                                                 style="width: 60px; height: 60px;">
+                                                <i class="fas fa-image text-muted"></i>
+                                            </div>
+                                        }
+                                    </td>
+                                    <td>
+                                        <strong>@topic.Title</strong>
+                                    </td>
+                                    <td>
+                                        @(topic.Content.Length > 100 ? topic.Content.Substring(0, 100) + "..." : topic.Content)
+                                    </td>
+                                    <td>
+                                        <small>@topic.CreatedAt.ToString("MMM dd, yyyy")</small>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm" role="group">
+                                            <a href="@Url.Action("EditTopic", new { id = topic.TopicId })" 
+                                               class="btn btn-outline-primary" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <button type="button" class="btn btn-outline-danger" 
+                                                    onclick="confirmDeleteTopic(@topic.TopicId, '@topic.Title')" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="text-center py-5">
+                    <i class="fas fa-list-alt fa-4x text-gray-300 mb-3"></i>
+                    <h5 class="text-gray-600">No Topics Found</h5>
+                    <p class="text-gray-500">Get started by adding your first topic to this section.</p>
+                    <a href="@Url.Action("CreateTopic", new { sectionId = Model.SectionId })" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add New Topic
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteTopicModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-exclamation-triangle text-warning"></i> Confirm Delete
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete the topic <strong id="topicTitle"></strong>?</p>
+                <p class="text-danger">
+                    <i class="fas fa-info-circle"></i> 
+                    This action will permanently delete this topic.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form id="deleteTopicForm" method="post" style="display: inline;">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="sectionId" value="@Model.SectionId" />
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash"></i> Delete Topic
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function confirmDeleteTopic(topicId, topicTitle) {
+            document.getElementById('topicTitle').textContent = topicTitle;
+            document.getElementById('deleteTopicForm').action = '@Url.Action("DeleteTopic")/' + topicId;
+            $('#deleteTopicModal').modal('show');
+        }
+
+        $(document).ready(function() {
+            $('#topicsTable').DataTable({
+                "pageLength": 10,
+                "order": [[3, "desc"]],
+                "columnDefs": [
+                    { "orderable": false, "targets": [0, 4] }
+                ]
+            });
+        });
+    </script>
+}

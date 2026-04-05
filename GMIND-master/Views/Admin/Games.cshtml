@@ -1,0 +1,180 @@
+@model List<Gamingv1.Models.Game>
+@{
+    ViewData["Title"] = "Manage Games";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-gamepad"></i> Manage Games
+        </h1>
+        <div>
+            <a href="@Url.Action("Index")" class="btn btn-secondary btn-sm">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+            <a href="@Url.Action("CreateGame")" class="btn btn-primary btn-sm">
+                <i class="fas fa-plus"></i> Add New Game
+            </a>
+        </div>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle"></i> @TempData["Success"]
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-triangle"></i> @TempData["Error"]
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">
+                All Games (@Model.Count)
+            </h6>
+        </div>
+        <div class="card-body">
+            @if (Model.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="gamesTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Created</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var game in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @if (game.GameImages.Any())
+                                        {
+                                            <img src="@game.GameImages.First().ImageUrl" alt="@game.Title" 
+                                                 class="img-thumbnail" style="width: 60px; height: 60px; object-fit: cover;">
+                                        }
+                                        else
+                                        {
+                                            <div class="bg-light d-flex align-items-center justify-content-center" 
+                                                 style="width: 60px; height: 60px;">
+                                                <i class="fas fa-image text-muted"></i>
+                                            </div>
+                                        }
+                                    </td>
+                                    <td>
+                                        <strong>@game.Title</strong>
+                                        <br>
+                                        <small class="text-muted">
+                                            @(game.Description.Length > 50 ? game.Description.Substring(0, 50) + "..." : game.Description)
+                                        </small>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-info">@game.Category?.Name</span>
+                                    </td>
+                                    <td>
+                                        <strong class="text-success">$@game.Price.ToString("N2")</strong>
+                                    </td>
+                                    <td>
+                                        <small>@game.CreatedAt.ToString("MMM dd, yyyy")</small>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm" role="group">
+                                            <a href="@Url.Action("EditGame", new { id = game.GameId })" 
+                                               class="btn btn-outline-primary" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <button type="button" class="btn btn-outline-danger" 
+                                                    onclick="confirmDelete(@game.GameId, '@game.Title')" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="text-center py-5">
+                    <i class="fas fa-gamepad fa-4x text-gray-300 mb-3"></i>
+                    <h5 class="text-gray-600">No Games Found</h5>
+                    <p class="text-gray-500">Get started by adding your first game.</p>
+                    <a href="@Url.Action("CreateGame")" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add New Game
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-exclamation-triangle text-warning"></i> Confirm Delete
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete the game <strong id="gameTitle"></strong>?</p>
+                <p class="text-danger">
+                    <i class="fas fa-info-circle"></i> 
+                    This action will permanently delete the game and all related data including purchases, reviews, and tokens.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form id="deleteForm" method="post" style="display: inline;">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash"></i> Delete Game
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function confirmDelete(gameId, gameTitle) {
+            document.getElementById('gameTitle').textContent = gameTitle;
+            document.getElementById('deleteForm').action = '@Url.Action("DeleteGame")/' + gameId;
+            $('#deleteModal').modal('show');
+        }
+
+        $(document).ready(function() {
+            $('#gamesTable').DataTable({
+                "pageLength": 25,
+                "order": [[4, "desc"]],
+                "columnDefs": [
+                    { "orderable": false, "targets": [0, 5] }
+                ]
+            });
+        });
+    </script>
+}

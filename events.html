@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events | GMIND</title>
+    <link rel="stylesheet" href="events.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Scroll header functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const header = document.querySelector("header");
+
+        // Header scroll effect
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 100) {
+            header.classList.add("scrolled");
+          } else {
+            header.classList.remove("scrolled");
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <!-- Header / Navigation -->
+    <header>
+      <div class="container nav-container">
+        <!-- Replace logo image with text for GMIND logo -->
+        <span class="gmind-logo-text">GMIND</span>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="events.html" class="active">Events</a></li>
+            <li><a href="games.html">Games</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="contact_us.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="auth-links">
+          <a href="login.html" class="btn">Log in</a>
+          <a href="signup.html" class="btn btn-primary">Sign Up</a>
+        </div>
+        <!-- Mobile menu toggle -->
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <button class="mobile-menu-close" id="mobile-menu-close">&times;</button>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="events.html" class="active">Events</a></li>
+        <li><a href="games.html">Games</a></li>
+        <li><a href="store.html">Store</a></li>
+        <li><a href="contact_us.html">Contact Us</a></li>
+      </ul>
+      <div class="auth-links">
+        <a href="login.html" class="btn">Log in</a>
+        <a href="signup.html" class="btn btn-primary">Sign Up</a>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">
+            <span class="hero-title-main">Our EVENTS</span><br />
+          </h1>
+          <a
+            href="signup.html"
+            class="btn btn-primary"
+            style="background-color: #443d96"
+            style="border-radius: 10px !important"
+            >Sign Up</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section">
+      <div class="container">
+        <h2 class="events-title">Don’t Miss out</h2>
+        <p class="events-subtitle">
+          Join the fun and learning – here’s what’s coming next!
+        </p>
+        <div class="countdown-timer">
+          <div class="timer-unit">
+            <span class="timer-value" id="days">12</span>
+            <span class="timer-label">Days</span>
+          </div>
+          <div class="timer-unit">
+            <span class="timer-value" id="hours">00</span>
+            <span class="timer-label">Hours</span>
+          </div>
+          <div class="timer-unit">
+            <span class="timer-value" id="minutes">00</span>
+            <span class="timer-label">Minutes</span>
+          </div>
+          <div class="timer-unit">
+            <span class="timer-value" id="seconds">00</span>
+            <span class="timer-label">Seconds</span>
+          </div>
+        </div>
+
+        <div class="slider-container" id="sliderContainer">
+          <div class="card">
+            <img class="card-img" src="Images/img.png" alt="Science Fair" />
+            <div class="badge-new">NEW</div>
+            <div class="card-content">
+              <div class="card-header">
+                <div class="date-box">08<span>Nov</span></div>
+                <h3 class="event-title">Science Fair Extravaganza</h3>
+              </div>
+              <div class="card-desc">
+                Explore amazing experiments and hands-on science fun!
+              </div>
+              <div class="card-bottom">
+                <span class="price">100 EG</span>
+                <button class="join-btn">Join Now</button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              class="card-img"
+              src="Images/img.png"
+              alt="Robotics Workshop"
+            />
+            <div class="card-content">
+              <div class="card-header">
+                <div class="date-box">12<span>Nov</span></div>
+                <h3 class="event-title">Robotics Workshop</h3>
+              </div>
+              <div class="card-desc">
+                Build and program your own robot in a fun workshop!
+              </div>
+              <div class="card-bottom">
+                <span class="price">120 EG</span>
+                <button class="join-btn">Join Now</button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card-img" src="Images/img.png" alt="Space Discovery" />
+            <div class="card-content">
+              <div class="card-header">
+                <div class="date-box">15<span>Nov</span></div>
+                <h3 class="event-title">Space Discovery</h3>
+              </div>
+              <div class="card-desc">
+                Explore the stars, planets, and the universe beyond.
+              </div>
+              <div class="card-bottom">
+                <span class="price">90 EG</span>
+                <button class="join-btn">Join Now</button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card-img" src="Images/img.png" alt="Eco-Friendly Day" />
+            <div class="card-content">
+              <div class="card-header">
+                <div class="date-box">20<span>Nov</span></div>
+                <h3 class="event-title">Eco-Friendly Day</h3>
+              </div>
+              <div class="card-desc">
+                Learn about sustainability and eco-friendly inventions.
+              </div>
+              <div class="card-bottom">
+                <span class="price">80 EG</span>
+                <button class="join-btn">Join Now</button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card-img" src="Images/img.png" alt="Digital Art Lab" />
+            <div class="card-content">
+              <div class="card-header">
+                <div class="date-box">25<span>Nov</span></div>
+                <h3 class="event-title">Digital Art Lab</h3>
+              </div>
+              <div class="card-desc">
+                Unleash creativity through art & tech experiments.
+              </div>
+              <div class="card-bottom">
+                <span class="price">95 EG</span>
+                <button class="join-btn">Join Now</button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card-img" src="Images/img.png" alt="Math Puzzle Day" />
+            <div class="card-content">
+              <div class="card-header">
+                <div class="date-box">30<span>Nov</span></div>
+                <h3 class="event-title">Math Puzzle Day</h3>
+              </div>
+              <div class="card-desc">
+                Challenge your brain with exciting math activities.
+              </div>
+              <div class="card-bottom">
+                <span class="price">70 EG</span>
+                <button class="join-btn">Join Now</button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card-img" src="Images/img.png" alt="Coding Workshop" />
+            <div class="card-content">
+              <div class="card-header">
+                <div class="date-box">05<span>Dec</span></div>
+                <h3 class="event-title">Coding Workshop</h3>
+              </div>
+              <div class="card-desc">
+                Learn programming basics with fun coding projects.
+              </div>
+              <div class="card-bottom">
+                <span class="price">110 EG</span>
+                <button class="join-btn">Join Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slider-controls">
+          <button id="prevBtn" class="slider-btn">&#8592;</button>
+          <button id="nextBtn" class="slider-btn">&#8594;</button>
+        </div>
+
+        <!-- Filter Bar and Event Card Grid Section -->
+        <div class="event-filter-section-bg-wrapper">
+          <div class="event-filter-section event-filter-section-bg">
+            <div
+              class="event-filters"
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+                margin-bottom: 32px;
+              "
+            >
+              <button class="filter-btn active">All</button>
+              <button class="filter-btn">Upcoming</button>
+              <button class="filter-btn">Recent</button>
+              <button class="filter-btn">Schools</button>
+              <button class="filter-btn">Alexandria Library</button>
+              <button class="filter-btn">Nursery</button>
+              <button class="filter-btn">Others</button>
+            </div>
+            <div
+              class="event-card-grid"
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 32px;
+              "
+            >
+              <!-- Example event cards, repeat as needed -->
+              <div class="event-card">
+                <div class="event-image">
+                  <img src="Images/img.png" alt="Science Fair Extravaganza" />
+                </div>
+                <div class="event-content">
+                  <div class="event-header">
+                    <div class="date-box">08<span>Nov</span></div>
+                    <h3 class="event-title">Science Fair Extravaganza</h3>
+                  </div>
+                  <div class="event-description">
+                    Explore amazing experiments and hands-on science fun!
+                  </div>
+                  <div class="event-footer">
+                    <span class="event-price">100 EG</span>
+                    <a href="#" class="btn btn-primary">Join Now</a>
+                  </div>
+                </div>
+              </div>
+              <div class="event-card">
+                <div class="event-image">
+                  <img src="Images/img.png" alt="Science Fair Extravaganza" />
+                </div>
+                <div class="event-content">
+                  <div class="event-header">
+                    <div class="date-box">08<span>Nov</span></div>
+                    <h3 class="event-title">Science Fair Extravaganza</h3>
+                  </div>
+                  <div class="event-description">
+                    Explore amazing experiments and hands-on science fun!
+                  </div>
+                  <div class="event-footer">
+                    <span class="event-price">100 EG</span>
+                    <a href="#" class="btn btn-primary">Join Now</a>
+                  </div>
+                </div>
+              </div>
+              <div class="event-card">
+                <div class="event-image">
+                  <img src="Images/img.png" alt="Science Fair Extravaganza" />
+                </div>
+                <div class="event-content">
+                  <div class="event-header">
+                    <div class="date-box">08<span>Nov</span></div>
+                    <h3 class="event-title">Science Fair Extravaganza</h3>
+                  </div>
+                  <div class="event-description">
+                    Explore amazing experiments and hands-on science fun!
+                  </div>
+                  <div class="event-footer">
+                    <span class="event-price">100 EG</span>
+                    <a href="#" class="btn btn-primary">Join Now</a>
+                  </div>
+                </div>
+              </div>
+              <div class="event-card">
+                <div class="event-image">
+                  <img src="Images/img.png" alt="Science Fair Extravaganza" />
+                </div>
+                <div class="event-content">
+                  <div class="event-header">
+                    <div class="date-box">08<span>Nov</span></div>
+                    <h3 class="event-title">Science Fair Extravaganza</h3>
+                  </div>
+                  <div class="event-description">
+                    Explore amazing experiments and hands-on science fun!
+                  </div>
+                  <div class="event-footer">
+                    <span class="event-price">100 EG</span>
+                    <a href="#" class="btn btn-primary">Join Now</a>
+                  </div>
+                </div>
+              </div>
+              <div class="event-card">
+                <div class="event-image">
+                  <img src="Images/img.png" alt="Science Fair Extravaganza" />
+                </div>
+                <div class="event-content">
+                  <div class="event-header">
+                    <div class="date-box">08<span>Nov</span></div>
+                    <h3 class="event-title">Science Fair Extravaganza</h3>
+                  </div>
+                  <div class="event-description">
+                    Explore amazing experiments and hands-on science fun!
+                  </div>
+                  <div class="event-footer">
+                    <span class="event-price">100 EG</span>
+                    <a href="#" class="btn btn-primary">Join Now</a>
+                  </div>
+                </div>
+              </div>
+              <div class="event-card">
+                <div class="event-image">
+                  <img src="Images/img.png" alt="Science Fair Extravaganza" />
+                </div>
+                <div class="event-content">
+                  <div class="event-header">
+                    <div class="date-box">08<span>Nov</span></div>
+                    <h3 class="event-title">Science Fair Extravaganza</h3>
+                  </div>
+                  <div class="event-description">
+                    Explore amazing experiments and hands-on science fun!
+                  </div>
+                  <div class="event-footer">
+                    <span class="event-price">100 EG</span>
+                    <a href="#" class="btn btn-primary">Join Now</a>
+                  </div>
+                </div>
+              </div>
+              <div class="event-card">
+                <div class="event-image">
+                  <img src="Images/img.png" alt="Science Fair Extravaganza" />
+                </div>
+                <div class="event-content">
+                  <div class="event-header">
+                    <div class="date-box">08<span>Nov</span></div>
+                    <h3 class="event-title">Science Fair Extravaganza</h3>
+                  </div>
+                  <div class="event-description">
+                    Explore amazing experiments and hands-on science fun!
+                  </div>
+                  <div class="event-footer">
+                    <span class="event-price">100 EG</span>
+                    <a href="#" class="btn btn-primary">Join Now</a>
+                  </div>
+                </div>
+              </div>
+              <div class="event-card">
+                <div class="event-image">
+                  <img src="Images/img.png" alt="Science Fair Extravaganza" />
+                </div>
+                <div class="event-content">
+                  <div class="event-header">
+                    <div class="date-box">08<span>Nov</span></div>
+                    <h3 class="event-title">Science Fair Extravaganza</h3>
+                  </div>
+                  <div class="event-description">
+                    Explore amazing experiments and hands-on science fun!
+                  </div>
+                  <div class="event-footer">
+                    <span class="event-price">100 EG</span>
+                    <a href="#" class="btn btn-primary">Join Now</a>
+                  </div>
+                </div>
+              </div>
+              <div class="event-card">
+                <div class="event-image">
+                  <img src="Images/img.png" alt="Science Fair Extravaganza" />
+                </div>
+                <div class="event-content">
+                  <div class="event-header">
+                    <div class="date-box">08<span>Nov</span></div>
+                    <h3 class="event-title">Science Fair Extravaganza</h3>
+                  </div>
+                  <div class="event-description">
+                    Explore amazing experiments and hands-on science fun!
+                  </div>
+                  <div class="event-footer">
+                    <span class="event-price">100 EG</span>
+                    <a href="#" class="btn btn-primary">Join Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Mobile menu functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const mobileMenuOverlay = document.getElementById(
+          "mobile-menu-overlay"
+        );
+        const mobileMenuClose = document.getElementById("mobile-menu-close");
+
+        // Debug: Check if elements are found
+        console.log("Mobile menu toggle:", mobileMenuToggle);
+        console.log("Mobile menu:", mobileMenu);
+        console.log("Mobile menu overlay:", mobileMenuOverlay);
+        console.log("Mobile menu close:", mobileMenuClose);
+
+        function openMobileMenu() {
+          console.log("Opening mobile menu");
+          mobileMenuToggle.classList.add("active");
+          mobileMenuOverlay.style.display = "block";
+          mobileMenuOverlay.classList.add("active");
+          mobileMenu.classList.add("active");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeMobileMenu() {
+          console.log("Closing mobile menu");
+          mobileMenuToggle.classList.remove("active");
+          mobileMenu.classList.remove("active");
+          mobileMenuOverlay.classList.remove("active");
+          mobileMenuOverlay.style.display = "none";
+          document.body.style.overflow = "";
+        }
+
+        // Event listeners for mobile menu
+        if (mobileMenuToggle) {
+          mobileMenuToggle.addEventListener("click", openMobileMenu);
+        }
+
+        if (mobileMenuClose) {
+          mobileMenuClose.addEventListener("click", closeMobileMenu);
+        }
+
+        if (mobileMenuOverlay) {
+          mobileMenuOverlay.addEventListener("click", closeMobileMenu);
+        }
+
+        // Close menu when clicking on a link
+        if (mobileMenu) {
+          const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+          mobileMenuLinks.forEach((link) => {
+            link.addEventListener("click", closeMobileMenu);
+          });
+        }
+
+        // Close menu on escape key
+        document.addEventListener("keydown", (e) => {
+          if (
+            e.key === "Escape" &&
+            mobileMenu &&
+            mobileMenu.classList.contains("active")
+          ) {
+            closeMobileMenu();
+          }
+        });
+
+        // Event slider functionality - exact same as index page
+        const sliderContainer = document.getElementById("sliderContainer");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+
+        if (!sliderContainer || !prevBtn || !nextBtn) return;
+
+        const cards = Array.from(sliderContainer.querySelectorAll(".card"));
+        if (cards.length === 0) return;
+
+        // Check if mobile view
+        const isMobile = window.innerWidth <= 767;
+
+        // Desktop positions (horizontal) - 3-1-3 layout
+        const desktopPositions = [
+          { left: -200, z: 1, scale: 0.85, opacity: 1 },
+          { left: -100, z: 2, scale: 0.85, opacity: 1 },
+          { left: 0, z: 3, scale: 0.85, opacity: 1 },
+          { left: 310, z: 5, scale: 1, opacity: 1 },
+          { left: 620, z: 3, scale: 0.85, opacity: 1 },
+          { left: 720, z: 2, scale: 0.85, opacity: 1 },
+          { left: 820, z: 1, scale: 0.85, opacity: 1 },
+        ];
+
+        // Mobile positions (vertical) - showing parts of each card
+        const mobilePositions = [
+          { top: -80, z: 2, scale: 0.9, opacity: 1 },
+          { top: -40, z: 3, scale: 0.9, opacity: 1 },
+          { top: 0, z: 5, scale: 1, opacity: 1 },
+          { top: 40, z: 3, scale: 0.9, opacity: 1 },
+          { top: 80, z: 2, scale: 0.9, opacity: 1 },
+          { top: 120, z: 1, scale: 0.9, opacity: 1 },
+          { top: 160, z: 1, scale: 0.9, opacity: 1 },
+        ];
+
+        let offset = 0;
+
+        function updateCards() {
+          const positions = isMobile ? mobilePositions : desktopPositions;
+
+          for (let i = 0; i < cards.length; i++) {
+            const pos = positions[i];
+            if (!pos) continue;
+
+            const card = cards[(i + offset) % cards.length];
+
+            if (isMobile) {
+              // Mobile: vertical positioning
+              card.style.top = pos.top + "px";
+              card.style.left = "5%";
+              card.style.zIndex = pos.z;
+              card.style.opacity = pos.opacity;
+              card.style.transform = `scale(${pos.scale})`;
+            } else {
+              // Desktop: horizontal positioning
+              card.style.left = pos.left + "px";
+              card.style.top = "0";
+              card.style.zIndex = pos.z;
+              card.style.opacity = pos.opacity;
+              card.style.transform = `scale(${pos.scale})`;
+            }
+
+            // Remove all position data attributes
+            card.removeAttribute("data-position");
+          }
+
+          // Add position data attributes for edge cards (desktop only)
+          if (!isMobile && cards.length > 0) {
+            const leftmostCard = cards[offset % cards.length];
+            const rightmostCard = cards[(offset + 6) % cards.length];
+
+            leftmostCard.setAttribute("data-position", "left");
+            rightmostCard.setAttribute("data-position", "right");
+          }
+        }
+
+        // Initialize slider
+        updateCards();
+
+        // Event listeners for navigation buttons
+        prevBtn.addEventListener("click", function () {
+          offset = (offset - 1 + cards.length) % cards.length;
+          updateCards();
+        });
+
+        nextBtn.addEventListener("click", function () {
+          offset = (offset + 1) % cards.length;
+          updateCards();
+        });
+
+        // Keyboard navigation
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+            e.preventDefault();
+            prevBtn.click();
+          } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+            e.preventDefault();
+            nextBtn.click();
+          }
+        });
+
+        // Touch/swipe support for mobile
+        let startX = 0;
+        let startY = 0;
+        let endX = 0;
+        let endY = 0;
+
+        sliderContainer.addEventListener("touchstart", function (e) {
+          startX = e.touches[0].clientX;
+          startY = e.touches[0].clientY;
+        });
+
+        sliderContainer.addEventListener("touchend", function (e) {
+          endX = e.changedTouches[0].clientX;
+          endY = e.changedTouches[0].clientY;
+
+          const diffX = startX - endX;
+          const diffY = startY - endY;
+
+          if (Math.abs(diffX) > 50 || Math.abs(diffY) > 50) {
+            // Minimum swipe distance
+            if (isMobile) {
+              // Mobile: vertical swipes
+              if (diffY > 0) {
+                nextBtn.click(); // Swipe up
+              } else {
+                prevBtn.click(); // Swipe down
+              }
+            } else {
+              // Desktop: horizontal swipes
+              if (diffX > 0) {
+                nextBtn.click(); // Swipe left
+              } else {
+                prevBtn.click(); // Swipe right
+              }
+            }
+          }
+        });
+
+        // Auto-play functionality (optional)
+        let autoPlayInterval;
+
+        function startAutoPlay() {
+          autoPlayInterval = setInterval(function () {
+            nextBtn.click();
+          }, 5000); // Change slide every 5 seconds
+        }
+
+        function stopAutoPlay() {
+          if (autoPlayInterval) {
+            clearInterval(autoPlayInterval);
+          }
+        }
+
+        // Start auto-play and stop on user interaction
+        startAutoPlay();
+
+        sliderContainer.addEventListener("mouseenter", stopAutoPlay);
+        sliderContainer.addEventListener("mouseleave", startAutoPlay);
+
+        prevBtn.addEventListener("click", stopAutoPlay);
+        nextBtn.addEventListener("click", stopAutoPlay);
+
+        // Handle window resize
+        window.addEventListener("resize", function () {
+          const newIsMobile = window.innerWidth <= 767;
+          if (newIsMobile !== isMobile) {
+            // Reinitialize if switching between mobile and desktop
+            setTimeout(updateCards, 100);
+          }
+        });
+      });
+    </script>
+
+    <!-- Countdown Timer Script -->
+    <script>
+      // Countdown Timer Functionality
+      function initializeCountdownTimer() {
+        const timerElements = {
+          days: document.getElementById("days"),
+          hours: document.getElementById("hours"),
+          minutes: document.getElementById("minutes"),
+          seconds: document.getElementById("seconds"),
+        };
+
+        // Set target date (30 days from now for demo)
+        const targetDate = new Date();
+        targetDate.setDate(targetDate.getDate() + 30);
+
+        function updateCountdown() {
+          const now = new Date().getTime();
+          const distance = targetDate.getTime() - now;
+
+          if (distance > 0) {
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor(
+              (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+            );
+            const minutes = Math.floor(
+              (distance % (1000 * 60 * 60)) / (1000 * 60)
+            );
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (timerElements.days)
+              timerElements.days.textContent = String(days).padStart(2, "0");
+            if (timerElements.hours)
+              timerElements.hours.textContent = String(hours).padStart(2, "0");
+            if (timerElements.minutes)
+              timerElements.minutes.textContent = String(minutes).padStart(
+                2,
+                "0"
+              );
+            if (timerElements.seconds)
+              timerElements.seconds.textContent = String(seconds).padStart(
+                2,
+                "0"
+              );
+          } else {
+            // Timer expired
+            if (timerElements.days) timerElements.days.textContent = "00";
+            if (timerElements.hours) timerElements.hours.textContent = "00";
+            if (timerElements.minutes) timerElements.minutes.textContent = "00";
+            if (timerElements.seconds) timerElements.seconds.textContent = "00";
+          }
+        }
+
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+      }
+
+      // Initialize countdown timer when page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeCountdownTimer();
+      });
+    </script>
+
+    <footer id="contact" class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <img src="Images/GMIND.png" />
+          </div>
+          <div class="footer-links">
+            <div class="footer-section">
+              <h4>Company</h4>
+              <a href="#about">About us</a>
+              <a href="#contact">Contact us</a>
+              <a href="#help">Help</a>
+            </div>
+            <div class="footer-section">
+              <h4>Legal</h4>
+              <a href="#privacy">Privacy Policy</a>
+              <a href="#disclaimer">Disclaimer</a>
+            </div>
+            <div class="footer-section">
+              <h4>Contact Info</h4>
+              <p>
+                345 Faulconer Drive, Suite 4<br />Charlottesville, CA, 12345
+              </p>
+              <p>(123) 456-7890</p>
+            </div>
+            <div class="footer-section">
+              <h4>Social Media</h4>
+              <div class="social-links">
+                <a href="#" class="social-link">Facebook</a>
+                <a href="#" class="social-link">Twitter</a>
+                <a href="#" class="social-link">Instagram</a>
+                <a href="#" class="social-link">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2024 GMIND. All rights reserved.Made by
+            <a href="#" style="text-decoration: none">RAQM</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

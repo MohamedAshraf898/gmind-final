@@ -1,0 +1,223 @@
+@model List<Gamingv1.Models.EventRegistration>
+@{
+    ViewData["Title"] = "Event Registrations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var events = ViewBag.Events as List<Gamingv1.Models.Event>;
+    var selectedEventId = ViewBag.SelectedEventId as int?;
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-clipboard-list"></i> Event Registrations
+        </h1>
+        <div>
+            <a href="@Url.Action("InitializeEventRegistrationAmounts")" class="btn btn-warning btn-sm">
+                <i class="fas fa-sync"></i> Initialize Amounts
+            </a>
+            <a href="@Url.Action("Events")" class="btn btn-secondary btn-sm ml-2">
+                <i class="fas fa-arrow-left"></i> Back to Events
+            </a>
+        </div>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle"></i> @TempData["Success"]
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">
+                @if (selectedEventId.HasValue)
+                {
+                    var eventName = events.FirstOrDefault(e => e.EventId == selectedEventId.Value)?.Title ?? "Unknown Event";
+                    <span>Registrations for: @eventName</span>
+                }
+                else
+                {
+                    <span>All Event Registrations</span>
+                }
+            </h6>
+            <div class="dropdown no-arrow">
+                <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="filterDropdown" 
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-filter"></i> Filter by Event
+                </button>
+                <div class="dropdown-menu dropdown-menu-right shadow" aria-labelledby="filterDropdown">
+                    <a class="dropdown-item @(selectedEventId == null ? "active" : "")" 
+                       href="@Url.Action("EventRegistrations")">
+                        All Events
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    @foreach (var evt in events)
+                    {
+                        <a class="dropdown-item @(selectedEventId == evt.EventId ? "active" : "")" 
+                           href="@Url.Action("EventRegistrations", new { eventId = evt.EventId })">
+                            @evt.Title
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            @if (Model.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="registrationsTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Event</th>
+                                <th>Registration Date</th>
+                                <th>Payment Status</th>
+                                <th>Amount</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var registration in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <strong>@(registration.User?.Name ?? "Unknown User")</strong>
+                                        </div>
+                                        <small class="text-muted">@(registration.User?.Email ?? "No email")</small>
+                                    </td>
+                                    <td>
+                                        <span>@(registration.Event?.Title ?? "Unknown Event")</span>
+                                        <div>
+                                            <small class="text-muted">
+                                                @(registration.Event?.StartDate.ToString("MMM dd, yyyy HH:mm") ?? "No date")
+                                            </small>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @registration.RegistrationDate.ToString("MMM dd, yyyy HH:mm")
+                                    </td>
+                                    <td>
+                                        @switch (registration.PaymentStatus)
+                                        {
+                                            case PaymentStatus.Paid:
+                                                <span class="badge badge-success">Paid</span>
+                                                break;
+                                            case PaymentStatus.Pending:
+                                                <span class="badge badge-warning">Pending</span>
+                                                break;
+                                            case PaymentStatus.Failed:
+                                                <span class="badge badge-danger">Failed</span>
+                                                break;
+                                            default:
+                                                <span class="badge badge-secondary">Unknown</span>
+                                                break;
+                                        }
+                                    </td>
+                                    <td>
+                                        <span class="text-success font-weight-bold">
+                                            @{
+                                                var amountPaid = registration.Event.Price;
+                                                try {
+                                                    // Try to access AmountPaid property
+                                                    amountPaid = registration.AmountPaid;
+                                                } catch {
+                                                    // If property doesn't exist, use event price
+                                                    amountPaid = registration.Event.Price;
+                                                }
+                                            }
+                                            $@amountPaid.ToString("N2")
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm" role="group">
+                                            <button type="button" class="btn btn-outline-primary"
+                                                    onclick="viewRegistrationDetails(@registration.EventRegistrationId)" title="View Details">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-outline-danger" 
+                                                    onclick="confirmDeleteRegistration(@registration.EventRegistrationId, '@(registration.User?.Name?.Replace("'", "\\'") ?? "Unknown User")', '@(registration.Event?.Title?.Replace("'", "\\'") ?? "Unknown Event")')" 
+                                                    title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="text-center py-5">
+                    <i class="fas fa-clipboard-list fa-4x text-gray-300 mb-3"></i>
+                    <h5 class="text-gray-600">No Registrations Found</h5>
+                    <p class="text-gray-500">There are no registrations for the selected event yet.</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteRegistrationModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-exclamation-triangle text-warning"></i> Confirm Delete
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete the registration for <strong id="registrationUser"></strong> for event <strong id="registrationEvent"></strong>?</p>
+                <p class="text-danger">
+                    <i class="fas fa-info-circle"></i> 
+                    This action will permanently delete this registration and cannot be undone.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form id="deleteRegistrationForm" method="post" style="display: inline;">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash"></i> Delete Registration
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function confirmDeleteRegistration(registrationId, userName, eventName) {
+            document.getElementById('registrationUser').textContent = userName;
+            document.getElementById('registrationEvent').textContent = eventName;
+            document.getElementById('deleteRegistrationForm').action = '@Url.Action("DeleteEventRegistration")/' + registrationId;
+            $('#deleteRegistrationModal').modal('show');
+        }
+
+        function viewRegistrationDetails(registrationId) {
+            // You can implement a modal to show more details or redirect to a details page
+            alert('View details for registration #' + registrationId);
+        }
+
+        $(document).ready(function() {
+            $('#registrationsTable').DataTable({
+                "pageLength": 25,
+                "order": [[2, "desc"]],
+                "columnDefs": [
+                    { "orderable": false, "targets": [5] }
+                ]
+            });
+        });
+    </script>
+}

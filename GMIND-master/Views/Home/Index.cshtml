@@ -1,0 +1,233 @@
+﻿@model Gamingv1.ViewModels.HomeIndexViewModel
+@{
+    ViewData["Title"] = "Educational Game Store";
+}
+
+<!-- Hero Section -->
+<div class="hero-section bg-primary text-white py-5 mb-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold">Welcome to Educational Game Store</h1>
+                <p class="lead">Discover amazing educational games that make learning fun and engaging for students of all ages.</p>
+                <div class="mt-4">
+                    <a href="@Url.Action("Index", "Games")" class="btn btn-light btn-lg me-3">
+                        <i class="bi bi-grid-3x3-gap"></i> Browse Games
+                    </a>
+                    @if (User.Identity?.IsAuthenticated != true)
+                    {
+                        <a href="@Url.Action("Register", "Account")" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-person-plus"></i> Get Started
+                        </a>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <i class="bi bi-controller" style="font-size: 200px; opacity: 0.3;"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Statistics Section -->
+<div class="container mb-5">
+    <div class="row text-center">
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <i class="bi bi-grid-3x3-gap text-primary" style="font-size: 3rem;"></i>
+                    <h3 class="card-title mt-3">@Model.TotalGames</h3>
+                    <p class="card-text text-muted">Educational Games</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <i class="bi bi-people text-success" style="font-size: 3rem;"></i>
+                    <h3 class="card-title mt-3">@Model.TotalUsers</h3>
+                    <p class="card-text text-muted">Active Users</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <i class="bi bi-book text-info" style="font-size: 3rem;"></i>
+                    <h3 class="card-title mt-3">@Model.TotalClasses</h3>
+                    <p class="card-text text-muted">Active Classes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Featured Games Section -->
+@if (Model.FeaturedGames.Any())
+{
+    <div class="container mb-5">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2 class="text-center mb-3">Featured Games</h2>
+                <p class="text-center text-muted">Discover our latest educational games</p>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var game in Model.FeaturedGames)
+            {
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        @if (game.GameImages.Any())
+                        {
+                            <img src="@game.GameImages.First().ImageUrl" class="card-img-top" alt="@game.Title" style="height: 200px; object-fit: cover;">
+                        }
+                        else
+                        {
+                            <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                                <i class="bi bi-grid-3x3-gap text-muted" style="font-size: 3rem;"></i>
+                            </div>
+                        }
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">@game.Title</h5>
+                            <p class="card-text text-muted flex-grow-1">@game.Description.Substring(0, Math.Min(100, game.Description.Length))...</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-primary">@game.Category.Name</span>
+                                <span class="fw-bold text-success">$@game.Price.ToString("F2")</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="@Url.Action("Details", "Games", new { id = game.GameId })" class="btn btn-primary w-100">
+                                    <i class="bi bi-eye"></i> View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="text-center">
+            <a href="@Url.Action("Index", "Games")" class="btn btn-outline-primary btn-lg">
+                <i class="bi bi-grid-3x3-gap"></i> View All Games
+            </a>
+        </div>
+    </div>
+}
+
+<!-- Dynamic Content Sections -->
+@if (Model.DynamicSections.Any())
+{
+    <div class="container mb-5">
+        @foreach (var dynamicSection in Model.DynamicSections)
+        {
+            @if (dynamicSection.DynamicTopics.Any())
+            {
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h2 class="text-center mb-4">@dynamicSection.Name</h2>
+                        @if (!string.IsNullOrEmpty(dynamicSection.Description))
+                        {
+                            <p class="text-center text-muted mb-4">@dynamicSection.Description</p>
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach (var topic in dynamicSection.DynamicTopics.Take(3))
+                    {
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                @if (!string.IsNullOrEmpty(topic.ImageUrl))
+                                {
+                                    <img src="@topic.ImageUrl" class="card-img-top" alt="@topic.Title" style="height: 200px; object-fit: cover;">
+                                }
+                                <div class="card-body">
+                                    <h5 class="card-title">@topic.Title</h5>
+                                    <p class="card-text">@(topic.Content.Length > 150 ? topic.Content.Substring(0, 150) + "..." : topic.Content)</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        }
+    </div>
+}
+
+<!-- Upcoming Events Section -->
+@if (Model.UpcomingEvents.Any())
+{
+    <div class="container mb-5">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2 class="text-center mb-3">Upcoming Events</h2>
+                <p class="text-center text-muted">Don't miss these exciting educational events</p>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var eventItem in Model.UpcomingEvents)
+            {
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        @if (!string.IsNullOrEmpty(eventItem.ImageUrl))
+                        {
+                            <img src="@eventItem.ImageUrl" class="card-img-top" alt="@eventItem.Title" style="height: 200px; object-fit: cover;">
+                        }
+                        else
+                        {
+                            <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                                <i class="bi bi-calendar-event text-muted" style="font-size: 3rem;"></i>
+                            </div>
+                        }
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">@eventItem.Title</h5>
+                            <p class="card-text flex-grow-1">@eventItem.Description.Substring(0, Math.Min(100, eventItem.Description.Length))...</p>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <small class="text-muted">
+                                    <i class="bi bi-calendar"></i> @eventItem.StartDate.ToString("MMM dd, yyyy")
+                                </small>
+                                <span class="fw-bold text-success">$@eventItem.Price.ToString("F2")</span>
+                            </div>
+                            <a href="@Url.Action("Details", "Events", new { id = eventItem.EventId })" class="btn btn-outline-primary">
+                                <i class="bi bi-info-circle"></i> Learn More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="text-center">
+            <a href="@Url.Action("Index", "Events")" class="btn btn-outline-primary btn-lg">
+                <i class="bi bi-calendar-event"></i> View All Events
+            </a>
+        </div>
+    </div>
+}
+
+<!-- Call to Action Section -->
+<div class="bg-light py-5">
+    <div class="container text-center">
+        <h2 class="mb-3">Ready to Start Learning?</h2>
+        <p class="lead mb-4">Join thousands of students, teachers, and parents in our educational gaming community.</p>
+        @if (User.Identity?.IsAuthenticated != true)
+        {
+            <a href="@Url.Action("Register", "Account")" class="btn btn-primary btn-lg me-3">
+                <i class="bi bi-person-plus"></i> Create Account
+            </a>
+        }
+        <a href="@Url.Action("Index", "Games")" class="btn btn-outline-primary btn-lg">
+            <i class="bi bi-grid-3x3-gap"></i> Explore Games
+        </a>
+    </div>
+</div>
+
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    }
+    
+    .card {
+        transition: transform 0.2s ease-in-out;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+    }
+</style>

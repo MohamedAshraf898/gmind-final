@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Store | GMIND</title>
+    <link rel="stylesheet" href="about.css" />
+    <link rel="stylesheet" href="store.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Fredoka+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header / Navigation -->
+    <header>
+      <div class="container nav-container">
+        <!-- Replace logo image with text for GMIND logo -->
+        <span class="gmind-logo-text">GMIND</span>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="games.html">Games</a></li>
+            <li><a href="store.html" class="active">Store</a></li>
+            <li><a href="contact_us.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="auth-links">
+          <a href="login.html" class="btn">Log in</a>
+          <a href="signup.html" class="btn btn-primary">Sign Up</a>
+        </div>
+        <!-- Mobile menu toggle -->
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <button class="mobile-menu-close" id="mobile-menu-close">&times;</button>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="games.html">Games</a></li>
+        <li><a href="store.html" class="active">Store</a></li>
+        <li><a href="contact_us.html">Contact Us</a></li>
+      </ul>
+      <div class="auth-links">
+        <a href="login.html" class="btn">Log in</a>
+        <a href="signup.html" class="btn btn-primary">Sign Up</a>
+      </div>
+    </div>
+    <section class="hero store-hero">
+      <div class="hero__container">
+        <div class="hero__left">
+          <div class="hero__subtitle">Our Store</div>
+          <h1 class="hero__headline">
+            DISCOVER FUN &<br />EDUCATIONAL GAMES FOR KIDS!
+          </h1>
+          <div class="hero__desc">
+            Lorem ipsum dolor sit amet consectetur. Vel tristique. Lorem ipsum
+            dolor sit amet consectetur. Vel tristique. Lorem
+          </div>
+          <a href="#" class="btn btn--shop" style="text-decoration: none"
+            >Shop Now</a
+          >
+        </div>
+        <div class="hero__right">
+          <div class="hero__radial"></div>
+          <img src="Images/porduct.png" alt="VR Headset" class="hero__vr-img" />
+        </div>
+      </div>
+    </section>
+
+    <section class="products">
+      <h2 class="products__title">CHOOSE YOUR PRODUCT</h2>
+      <div class="products__filters">
+        <button class="filter active">All</button>
+        <button class="filter">Cards</button>
+        <button class="filter">Games</button>
+        <button class="filter">VR Headset</button>
+      </div>
+      <div class="products__grid">
+        <!-- Product Card 1 -->
+        <a href="produt_details.html" class="product-card-link">
+          <div class="product-card-group">
+            <div class="product-card">
+              <div class="product-card__img">
+                <img src="Images/store-product.jpg" alt="Product" />
+              </div>
+            </div>
+            <div class="product-card__content">
+              <div class="product-card__name">Product Name</div>
+              <div class="product-card__rating">
+                ★★★★★ <span class="product-card__rating-number">4.0/5</span>
+              </div>
+              <div class="product-card__prices">
+                <span class="product-card__price">212 EG</span>
+                <span class="product-card__oldprice">242 EG</span>
+                <span class="product-card__discount">-20%</span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <!-- Product Card 2 -->
+        <a href="produt_details.html" class="product-card-link">
+          <div class="product-card-group">
+            <div class="product-card">
+              <div class="product-card__img">
+                <img src="Images/store-product.jpg" alt="Product" />
+              </div>
+            </div>
+            <div class="product-card__content">
+              <div class="product-card__name">Product Name</div>
+              <div class="product-card__rating">
+                ★★★★★ <span class="product-card__rating-number">3.5/5</span>
+              </div>
+              <div class="product-card__prices">
+                <span class="product-card__price">145 EG</span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <!-- Product Card 3 -->
+        <a href="produt_details.html" class="product-card-link">
+          <div class="product-card-group">
+            <div class="product-card">
+              <div class="product-card__img">
+                <img src="Images/store-product.jpg" alt="Product" />
+              </div>
+            </div>
+            <div class="product-card__content">
+              <div class="product-card__name">Product Name</div>
+              <div class="product-card__rating">
+                ★★★★★ <span class="product-card__rating-number">4.5/5</span>
+              </div>
+              <div class="product-card__prices">
+                <span class="product-card__price">180 EG</span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <!-- Product Card 4 -->
+        <a href="produt_details.html" class="product-card-link">
+          <div class="product-card-group">
+            <div class="product-card">
+              <div class="product-card__img">
+                <img src="Images/store-product.jpg" alt="Product" />
+              </div>
+            </div>
+            <div class="product-card__content">
+              <div class="product-card__name">Product Name</div>
+              <div class="product-card__rating">
+                ★★★★★ <span class="product-card__rating-number">5.0/5</span>
+              </div>
+              <div class="product-card__prices">
+                <span class="product-card__price">150 EG</span>
+                <span class="product-card__oldprice">200 EG</span>
+                <span class="product-card__discount">-30%</span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <!-- Product Card 5 -->
+        <a href="produt_details.html" class="product-card-link">
+          <div class="product-card-group">
+            <div class="product-card">
+              <div class="product-card__img">
+                <img src="Images/store-product.jpg" alt="Product" />
+              </div>
+            </div>
+            <div class="product-card__content">
+              <div class="product-card__name">Product Name</div>
+              <div class="product-card__rating">
+                ★★★★★ <span class="product-card__rating-number">3.5/5</span>
+              </div>
+              <div class="product-card__prices">
+                <span class="product-card__price">145 EG</span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <!-- Product Card 6 -->
+        <a href="produt_details.html" class="product-card-link">
+          <div class="product-card-group">
+            <div class="product-card">
+              <div class="product-card__img">
+                <img src="Images/store-product.jpg" alt="Product" />
+              </div>
+            </div>
+            <div class="product-card__content">
+              <div class="product-card__name">Product Name</div>
+              <div class="product-card__rating">
+                ★★★★★ <span class="product-card__rating-number">4.5/5</span>
+              </div>
+              <div class="product-card__prices">
+                <span class="product-card__price">180 EG</span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <!-- Product Card 7 -->
+        <a href="produt_details.html" class="product-card-link">
+          <div class="product-card-group">
+            <div class="product-card">
+              <div class="product-card__img">
+                <img src="Images/store-product.jpg" alt="Product" />
+              </div>
+            </div>
+            <div class="product-card__content">
+              <div class="product-card__name">Product Name</div>
+              <div class="product-card__rating">
+                ★★★★★ <span class="product-card__rating-number">5.0/5</span>
+              </div>
+              <div class="product-card__prices">
+                <span class="product-card__price">150 EG</span>
+                <span class="product-card__oldprice">200 EG</span>
+                <span class="product-card__discount">-30%</span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <!-- Product Card 8 -->
+        <a href="produt_details.html" class="product-card-link">
+          <div class="product-card-group">
+            <div class="product-card">
+              <div class="product-card__img">
+                <img src="Images/store-product.jpg" alt="Product" />
+              </div>
+            </div>
+            <div class="product-card__content">
+              <div class="product-card__name">Product Name</div>
+              <div class="product-card__rating">
+                ★★★★★ <span class="product-card__rating-number">4.0/5</span>
+              </div>
+              <div class="product-card__prices">
+                <span class="product-card__price">242 EG</span>
+                <span class="product-card__oldprice">280 EG</span>
+                <span class="product-card__discount">-20%</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+    <section class="features">
+      <div class="feature">
+        <div class="feature__icon feature__icon--delivery">
+          <img
+            src="Images/icon-delivery.png"
+            alt="Delivery"
+            class="feature__icon-img"
+          />
+        </div>
+        <div class="feature__text">
+          <div class="feature__title">FREE AND FAST DELIVERY</div>
+          <div class="feature__desc">
+            Free delivery for all orders over $140
+          </div>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature__icon feature__icon--service">
+          <img
+            src="Images/Icon-Customer service.png"
+            alt="Customer Service"
+            class="feature__icon-img"
+          />
+        </div>
+        <div class="feature__text">
+          <div class="feature__title">24/7 CUSTOMER SERVICE</div>
+          <div class="feature__desc">Friendly 24/7 customer support</div>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature__icon feature__icon--moneyback">
+          <img
+            src="Images/Icon-secure.png"
+            alt="Money Back"
+            class="feature__icon-img"
+          />
+        </div>
+        <div class="feature__text">
+          <div class="feature__title">MONEY BACK GUARANTEE</div>
+          <div class="feature__desc">We return money within 30 days</div>
+        </div>
+      </div>
+    </section>
+    <!-- Promo section with product details and image -->
+    <!-- <section class="promo">
+      <div class="promo__content">
+        <h3>Lorem ipsum dolor sit amet, consectetur elit</h3>
+        <p>Lorem ipsum dolor sit amet consectetur. Vel tristique</p>
+        <div class="promo__rating">
+          <span>4.6/5</span>
+          <span>135 Reviews</span>
+        </div>
+        <a href="#" class="btn btn--secondary">Add To Cart</a>
+        <div class="promo__prices">
+          <span class="promo__price">$102.00</span>
+          <span class="promo__unit">/ gram</span>
+          <span class="promo__oldprice">$200.00</span>
+        </div>
+      </div>
+      <div class="promo__image">
+        <img src="Images/store-product.jpg" alt="Promo VR" />
+      </div>
+    </section> -->
+    <footer id="contact" class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <img src="Images/GMIND.png" />
+          </div>
+          <div class="footer-links">
+            <div class="footer-section">
+              <h4>Company</h4>
+              <a href="#about">About us</a>
+              <a href="#contact">Contact us</a>
+              <a href="#help">Help</a>
+            </div>
+            <div class="footer-section">
+              <h4>Legal</h4>
+              <a href="#privacy">Privacy Policy</a>
+              <a href="#disclaimer">Disclaimer</a>
+            </div>
+            <div class="footer-section">
+              <h4>Contact Info</h4>
+              <p>
+                345 Faulconer Drive, Suite 4<br />Charlottesville, CA, 12345
+              </p>
+              <p>(123) 456-7890</p>
+            </div>
+            <div class="footer-section">
+              <h4>Social Media</h4>
+              <div class="social-links">
+                <a href="#" class="social-link">Facebook</a>
+                <a href="#" class="social-link">Twitter</a>
+                <a href="#" class="social-link">Instagram</a>
+                <a href="#" class="social-link">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2024 GMIND. All rights reserved.Made by
+            <a href="#" style="text-decoration: none">RAQM</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // Scroll header functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const header = document.querySelector("header");
+
+        // Header scroll effect
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 100) {
+            header.classList.add("scrolled");
+          } else {
+            header.classList.remove("scrolled");
+          }
+        });
+      });
+      // Mobile menu functionality
+      const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileMenuOverlay = document.getElementById("mobile-menu-overlay");
+      const mobileMenuClose = document.getElementById("mobile-menu-close");
+
+      function openMobileMenu() {
+        mobileMenuToggle.classList.add("active");
+        mobileMenu.classList.add("active");
+        mobileMenuOverlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeMobileMenu() {
+        mobileMenuToggle.classList.remove("active");
+        mobileMenu.classList.remove("active");
+        mobileMenuOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      // Event listeners for mobile menu
+      mobileMenuToggle.addEventListener("click", openMobileMenu);
+      mobileMenuClose.addEventListener("click", closeMobileMenu);
+      mobileMenuOverlay.addEventListener("click", closeMobileMenu);
+
+      // Close menu when clicking on a link
+      const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+      mobileMenuLinks.forEach((link) => {
+        link.addEventListener("click", closeMobileMenu);
+      });
+
+      // Close menu on escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
+          closeMobileMenu();
+        }
+      });
+
+      // Intersection Observer for scroll-triggered animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      // Add animation classes to elements
+      document.addEventListener("DOMContentLoaded", function () {
+        // Add scroll animation classes to sections
+        const sections = document.querySelectorAll("section");
+        sections.forEach((section) => {
+          section.classList.add("animate-on-scroll");
+          observer.observe(section);
+        });
+
+        // Add staggered animations to feature cards
+        const features = document.querySelectorAll(".feature");
+        features.forEach((feature, index) => {
+          feature.style.animationDelay = `${0.1 * (index + 1)}s`;
+        });
+
+        // Add staggered animations to team members
+        const members = document.querySelectorAll(".member");
+        members.forEach((member, index) => {
+          member.style.animationDelay = `${0.1 * (index + 1)}s`;
+        });
+
+        // Add staggered animations to testimonials
+        const testimonials = document.querySelectorAll(".testimonial");
+        testimonials.forEach((testimonial, index) => {
+          testimonial.style.animationDelay = `${0.1 * (index + 1)}s`;
+        });
+
+        // Add staggered animations to trusted logos
+        const logos = document.querySelectorAll(".trusted-logos img");
+        logos.forEach((logo, index) => {
+          logo.style.animationDelay = `${0.1 * (index + 1)}s`;
+        });
+
+        // Add staggered animations to impact stats
+        const stats = document.querySelectorAll(".impact-stat");
+        stats.forEach((stat, index) => {
+          stat.style.animationDelay = `${1 + 0.1 * (index + 1)}s`;
+        });
+
+        // Add staggered animations to impact cards
+        const cards = document.querySelectorAll(".impact-card");
+        cards.forEach((card, index) => {
+          card.style.animationDelay = `${0.8 + 0.1 * (index + 1)}s`;
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              target.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          });
+        });
+
+        // Add hover effects to navigation
+        const navLinks = document.querySelectorAll("nav a");
+        navLinks.forEach((link) => {
+          link.addEventListener("mouseenter", function () {
+            this.style.transform = "translateY(-2px)";
+          });
+
+          link.addEventListener("mouseleave", function () {
+            this.style.transform = "translateY(0)";
+          });
+        });
+
+        // Add click effects to buttons
+        const buttons = document.querySelectorAll(".btn");
+        buttons.forEach((button) => {
+          button.addEventListener("click", function () {
+            this.style.transform = "scale(0.95)";
+            setTimeout(() => {
+              this.style.transform = "";
+            }, 150);
+          });
+        });
+
+        // Parallax effect for hero image
+        window.addEventListener("scroll", function () {
+          const scrolled = window.pageYOffset;
+          const heroImg = document.querySelector(".about-us-hero-img");
+          const heroReflection = document.querySelector(".hero-reflection");
+          if (heroImg) {
+            const rate = scrolled * -0.5;
+            heroImg.style.transform = `translateY(${rate}px) scaleX(-1)`;
+            if (heroReflection) {
+              heroReflection.style.transform = `translateY(${rate}px) scaleY(-1) scaleX(-1)`;
+            }
+          }
+        });
+
+        // Add loading animation
+        window.addEventListener("load", function () {
+          document.body.classList.add("loaded");
+        });
+
+        // Add typing effect to hero title
+        const heroTitle = document.querySelector(".hero-title-main");
+        if (heroTitle) {
+          const text = heroTitle.textContent;
+          heroTitle.textContent = "";
+          let i = 0;
+          const typeWriter = () => {
+            if (i < text.length) {
+              heroTitle.textContent += text.charAt(i);
+              i++;
+              setTimeout(typeWriter, 100);
+            }
+          };
+          setTimeout(typeWriter, 1000);
+        }
+      });
+
+      // Add CSS for loading state
+      const style = document.createElement("style");
+      style.textContent = `
+        body:not(.loaded) {
+          overflow: hidden;
+        }
+        
+        .animate-on-scroll {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: all 0.8s ease-out;
+        }
+        
+        .animate-on-scroll.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        
+        /* Enhanced hover effects */
+        .feature:hover .feature-icon {
+          animation: pulse 0.6s ease-in-out;
+        }
+        
+        .member:hover img {
+          animation: float 2s ease-in-out infinite;
+        }
+        
+        .testimonial:hover {
+          animation: pulse 0.3s ease-in-out;
+        }
+        
+        /* Smooth transitions for all interactive elements */
+        * {
+          transition: all 0.3s ease;
+        }
+        
+        /* Loading animation */
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        
+        body.loaded {
+          animation: fadeIn 0.5s ease-out;
+        }
+      `;
+      document.head.appendChild(style);
+    </script>
+  </body>
+</html>

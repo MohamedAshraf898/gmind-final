@@ -1,0 +1,125 @@
+@model Gamingv1.ViewModels.UserProfileImageViewModel
+@{
+    ViewData["Title"] = "Upload Profile Image";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-user-edit"></i> Upload Profile Image
+        </h1>
+        <a href="@Url.Action("UserDetails", new { id = Model.UserId })" class="btn btn-secondary btn-sm">
+            <i class="fas fa-arrow-left"></i> Back to User Details
+        </a>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Upload Profile Picture</h6>
+        </div>
+        <div class="card-body">
+            <form asp-action="UploadUserProfileImage" method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="UserId" />
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                <div class="text-center mb-4">
+                    @if (!string.IsNullOrEmpty(Model.CurrentImageUrl))
+                    {
+                        <div class="mb-3">
+                            <img src="@Model.CurrentImageUrl" alt="Current profile picture" class="img-profile rounded-circle" style="width: 150px; height: 150px; object-fit: cover;" />
+                            <p class="mt-2">Current Profile Picture</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="mb-3">
+                            <div class="img-profile rounded-circle bg-light d-flex align-items-center justify-content-center" style="width: 150px; height: 150px; margin: 0 auto;">
+                                <i class="fas fa-user fa-3x text-gray-300"></i>
+                            </div>
+                            <p class="mt-2">No Profile Picture</p>
+                        </div>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ProfileImage" class="font-weight-bold">Select Profile Image</label>
+                    <div class="custom-file">
+                        <input type="file" asp-for="ProfileImage" class="custom-file-input" accept="image/*" id="profileImageFile">
+                        <label class="custom-file-label" for="profileImageFile">Choose file...</label>
+                    </div>
+                    <span asp-validation-for="ProfileImage" class="text-danger"></span>
+                    <div id="imagePreview" class="mt-2 text-center"></div>
+                    <small class="text-muted">Upload a square image (1:1 ratio) for best results. Maximum file size: 2MB.</small>
+                </div>
+
+                <hr />
+                <div class="form-group text-right">
+                    <a href="@Url.Action("UserDetails", new { id = Model.UserId })" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-upload"></i> Upload Image
+                    </button>
+                    @if (!string.IsNullOrEmpty(Model.CurrentImageUrl))
+                    {
+                        <a href="@Url.Action("DeleteUserProfileImage", new { id = Model.UserId })" 
+                           class="btn btn-danger ml-2"
+                           data-toggle="modal" 
+                           data-target="#deleteImageModal">
+                            <i class="fas fa-trash-alt"></i> Delete Current Image
+                        </a>
+                    }
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Image Modal -->
+<div class="modal fade" id="deleteImageModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Profile Image</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete your current profile image?</p>
+                <p class="text-danger">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <a href="@Url.Action("DeleteUserProfileImage", new { id = Model.UserId })" class="btn btn-danger">Delete Image</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Show file name when selected
+            $('.custom-file-input').on('change', function () {
+                var fileLabel = $(this).next('.custom-file-label');
+                var files = $(this)[0].files;
+                
+                if (files.length > 0) {
+                    fileLabel.html(files[0].name);
+                }
+                
+                // Show image preview
+                if (files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#imagePreview').html(`
+                            <img src="${e.target.result}" class="img-profile rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+                            <p class="mt-2">Preview</p>
+                        `);
+                    }
+                    reader.readAsDataURL(files[0]);
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,48 @@
+@model Gamingv1.ViewModels.GameCategoryViewModel
+@{
+    ViewData["Title"] = "Edit Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-edit"></i> Edit Category
+        </h1>
+        <a href="@Url.Action("GameCategories")" class="btn btn-secondary btn-sm">
+            <i class="fas fa-arrow-left"></i> Back to Categories
+        </a>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Category Details</h6>
+        </div>
+        <div class="card-body">
+            <form asp-action="EditCategory" method="post">
+                <input type="hidden" asp-for="CategoryId" />
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Name" class="font-weight-bold">Category Name</label>
+                    <input asp-for="Name" class="form-control" placeholder="Enter category name" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description" class="font-weight-bold">Description</label>
+                    <textarea asp-for="Description" class="form-control" rows="3" placeholder="Enter category description"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <hr />
+                <div class="form-group text-right">
+                    <a href="@Url.Action("GameCategories")" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Update Category
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

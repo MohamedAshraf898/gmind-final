@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>GMIND – Reshape The Future</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --green: #3cb034;
+      --dark: #ffffff;
+      --nav-dark: #ffffff;
+      --purple: #6b3fa0;
+      --blue: #3a7bd5;
+      --yellow: #f5c518;
+      --red: #e84040;
+      --text: #222;
+      --muted: #888;
+      --light-bg: #f5f6fa;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: var(--text);
+      background: #fff;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─── */
+    .navbar {
+      background: var(--nav-dark);
+      padding: 8px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar-brand {
+      font-family: 'Fredoka One', cursive;
+      color: var(--green) !important;
+      font-size: 1.6rem;
+      letter-spacing: 3px;
+    }
+
+    .nav-link {
+      color: #443D96 !important;
+      font-weight: 700;
+      font-size: .82rem;
+      padding: 5px 11px !important;
+      transition: color .2s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--green) !important;
+    }
+
+    .btn-login {
+      color: #443D96 !important;
+      border: 1.5px solid rgba(255, 255, 255, .5);
+      border-radius: 20px;
+      padding: 4px 16px !important;
+    }
+
+    .btn-signup {
+      background: var(--green);
+      color: #fff !important;
+      border-radius: 20px;
+      padding: 5px 18px !important;
+      font-weight: 800;
+      border: none;
+    }
+
+    .navbar-toggler {
+      border-color: rgba(255, 255, 255, .3);
+    }
+
+    .navbar-toggler-icon {
+      filter: invert(1);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-watermark {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(4rem, 13vw, 10rem);
+      color: rgba(255, 255, 255, .06);
+      letter-spacing: 6px;
+      pointer-events: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 55px 0 0;
+    }
+
+    .hero-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(2rem, 5.5vw, 3.8rem);
+      color: #fff;
+      line-height: 1.05;
+      margin-bottom: 14px;
+    }
+
+    .hero-desc {
+      color: rgba(255, 255, 255, .62);
+      font-size: .88rem;
+      max-width: 360px;
+      line-height: 1.65;
+      margin-bottom: 22px;
+    }
+
+    .btn-getstarted {
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      padding: 8px 26px;
+      font-weight: 800;
+      font-size: .85rem;
+      transition: transform .2s, box-shadow .2s;
+      display: inline-block;
+    }
+
+    .btn-getstarted:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(60, 176, 52, .4);
+      color: #fff;
+    }
+
+    .btn-watch {
+      background: transparent;
+      color: rgba(255, 255, 255, .7);
+      border: none;
+      font-weight: 700;
+      font-size: .85rem;
+      cursor: pointer;
+    }
+
+    .btn-watch:hover {
+      color: #fff;
+    }
+
+    .hero-visual {
+      height: clamp(280px, 44vw, 470px);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(130, 90, 240, .28) 0%, rgba(40, 180, 100, .06) 55%, transparent 75%);
+    }
+
+    .hero-character {
+      font-size: clamp(7rem, 18vw, 13rem);
+      animation: floatY 4s ease-in-out infinite;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 16px 32px rgba(80, 40, 180, .35));
+      line-height: 1;
+      padding-bottom: 20px;
+    }
+
+    @keyframes floatY {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-13px);
+      }
+    }
+
+    /* Partner strip */
+    .partner-strip {
+      background: #191c25;
+      border-top: 1px solid rgba(255, 255, 255, .07);
+      padding: 13px 0;
+    }
+
+    .partner-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: rgba(255, 255, 255, .5);
+      font-weight: 800;
+      font-size: .78rem;
+      letter-spacing: .5px;
+      padding: 0 16px;
+      border-right: 1px solid rgba(255, 255, 255, .1);
+    }
+
+    .partner-item:last-child {
+      border-right: none;
+    }
+
+    .partner-icon {
+      font-size: 1.2rem;
+    }
+
+    /* ─── SECTIONS ─── */
+    .section-heading {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+      color: var(--text);
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-heading.gu::after {
+      content: '';
+      display: block;
+      height: 3px;
+      background: var(--green);
+      border-radius: 2px;
+      margin-top: 5px;
+      width: 55%;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: .84rem;
+      margin-top: 4px;
+    }
+
+    /* ─── CLIENTS ─── */
+    .clients-sec {
+      padding: 60px 0;
+    }
+
+    .logo-ph {
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fredoka One', cursive;
+      font-size: .58rem;
+      color: #fff;
+      text-align: center;
+      line-height: 1.2;
+      transition: transform .3s;
+      cursor: pointer;
+      border: 3px solid rgba(255, 255, 255, .25);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, .15);
+    }
+
+    .logo-ph:hover {
+      transform: scale(1.1);
+    }
+
+    .logo-ph .li {
+      font-size: 1.5rem;
+      margin-bottom: 3px;
+    }
+
+    /* ─── REVOLUTION ─── */
+    .revolution-sec {
+      padding: 70px 0 50px;
+      background: #fff;
+    }
+
+    .revolution-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      color: var(--dark);
+      text-align: center;
+    }
+
+    .revolution-sub {
+      color: var(--muted);
+      font-size: .84rem;
+      text-align: center;
+      max-width: 510px;
+      margin: 10px auto 40px;
+      line-height: 1.65;
+    }
+
+    .vr-center {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 42px;
+    }
+
+    .vr-bubble {
+      width: clamp(200px, 36vw, 320px);
+      height: clamp(130px, 22vw, 190px);
+      background: linear-gradient(135deg, #e8e8f4 0%, #f0f0fa 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, .08);
+      animation: floatY 5s ease-in-out infinite;
+    }
+
+    .vr-bubble span {
+      font-size: clamp(4.5rem, 13vw, 8rem);
+    }
+
+    .feat-col {
+      text-align: center;
+      padding: 0 10px;
+    }
+
+    .feat-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-bottom: 9px;
+    }
+
+    .feat-title {
+      font-weight: 800;
+      font-size: .8rem;
+      margin-bottom: 5px;
+      color: var(--dark);
+    }
+
+    .feat-text {
+      font-size: .74rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .btn-outline-g {
+      border: 2px solid var(--green);
+      color: var(--green);
+      border-radius: 25px;
+      padding: 9px 30px;
+      font-weight: 800;
+      font-size: .84rem;
+      background: transparent;
+      transition: background .2s, color .2s;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .btn-outline-g:hover {
+      background: var(--green);
+      color: #fff;
+    }
+
+    /* ─── DON'T MISS OUT ─── */
+    .dontmiss-sec {
+      padding: 65px 0;
+      background: #fff;
+      text-align: center;
+    }
+
+    .dontmiss-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+      color: var(--dark);
+    }
+
+    .dontmiss-sub {
+      color: var(--muted);
+      font-size: .84rem;
+      margin-top: 6px;
+    }
+
+    .stat-box {
+      background: var(--light-bg);
+      border-radius: 14px;
+      padding: 28px 14px;
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .stat-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .09);
+    }
+
+    .stat-num {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2.1rem;
+      color: var(--dark);
+    }
+
+    .stat-label {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ─── ACTIVITIES ─── */
+    .activities-sec {
+      background: var(--dark);
+      padding: 50px 0 0;
+    }
+
+    .act-tabs .nav-link {
+      color: rgba(255, 255, 255, .45);
+      font-weight: 700;
+      font-size: .76rem;
+      border-radius: 20px;
+      padding: 4px 15px;
+      border: 1.5px solid transparent;
+      transition: all .2s;
+    }
+
+    .act-tabs .nav-link.active,
+    .act-tabs .nav-link:hover {
+      border-color: rgba(255, 255, 255, .3);
+      color: #fff;
+    }
+
+    .act-card {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .act-ph {
+      width: 100%;
+      height: 165px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      position: relative;
+    }
+
+    .act-ph:hover .act-ph-inner {
+      transform: scale(1.06);
+    }
+
+    .act-ph-inner {
+      font-size: 3.5rem;
+      transition: transform .4s;
+    }
+
+    .act-tag {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: rgba(255, 255, 255, .18);
+      backdrop-filter: blur(4px);
+      color: #fff;
+      font-size: .62rem;
+      font-weight: 800;
+      padding: 2px 9px;
+      border-radius: 10px;
+    }
+
+    .act-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(0, rgba(0, 0, 0, .7) 0%, transparent 100%);
+      padding: 24px 10px 8px;
+    }
+
+    .act-title {
+      color: #fff;
+      font-size: .74rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .act-meta {
+      color: rgba(255, 255, 255, .55);
+      font-size: .62rem;
+      margin: 0;
+    }
+
+    .act-footer {
+      color: #fff;
+      font-size: .73rem;
+      font-weight: 700;
+      margin-top: 7px;
+    }
+
+    .act-stars {
+      color: #FFC107;
+      font-size: .65rem;
+    }
+
+    .dots-row {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      padding: 20px 0;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .22);
+    }
+
+    .dot.a {
+      background: var(--green);
+    }
+
+    .act-bottom {
+      background: var(--dark);
+      text-align: center;
+      padding-bottom: 50px;
+    }
+
+    /* ─── PRODUCT ─── */
+    .product-sec {
+      padding: 65px 0;
+      background: #fff;
+    }
+
+    .product-card {
+      background: linear-gradient(115deg, #5435b8 0%, #7557e0 48%, #4a6cd6 100%);
+      border-radius: 18px;
+      padding: 36px 36px 0;
+      overflow: hidden;
+      position: relative;
+      min-height: 190px;
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .product-card::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      left: 25%;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .04);
+    }
+
+    .product-badge {
+      background: rgba(255, 255, 255, .18);
+      color: #fff;
+      font-size: .67rem;
+      font-weight: 800;
+      padding: 3px 12px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .product-card h4 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 7px;
+      line-height: 1.3;
+    }
+
+    .product-card p {
+      font-size: .76rem;
+      color: rgba(255, 255, 255, .72);
+      margin-bottom: 14px;
+    }
+
+    .product-price {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.05rem;
+      color: #FFC107;
+      margin-bottom: 7px;
+    }
+
+    .product-stars {
+      color: #FFC107;
+      font-size: .7rem;
+    }
+
+    .btn-buynow {
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 7px 22px;
+      font-weight: 800;
+      font-size: .8rem;
+      transition: transform .2s;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .btn-buynow:hover {
+      transform: translateY(-2px);
+      color: #fff;
+    }
+
+    .btn-details {
+      color: rgba(255, 255, 255, .65);
+      font-size: .78rem;
+      font-weight: 700;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      margin-left: 14px;
+    }
+
+    .btn-details:hover {
+      color: #fff;
+    }
+
+    .product-emoji {
+      font-size: clamp(5.5rem, 13vw, 8.5rem);
+      animation: floatY 4s ease-in-out infinite;
+      display: inline-block;
+      filter: drop-shadow(0 10px 24px rgba(0, 0, 0, .38));
+    }
+
+    /* ─── GAMES ─── */
+    .games-sec {
+      padding: 65px 0;
+      background: #fff;
+    }
+
+    .games-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--dark);
+      text-align: center;
+    }
+
+    .games-sub {
+      color: var(--muted);
+      font-size: .84rem;
+      text-align: center;
+      margin-top: 6px;
+    }
+
+    .game-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .1);
+      transition: transform .3s;
+      background: #fff;
+    }
+
+    .game-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .game-cover-ph {
+      width: 100%;
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      position: relative;
+    }
+
+    .game-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      font-size: .6rem;
+      font-weight: 800;
+      padding: 2px 9px;
+      border-radius: 10px;
+      color: #fff;
+    }
+
+    .game-cover-txt {
+      font-family: 'Fredoka One', cursive;
+      font-size: .7rem;
+      color: rgba(255, 255, 255, .82);
+      margin-top: 5px;
+      letter-spacing: .5px;
+    }
+
+    .game-info {
+      padding: 9px 11px 12px;
+    }
+
+    .game-title-t {
+      font-weight: 800;
+      font-size: .8rem;
+      color: var(--dark);
+      margin-bottom: 2px;
+    }
+
+    .game-genre {
+      font-size: .68rem;
+      color: var(--muted);
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    .testi-sec {
+      padding: 65px 0;
+      background: var(--light-bg);
+    }
+
+    .testi-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.4rem, 3.2vw, 2rem);
+      color: var(--dark);
+      text-align: center;
+    }
+
+    .testi-sub {
+      color: var(--muted);
+      font-size: .84rem;
+      text-align: center;
+      margin-top: 6px;
+    }
+
+    .rv-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, .06);
+      transition: transform .25s, box-shadow .25s;
+      height: 100%;
+    }
+
+    .rv-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .11);
+    }
+
+    .rv-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fredoka One', cursive;
+      font-size: .9rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .rv-name {
+      font-weight: 800;
+      font-size: .8rem;
+      color: var(--dark);
+    }
+
+    .rv-role {
+      font-size: .68rem;
+      color: var(--muted);
+    }
+
+    .rv-stars {
+      color: #FFC107;
+      font-size: .7rem;
+      margin: 5px 0;
+    }
+
+    .rv-text {
+      font-size: .73rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .rv-check {
+      font-size: .63rem;
+      color: var(--green);
+      font-weight: 700;
+      margin-top: 7px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark);
+      padding: 55px 0 28px;
+    }
+
+    .footer-brand {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2.3rem;
+      color: var(--green);
+      letter-spacing: 3px;
+    }
+
+    .footer-desc {
+      font-size: .76rem;
+      color: rgba(255, 255, 255, .4);
+      line-height: 1.7;
+      max-width: 250px;
+      margin-top: 10px;
+    }
+
+    .qr-box {
+      width: 68px;
+      height: 68px;
+      background: rgba(255, 255, 255, .11);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-top: 14px;
+    }
+
+    .footer-h {
+      color: #fff;
+      font-weight: 800;
+      font-size: .8rem;
+      margin-bottom: 13px;
+    }
+
+    .footer-link {
+      display: block;
+      color: rgba(255, 255, 255, .42);
+      font-size: .76rem;
+      text-decoration: none;
+      margin-bottom: 6px;
+      transition: color .2s;
+    }
+
+    .footer-link:hover {
+      color: var(--green);
+    }
+
+    .social-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: .9rem;
+      text-decoration: none;
+      transition: background .2s;
+    }
+
+    .social-btn:hover {
+      background: var(--green);
+      color: #fff;
+    }
+
+    .footer-divider {
+      border-color: rgba(255, 255, 255, .08);
+      margin: 26px 0 16px;
+    }
+
+    .footer-copy {
+      font-size: .7rem;
+      color: rgba(255, 255, 255, .28);
+    }
+
+    /* ─── SCROLL REVEAL ─── */
+    .rv {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+
+    .rv.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:991px) {
+      .hero-content {
+        padding: 46px 0 0;
+      }
+
+      .hero-visual {
+        height: 300px;
+      }
+    }
+
+    @media(max-width:767px) {
+      .hero-desc {
+        max-width: 100%;
+      }
+
+      .hero-visual {
+        height: 240px;
+      }
+
+      .partner-item {
+        padding: 0 10px;
+        font-size: .7rem;
+      }
+
+      .logo-ph {
+        width: 68px;
+        height: 68px;
+      }
+
+      .logo-ph .li {
+        font-size: 1.1rem;
+      }
+
+      .feat-col {
+        margin-bottom: 22px;
+      }
+
+      .product-card {
+        padding: 24px 20px 0;
+      }
+
+      .stat-num {
+        font-size: 1.7rem;
+      }
+    }
+
+    @media(max-width:480px) {
+      .hero-watermark {
+        font-size: 3.2rem;
+      }
+
+      .hero-title {
+        font-size: 1.9rem;
+      }
+
+      .hero-character {
+        font-size: 6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ██ NAVBAR ██ -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">GMIND</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav mx-auto gap-1">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">About us</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Jobs</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Community</a></li>
+        </ul>
+        <div class="d-flex gap-2 align-items-center mt-3 mt-lg-0">
+          <a href="#" class="nav-link btn-login">Login</a>
+          <a href="#" class="nav-link btn-signup">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ██ HERO ██ -->
+  <section class="hero">
+    <div class="hero-watermark">EDUCATION</div>
+    <div class="container hero-content">
+      <div class="row align-items-end">
+        <div class="col-lg-6 col-md-7 pb-5 rv">
+          <h1 class="hero-title">RESHAPE<br>THE FUTURE</h1>
+          <p class="hero-desc">Turn your classroom learning routine into an extraordinary experience by providing a wide
+            range of technology products and resources for students aged 5–15.</p>
+          <div class="d-flex align-items-center gap-3 flex-wrap">
+            <a href="#" class="btn-getstarted">Sign Up</a>
+            <button class="btn-watch">▶ Watch Video</button>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-5 rv" style="transition-delay:.12s">
+          <div class="hero-visual">
+            <div class="hero-glow"></div>
+            <div class="hero-character">🧑‍🚀</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Partner strip inside hero bottom -->
+    <div class="partner-strip">
+      <div class="container">
+        <div class="d-flex flex-wrap justify-content-center justify-content-md-start align-items-center">
+          <div class="partner-item"><span class="partner-icon">🏫</span>EduPrime</div>
+          <div class="partner-item"><span class="partner-icon">🎯</span>YOYO</div>
+          <div class="partner-item"><span class="partner-icon">⭐</span>BabySpark</div>
+          <div class="partner-item"><span class="partner-icon">📖</span>YOUNG</div>
+          <div class="partner-item"><span class="partner-icon">🎮</span>ShipStuff</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ██ OUR CLIENTS ██ -->
+  <section class="clients-sec">
+    <div class="container">
+      <div class="rv mb-4">
+        <div class="section-heading gu">OUR CLIENTS</div>
+        <p class="section-sub">Trusted by leading educational institutions</p>
+      </div>
+      <div class="row justify-content-center g-3 rv mb-3">
+        <div class="col-auto">
+          <div class="logo-ph" style="background:linear-gradient(135deg,#c0392b,#e74c3c);"><span
+              class="li">🏰</span>CASTLE SCH</div>
+        </div>
+        <div class="col-auto">
+          <div class="logo-ph" style="background:linear-gradient(135deg,#2c3e50,#34495e);"><span
+              class="li">🦅</span>ELITE ACAD</div>
+        </div>
+        <div class="col-auto">
+          <div class="logo-ph" style="background:linear-gradient(135deg,#2980b9,#3498db);"><span
+              class="li">⚔️</span>KNIGHT EDU</div>
+        </div>
+        <div class="col-auto">
+          <div class="logo-ph" style="background:linear-gradient(135deg,#f39c12,#e67e22);"><span
+              class="li">🌟</span>SEYMOUR</div>
+        </div>
+        <div class="col-auto">
+          <div class="logo-ph" style="background:linear-gradient(135deg,#e74c3c,#c0392b);"><span
+              class="li">🎯</span>PRIME KIDS</div>
+        </div>
+      </div>
+      <div class="row justify-content-center g-3 rv">
+        <div class="col-auto">
+          <div class="logo-ph" style="background:linear-gradient(135deg,#7d6608,#b7950b);"><span
+              class="li">👑</span>ROYAL ACAD</div>
+        </div>
+        <div class="col-auto">
+          <div class="logo-ph" style="background:linear-gradient(135deg,#1a5276,#2874a6);"><span
+              class="li">📚</span>IBSA INT'L</div>
+        </div>
+        <div class="col-auto">
+          <div class="logo-ph" style="background:linear-gradient(135deg,#1e8449,#27ae60);"><span
+              class="li">🐻</span>STAR LEARN</div>
+        </div>
+        <div class="col-auto">
+          <div class="logo-ph" style="background:linear-gradient(135deg,#1a5276,#154360);"><span
+              class="li">🎓</span>FUTURE EDU</div>
+        </div>
+        <div class="col-auto">
+          <div class="logo-ph" style="background:linear-gradient(135deg,#154360,#1f618d);"><span
+              class="li">🏫</span>SMOUHA SCH</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ██ REVOLUTION ██ -->
+  <section class="revolution-sec">
+    <div class="container">
+      <div class="rv">
+        <h2 class="revolution-title">WE'RE HERE TO REVOLUTIONIZE EDUCATION</h2>
+        <p class="revolution-sub">GMind is a learning platform to bring engagement to every child by offering a wide
+          range of technology products and resources.</p>
+      </div>
+      <div class="vr-center rv">
+        <div class="vr-bubble"><span>🥽</span></div>
+      </div>
+      <div class="row g-0 rv mb-5">
+        <div class="col-6 col-md-3 feat-col">
+          <span class="feat-dot" style="background:#3cb034;"></span>
+          <div class="feat-title">ENGAGING LESSONS</div>
+          <p class="feat-text">Interactive curriculum that makes every subject come alive through immersive VR journeys
+            and gamified learning paths tailored for young minds.</p>
+        </div>
+        <div class="col-6 col-md-3 feat-col">
+          <span class="feat-dot" style="background:#f5c518;"></span>
+          <div class="feat-title">GAMIFIED KIDS</div>
+          <p class="feat-text">Students earn rewards, badges and unlock new levels as they progress through subjects —
+            turning learning into a thrilling adventure every day.</p>
+        </div>
+        <div class="col-6 col-md-3 feat-col">
+          <span class="feat-dot" style="background:#e84040;"></span>
+          <div class="feat-title">GAMIFIED FOR TEENS</div>
+          <p class="feat-text">Engaging content designed for teenagers blending social features with competitive
+            challenges that keep them motivated every single day.</p>
+        </div>
+        <div class="col-6 col-md-3 feat-col">
+          <span class="feat-dot" style="background:#3a7bd5;"></span>
+          <div class="feat-title">CUSTOMIZED GAMES</div>
+          <p class="feat-text">Schools can customize their game library to match their own curriculum standards and
+            tailor the experience for every age group.</p>
+        </div>
+      </div>
+      <div class="text-center rv">
+        <a href="#" class="btn-outline-g">Discover More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ██ DON'T MISS OUT ██ -->
+  <section class="dontmiss-sec">
+    <div class="container">
+      <div class="rv">
+        <h2 class="dontmiss-title">DON'T MISS OUT 🚀</h2>
+        <p class="dontmiss-sub">Join many companies &amp; schools with their memberships</p>
+      </div>
+      <div class="row g-3 mt-4 justify-content-center rv">
+        <div class="col-6 col-sm-3">
+          <div class="stat-box">
+            <div class="stat-num">500+</div>
+            <div class="stat-label">Active Schools</div>
+          </div>
+        </div>
+        <div class="col-6 col-sm-3">
+          <div class="stat-box">
+            <div class="stat-num">50K+</div>
+            <div class="stat-label">Students Enrolled</div>
+          </div>
+        </div>
+        <div class="col-6 col-sm-3">
+          <div class="stat-box">
+            <div class="stat-num">200+</div>
+            <div class="stat-label">Games &amp; Lessons</div>
+          </div>
+        </div>
+        <div class="col-6 col-sm-3">
+          <div class="stat-box">
+            <div class="stat-num">98%</div>
+            <div class="stat-label">Satisfaction Rate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ██ ACTIVITIES ██ -->
+  <section class="activities-sec">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-between mb-4 rv gap-3">
+        <div
+          style="color:rgba(255,255,255,.3);font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;">
+          Explore Activities</div>
+        <ul class="nav act-tabs gap-1">
+          <li class="nav-item"><a class="nav-link active" href="#">All</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Science</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">History</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Math</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Arts</a></li>
+        </ul>
+      </div>
+      <div class="row g-3 rv">
+        <div class="col-6 col-lg-3">
+          <div class="act-card">
+            <div class="act-ph" style="background:linear-gradient(135deg,#e74c3c,#c0392b);">
+              <span class="act-ph-inner">🦁</span>
+              <span class="act-tag">SAFARI</span>
+              <div class="act-overlay">
+                <p class="act-title">Wildlife VR Safari</p>
+                <p class="act-meta">Ages 6–12 · 45 min</p>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mt-2 px-1">
+            <span class="act-footer">Wildlife Safari</span><span class="act-stars">★★★★★</span>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="act-card">
+            <div class="act-ph" style="background:linear-gradient(135deg,#1a1a2e,#16213e);">
+              <span class="act-ph-inner">🚀</span>
+              <span class="act-tag">SPACE</span>
+              <div class="act-overlay">
+                <p class="act-title">Space Exploration</p>
+                <p class="act-meta">Ages 8–14 · 60 min</p>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mt-2 px-1">
+            <span class="act-footer">Space Explorer</span><span class="act-stars">★★★★★</span>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="act-card">
+            <div class="act-ph" style="background:linear-gradient(135deg,#145a32,#1e8449);">
+              <span class="act-ph-inner">🌊</span>
+              <span class="act-tag">OCEAN</span>
+              <div class="act-overlay">
+                <p class="act-title">Ocean Discovery</p>
+                <p class="act-meta">Ages 5–11 · 40 min</p>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mt-2 px-1">
+            <span class="act-footer">Ocean Discovery</span><span class="act-stars">★★★★☆</span>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="act-card">
+            <div class="act-ph" style="background:linear-gradient(135deg,#4a235a,#7d3c98);">
+              <span class="act-ph-inner">⚗️</span>
+              <span class="act-tag">SCIENCE</span>
+              <div class="act-overlay">
+                <p class="act-title">Science Lab VR</p>
+                <p class="act-meta">Ages 10–15 · 50 min</p>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mt-2 px-1">
+            <span class="act-footer">Science Lab</span><span class="act-stars">★★★★★</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="act-bottom">
+    <div class="dots-row">
+      <div class="dot a"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <a href="#" class="btn-outline-g">Discover More</a>
+  </div>
+
+  <!-- ██ OUR PRODUCT ██ -->
+  <section class="product-sec">
+    <div class="container">
+      <div class="text-center rv mb-4">
+        <div class="section-heading gu">OUR PRODUCT</div>
+        <p class="section-sub mt-2">Here to introduce the technology our children love to play</p>
+      </div>
+      <div class="product-card rv">
+        <div class="row align-items-end">
+          <div class="col-md-7 pb-5" style="position:relative;z-index:1;">
+            <span class="product-badge">★ FEATURED PRODUCT</span>
+            <h4>VR Glasses for Mobile<br>Phone VR Headset<br>Virtual Reality Glasses 3D HD</h4>
+            <div class="product-stars mb-2">★★★★★ <span
+                style="color:rgba(255,255,255,.4);margin-left:4px;font-size:.68rem;">(2,400 reviews)</span></div>
+            <div class="product-price">$49.99 <span
+                style="font-size:.78rem;color:rgba(255,255,255,.35);text-decoration:line-through;margin-left:6px;">$89.99</span>
+            </div>
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+              <a href="#" class="btn-buynow">Buy Now</a>
+              <button class="btn-details">View Details →</button>
+            </div>
+          </div>
+          <div class="col-md-5 text-center pb-0" style="position:relative;z-index:1;">
+            <div class="product-emoji">🥽</div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4 rv">
+        <a href="#" class="btn-outline-g">View All →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ██ EXPLORE GAMES ██ -->
+  <section class="games-sec">
+    <div class="container">
+      <div class="text-center rv mb-4">
+        <h2 class="games-title">🎮 EXPLORE OUR GAMES</h2>
+        <p class="games-sub">Join fun and exciting learning – select what's coming next!</p>
+      </div>
+      <!-- Row 1 -->
+      <div class="row g-3 rv mb-3">
+        <div class="col-6 col-md-3">
+          <div class="game-card">
+            <div class="game-cover-ph" style="background:linear-gradient(135deg,#f39c12,#e67e22);">🌍<span
+                class="game-badge" style="background:var(--green);">NEW</span><span class="game-cover-txt">GEO
+                ADVENTURE</span></div>
+            <div class="game-info">
+              <div class="game-title-t">Geo Adventure</div>
+              <div class="game-genre">Education</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="game-card">
+            <div class="game-cover-ph" style="background:linear-gradient(135deg,#1a1a2e,#16213e);">🚀<span
+                class="game-badge" style="background:var(--purple);">TOP</span><span class="game-cover-txt">JOURNEY TO
+                MARS</span></div>
+            <div class="game-info">
+              <div class="game-title-t">Journey to Mars</div>
+              <div class="game-genre">STEM</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="game-card">
+            <div class="game-cover-ph" style="background:linear-gradient(135deg,#27ae60,#2ecc71);">🦷<span
+                class="game-badge" style="background:var(--blue);">HOT</span><span class="game-cover-txt">VR BODY
+                GUIDE</span></div>
+            <div class="game-info">
+              <div class="game-title-t">VR Body Guide</div>
+              <div class="game-genre">Science</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="game-card">
+            <div class="game-cover-ph" style="background:linear-gradient(135deg,#3498db,#2980b9);">🌊<span
+                class="game-badge" style="background:var(--red);">🔥</span><span class="game-cover-txt">MARINE
+                QUEST</span></div>
+            <div class="game-info">
+              <div class="game-title-t">Marine Life Quest</div>
+              <div class="game-genre">Nature</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Row 2 -->
+      <div class="row g-3 rv">
+        <div class="col-6 col-md-3">
+          <div class="game-card">
+            <div class="game-cover-ph" style="background:linear-gradient(135deg,#8e44ad,#6c3483);">🏰<span
+                class="game-cover-txt">HISTORY QUEST</span></div>
+            <div class="game-info">
+              <div class="game-title-t">History Quest</div>
+              <div class="game-genre">History</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="game-card">
+            <div class="game-cover-ph" style="background:linear-gradient(135deg,#c0392b,#e74c3c);">⚔️<span
+                class="game-badge" style="background:var(--green);">NEW</span><span class="game-cover-txt">CRITTER
+                CLASH</span></div>
+            <div class="game-info">
+              <div class="game-title-t">Critter Clash</div>
+              <div class="game-genre">Strategy</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="game-card">
+            <div class="game-cover-ph" style="background:linear-gradient(135deg,#16a085,#1abc9c);">🌱<span
+                class="game-badge" style="background:var(--yellow);color:#333;">ECO</span><span
+                class="game-cover-txt">EARTHFALL VR</span></div>
+            <div class="game-info">
+              <div class="game-title-t">EarthFall VR</div>
+              <div class="game-genre">Eco Science</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="game-card">
+            <div class="game-cover-ph" style="background:linear-gradient(135deg,#d35400,#e67e22);">🏝️<span
+                class="game-cover-txt">DESERT SURVIVAL</span></div>
+            <div class="game-info">
+              <div class="game-title-t">Desert Survival</div>
+              <div class="game-genre">Adventure</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-5 rv">
+        <a href="#" class="btn-outline-g">Play More →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ██ TESTIMONIALS ██ -->
+  <section class="testi-sec">
+    <div class="container">
+      <div class="text-center rv mb-5">
+        <h2 class="testi-title">WHAT OUR CUSTOMER SAY'S</h2>
+        <p class="testi-sub">Thousands of happy clients giving great satisfaction and entertainment</p>
+      </div>
+      <!-- Row 1 -->
+      <div class="row g-3 rv">
+        <div class="col-md-4">
+          <div class="rv-card">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <div class="rv-avatar" style="background:#6b3fa0;">A</div>
+              <div>
+                <div class="rv-name">Ahmed Hassan</div>
+                <div class="rv-role">Parent · Cairo</div>
+              </div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <p class="rv-text">My son absolutely loves GMIND VR. His grades improved dramatically and he now looks
+              forward to studying every single day. Highly recommended!</p>
+            <div class="rv-check">✔ Verified Purchase</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="rv-card">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <div class="rv-avatar" style="background:#3a7bd5;">S</div>
+              <div>
+                <div class="rv-name">Sara Mohamed</div>
+                <div class="rv-role">Teacher · Alexandria</div>
+              </div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <p class="rv-text">GMIND completely transformed how I engage my students. The VR headsets make explaining
+              complex science and geography so much easier.</p>
+            <div class="rv-check">✔ Verified Purchase</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="rv-card">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <div class="rv-avatar" style="background:#3cb034;">K</div>
+              <div>
+                <div class="rv-name">Kareem Adel</div>
+                <div class="rv-role">School Principal</div>
+              </div>
+            </div>
+            <div class="rv-stars">★★★★☆</div>
+            <p class="rv-text">We integrated GMIND into our curriculum and results exceeded all expectations. Student
+              participation is up 70% and parents are thrilled.</p>
+            <div class="rv-check">✔ Verified Purchase</div>
+          </div>
+        </div>
+      </div>
+      <!-- Row 2 -->
+      <div class="row g-3 mt-1 rv">
+        <div class="col-md-3">
+          <div class="rv-card">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <div class="rv-avatar" style="background:#f5c518;color:#333;">N</div>
+              <div>
+                <div class="rv-name">Nada Tarek</div>
+                <div class="rv-role">Parent · Giza</div>
+              </div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <p class="rv-text">Easy setup, my daughter uses it every evening. Her curiosity for science grows every
+              week!</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="rv-card">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <div class="rv-avatar" style="background:#e84040;">O</div>
+              <div>
+                <div class="rv-name">Omar Farouk</div>
+                <div class="rv-role">Student · Age 14</div>
+              </div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <p class="rv-text">EarthFall VR is my favorite — I learned so much about climate change while having a
+              blast!</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="rv-card">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <div class="rv-avatar" style="background:#16a085;">L</div>
+              <div>
+                <div class="rv-name">Laila Ibrahim</div>
+                <div class="rv-role">Curriculum Designer</div>
+              </div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <p class="rv-text">GMIND's customizable game library lets us align every game with national curriculum
+              standards perfectly.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="rv-card">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <div class="rv-avatar" style="background:#8e44ad;">M</div>
+              <div>
+                <div class="rv-name">Mona Samir</div>
+                <div class="rv-role">Parent · Mansoura</div>
+              </div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <p class="rv-text">My twins compete to see who learns more each day. GMIND made education a family activity!
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Row 3 -->
+      <div class="row g-3 mt-1 rv">
+        <div class="col-md-5">
+          <div class="rv-card">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <div class="rv-avatar" style="background:#2980b9;">T</div>
+              <div>
+                <div class="rv-name">Tarek Mansour</div>
+                <div class="rv-role">IT Director · Private School</div>
+              </div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <p class="rv-text">Implementation was smooth and the support team is world-class. Within 2 weeks every
+              classroom was running GMIND sessions. The students absolutely love it and teachers have found it to be a
+              powerful extension of their lesson plans.</p>
+            <div class="rv-check">✔ Verified Purchase</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="rv-card">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <div class="rv-avatar" style="background:#c0392b;">H</div>
+              <div>
+                <div class="rv-name">Hana Ali</div>
+                <div class="rv-role">Parent · Hurghada</div>
+              </div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <p class="rv-text">I was skeptical at first but now I'm a total believer. My son's reading comprehension
+              improved by 40% in just one term thanks to GMIND.</p>
+            <div class="rv-check">✔ Verified Purchase</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="rv-card">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <div class="rv-avatar" style="background:#27ae60;">R</div>
+              <div>
+                <div class="rv-name">Rania Kh.</div>
+                <div class="rv-role">Educator</div>
+              </div>
+            </div>
+            <div class="rv-stars">★★★★★</div>
+            <p class="rv-text">Best investment our school ever made. Every child is engaged and excited every single
+              day!</p>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-5 rv">
+        <a href="#" class="btn-outline-g">Load More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ██ FOOTER ██ -->
+  <footer>
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-brand">GMIND</div>
+          <p class="footer-desc">Reshaping the future of education through immersive VR technology. Empowering young
+            minds to explore and grow.</p>
+          <div class="qr-box">📱</div>
+          <div style="font-size:.63rem;color:rgba(255,255,255,.28);margin-top:5px;">Scan to download app</div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6">
+          <div class="footer-h">Company</div>
+          <a href="#" class="footer-link">About Us</a>
+          <a href="#" class="footer-link">Careers</a>
+          <a href="#" class="footer-link">Press</a>
+          <a href="#" class="footer-link">Blog</a>
+          <a href="#" class="footer-link">Contact</a>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6">
+          <div class="footer-h">Products</div>
+          <a href="#" class="footer-link">VR Headsets</a>
+          <a href="#" class="footer-link">Games Library</a>
+          <a href="#" class="footer-link">Curriculum</a>
+          <a href="#" class="footer-link">Accessories</a>
+          <a href="#" class="footer-link">Enterprise</a>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6">
+          <div class="footer-h">Support</div>
+          <a href="#" class="footer-link">Help Center</a>
+          <a href="#" class="footer-link">Community</a>
+          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="#" class="footer-link">Terms of Use</a>
+          <a href="#" class="footer-link">Cookies</a>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-h">Follow Us</div>
+          <div class="d-flex flex-wrap gap-2 mb-4">
+            <a href="#" class="social-btn"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-btn"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="social-btn"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-btn"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="social-btn"><i class="bi bi-linkedin"></i></a>
+          </div>
+          <div class="footer-h">Contact</div>
+          <div style="font-size:.73rem;color:rgba(255,255,255,.38);line-height:1.9;">
+            <div>📧 hello@gmind.com</div>
+            <div>📞 +20 100 000 0000</div>
+            <div>📍 Alexandria, Egypt</div>
+          </div>
+        </div>
+      </div>
+      <hr class="footer-divider" />
+      <div class="d-flex flex-wrap justify-content-between">
+        <span class="footer-copy">© 2024 GMIND. All rights reserved.</span>
+        <span class="footer-copy">Made with ❤️ for Education</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Scroll reveal
+    const rvEls = document.querySelectorAll('.rv');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('in'), i * 55);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.07 });
+    rvEls.forEach(el => io.observe(el));
+
+    // Activity tabs
+    document.querySelectorAll('.act-tabs .nav-link').forEach(t => {
+      t.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelectorAll('.act-tabs .nav-link').forEach(x => x.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Navbar shadow
+    window.addEventListener('scroll', () => {
+      document.querySelector('.navbar').style.boxShadow =
+        window.scrollY > 20 ? '0 4px 20px rgba(0,0,0,.5)' : 'none';
+    });
+  </script>
+</body>
+
+</html>

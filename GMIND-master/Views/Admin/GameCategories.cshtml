@@ -1,0 +1,166 @@
+@model List<Gamingv1.Models.GameCategory>
+@{
+    ViewData["Title"] = "Manage Game Categories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-tags"></i> Manage Game Categories
+        </h1>
+        <div>
+            <a href="@Url.Action("Index")" class="btn btn-secondary btn-sm">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+            <a href="@Url.Action("CreateCategory")" class="btn btn-primary btn-sm">
+                <i class="fas fa-plus"></i> Add New Category
+            </a>
+        </div>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle"></i> @TempData["Success"]
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-triangle"></i> @TempData["Error"]
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        All Game Categories (@Model.Count)
+                    </h6>
+                </div>
+                <div class="card-body">
+                    @if (Model.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="categoriesTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Games</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var category in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <strong>@category.Name</strong>
+                                            </td>
+                                            <td>
+                                                @(category.Description ?? "No description")
+                                            </td>
+                                            <td>
+                                                <span class="badge badge-info">@category.Games.Count games</span>
+                                            </td>
+                                            <td>
+                                                <div class="btn-group btn-group-sm" role="group">
+                                                    <a href="@Url.Action("EditCategory", new { id = category.CategoryId })" 
+                                                       class="btn btn-outline-primary" title="Edit">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    @if (!category.Games.Any())
+                                                    {
+                                                        <button type="button" class="btn btn-outline-danger" 
+                                                                onclick="confirmDelete(@category.CategoryId, '@category.Name')" title="Delete">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    }
+                                                    else
+                                                    {
+                                                        <button type="button" class="btn btn-outline-danger" disabled
+                                                                title="Cannot delete categories with games">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    }
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center py-5">
+                            <i class="fas fa-tags fa-4x text-gray-300 mb-3"></i>
+                            <h5 class="text-gray-600">No Categories Found</h5>
+                            <p class="text-gray-500">Get started by adding your first game category.</p>
+                            <a href="@Url.Action("CreateCategory")" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Add New Category
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-exclamation-triangle text-warning"></i> Confirm Delete
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete the category <strong id="categoryName"></strong>?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form id="deleteForm" method="post" style="display: inline;">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash"></i> Delete Category
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function confirmDelete(categoryId, categoryName) {
+            document.getElementById('categoryName').textContent = categoryName;
+            document.getElementById('deleteForm').action = '@Url.Action("DeleteCategory")/' + categoryId;
+            $('#deleteModal').modal('show');
+        }
+
+        $(document).ready(function() {
+            $('#categoriesTable').DataTable({
+                "pageLength": 25,
+                "columnDefs": [
+                    { "orderable": false, "targets": [3] }
+                ]
+            });
+        });
+    </script>
+}

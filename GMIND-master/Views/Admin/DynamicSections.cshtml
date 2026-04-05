@@ -1,0 +1,165 @@
+@model List<Gamingv1.Models.DynamicSection>
+@{
+    ViewData["Title"] = "Manage Dynamic Sections";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-th-large"></i> Manage Homepage Sections
+        </h1>
+        <div>
+            <a href="@Url.Action("Index")" class="btn btn-secondary btn-sm">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+            <a href="@Url.Action("CreateSection")" class="btn btn-primary btn-sm">
+                <i class="fas fa-plus"></i> Add New Section
+            </a>
+        </div>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle"></i> @TempData["Success"]
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-triangle"></i> @TempData["Error"]
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">
+                Homepage Sections (@Model.Count)
+            </h6>
+        </div>
+        <div class="card-body">
+            @if (Model.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="sectionsTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Topics</th>
+                                <th>Created</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var dynamicSection in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <strong>@dynamicSection.Name</strong>
+                                    </td>
+                                    <td>
+                                        @(dynamicSection.Description?.Length > 100 ? dynamicSection.Description.Substring(0, 100) + "..." : dynamicSection.Description)
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-primary">@dynamicSection.DynamicTopics.Count topics</span>
+                                    </td>
+                                    <td>
+                                        <small>@dynamicSection.CreatedAt.ToString("MMM dd, yyyy")</small>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm" role="group">
+                                            <a href="@Url.Action("Topics", new { sectionId = dynamicSection.SectionId })" 
+                                               class="btn btn-info" title="Manage Topics">
+                                                <i class="fas fa-list"></i> Topics
+                                            </a>
+                                            <a href="@Url.Action("EditSection", new { id = dynamicSection.SectionId })" 
+                                               class="btn btn-outline-primary" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <button type="button" class="btn btn-outline-danger" 
+                                                    onclick="confirmDeleteSection(@dynamicSection.SectionId, '@dynamicSection.Name')" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="text-center py-5">
+                    <i class="fas fa-th-large fa-4x text-gray-300 mb-3"></i>
+                    <h5 class="text-gray-600">No Sections Found</h5>
+                    <p class="text-gray-500">Get started by adding your first homepage section.</p>
+                    <a href="@Url.Action("CreateSection")" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add New Section
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteSectionModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-exclamation-triangle text-warning"></i> Confirm Delete
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete the section <strong id="sectionName"></strong>?</p>
+                <p class="text-danger">
+                    <i class="fas fa-info-circle"></i> 
+                    This action will permanently delete the section and all its topics.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form id="deleteSectionForm" method="post" style="display: inline;">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash"></i> Delete Section
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function confirmDeleteSection(sectionId, sectionName) {
+            document.getElementById('sectionName').textContent = sectionName;
+            document.getElementById('deleteSectionForm').action = '@Url.Action("DeleteSection")/' + sectionId;
+            $('#deleteSectionModal').modal('show');
+        }
+
+        $(document).ready(function() {
+            $('#sectionsTable').DataTable({
+                "pageLength": 10,
+                "order": [[3, "desc"]],
+                "columnDefs": [
+                    { "orderable": false, "targets": [4] }
+                ]
+            });
+        });
+    </script>
+}

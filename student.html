@@ -1,0 +1,2075 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile - GMIND</title>
+    <link rel="stylesheet" href="student.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" style="text-decoration: none">
+                    <div class="logo-text">GMIND</div>
+                </a>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="aboutus.html" class="nav-link">About Us</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="games.html" class="nav-link">Games</a>
+                <a href="store.html" class="nav-link">Store</a>
+                <a href="contact_us.html" class="nav-link">Contact Us</a>
+                <a href="login.html" class="header-icon">
+                    <i class="fas fa-user"></i>
+                </a>
+                <a href="cart.html" class="header-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- User Profile Overview -->
+            <section class="profile-overview">
+                <div class="profile-card">
+                    <div class="profile-info">
+                        <div class="profile-picture">
+                            <img src="Images/default-avatar.png" alt="Profile Picture" id="profileImage">
+                            <div class="camera-icon" id="cameraIcon">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                        </div>
+                        <div class="user-details">
+                            <h2 class="user-name" id="userName">Yamen Ali</h2>
+                            <p class="user-role">Student</p>
+                            <p class="user-class" id="userClass">Class Name</p>
+                        </div>
+                        <div class="profile-actions">
+                            <button class="btn btn-primary" id="editProfileBtn">Edit Profile</button>
+                            <button class="btn btn-secondary" id="deleteProfileBtn">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Personal Information -->
+            <section class="personal-info">
+                <div class="section-card">
+                    <h3 class="section-title">Personal Information</h3>
+                    <form class="info-form" id="personalInfoForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input type="text" id="fullName" name="fullName" placeholder="Enter your Full Name" value="Yamen Ali" required>
+                                <span class="error-message" id="fullNameError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="Enter your Email" value="yamen.ali@example.com" required>
+                                <span class="error-message" id="emailError"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dob">Date of Birth</label>
+                                <div class="input-with-icon">
+                                    <input type="date" id="dob" name="dob" value="2020-12-12" required>
+                                    <i class="fas fa-calendar"></i>
+                                </div>
+                                <span class="error-message" id="dobError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" id="address" name="address" placeholder="Enter your Address">
+                                <span class="error-message" id="addressError"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="currentPassword">Current Password</label>
+                                <div class="input-with-icon">
+                                    <input type="password" id="currentPassword" name="currentPassword" placeholder="Enter your Current Password">
+                                    <i class="fas fa-eye toggle-password" id="currentPasswordToggle"></i>
+                                </div>
+                                <span class="error-message" id="currentPasswordError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm Password</label>
+                                <div class="input-with-icon">
+                                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Enter your Confirm Password">
+                                    <i class="fas fa-eye toggle-password" id="confirmPasswordToggle"></i>
+                                </div>
+                                <span class="error-message" id="confirmPasswordError"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="mobile">Mobile Number</label>
+                                <div class="phone-input">
+                                    <div class="country-code-dropdown">
+                                        <div class="country-code-display" id="countryCodeDisplay">
+                                            <img src="Images/egypt-flag.png" alt="Egypt Flag" id="countryFlag">
+                                            <span id="countryCode">+20</span>
+                                            <i class="fas fa-chevron-down"></i>
+                                        </div>
+                                        <div class="country-code-options" id="countryCodeOptions">
+                                            <div class="country-option" data-code="+20" data-flag="Images/egypt-flag.png" data-country="Egypt">
+                                                <img src="Images/egypt-flag.png" alt="Egypt Flag">
+                                                <span>+20 Egypt</span>
+                                            </div>
+                                            <div class="country-option" data-code="+1" data-flag="Images/us-flag.png" data-country="USA">
+                                                <img src="Images/us-flag.png" alt="USA Flag">
+                                                <span>+1 USA</span>
+                                            </div>
+                                            <div class="country-option" data-code="+44" data-flag="Images/uk-flag.png" data-country="UK">
+                                                <img src="Images/uk-flag.png" alt="UK Flag">
+                                                <span>+44 UK</span>
+                                            </div>
+                                            <div class="country-option" data-code="+971" data-flag="Images/uae-flag.png" data-country="UAE">
+                                                <img src="Images/uae-flag.png" alt="UAE Flag">
+                                                <span>+971 UAE</span>
+                                            </div>
+                                            <div class="country-option" data-code="+966" data-flag="Images/saudi-flag.png" data-country="Saudi Arabia">
+                                                <img src="Images/saudi-flag.png" alt="Saudi Flag">
+                                                <span>+966 Saudi Arabia</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="tel" id="mobile" name="mobile" placeholder="Enter your Mobile Number" maxlength="15">
+                                </div>
+                                <span class="error-message" id="mobileError"></span>
+                                <div class="phone-format-hint" id="phoneFormatHint">Format: 10-11 digits</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="gender" value="male" checked>
+                                        <span class="radio-custom"></span>
+                                        Male
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="gender" value="female">
+                                        <span class="radio-custom"></span>
+                                        Female
+                                    </label>
+                                </div>
+                                <span class="error-message" id="genderError"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="newPassword">New Password</label>
+                                <div class="input-with-icon">
+                                    <input type="password" id="newPassword" name="newPassword" placeholder="Enter your New Password">
+                                    <i class="fas fa-eye toggle-password" id="newPasswordToggle"></i>
+                                </div>
+                                <span class="error-message" id="newPasswordError"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Education Information -->
+            <section class="education-info">
+                <div class="section-card">
+                    <h3 class="section-title">Education Information</h3>
+                    <form class="info-form" id="educationInfoForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="schoolName">School Name</label>
+                                <input type="text" id="schoolName" name="schoolName" placeholder="Enter your School Name" required>
+                                <span class="error-message" id="schoolNameError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="schoolSystem">School System</label>
+                                <select id="schoolSystem" name="schoolSystem" required>
+                                    <option value="">Select School System</option>
+                                    <option value="american">American System</option>
+                                    <option value="british">British System</option>
+                                    <option value="igcse">IGCSE</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <span class="error-message" id="schoolSystemError"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="gradeLevel">Grade Level</label>
+                                <select id="gradeLevel" name="gradeLevel" required>
+                                    <option value="">Select Grade Level</option>
+                                    <option value="grade1">Grade 1</option>
+                                    <option value="grade2">Grade 2</option>
+                                    <option value="grade3">Grade 3</option>
+                                    <option value="grade4">Grade 4</option>
+                                    <option value="grade5">Grade 5</option>
+                                    <option value="grade6">Grade 6</option>
+                                </select>
+                                <span class="error-message" id="gradeLevelError"></span>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="saveChangesBtn">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Installed Games -->
+            <section class="installed-games">
+                <div class="section-card">
+                    <h3 class="section-title">Installed Games Information</h3>
+                    <div class="games-list" id="gamesList">
+                        <div class="game-item">
+                            <div class="game-image">
+                                <img src="Images/g1.jpg" alt="Dinosaurs Adventure">
+                            </div>
+                            <div class="game-info">
+                                <h4 class="game-title">Dinosaurs Adventure</h4>
+                                <p class="install-date">Installation Date: 17/10/2025</p>
+                                <span class="status installed">Installed</span>
+                            </div>
+                            <button class="btn btn-secondary game-action-btn" data-game="dinosaurs-adventure">Uninstall</button>
+                        </div>
+                        <div class="game-item">
+                            <div class="game-image">
+                                <img src="Images/zoo-lion.png" alt="Zoo Animals">
+                            </div>
+                            <div class="game-info">
+                                <h4 class="game-title">Zoo Animals</h4>
+                                <p class="install-date">Installation Date: 17/10/2025</p>
+                                <span class="status installed">Installed</span>
+                            </div>
+                            <button class="btn btn-secondary game-action-btn" data-game="zoo-animals">Uninstall</button>
+                        </div>
+                    </div>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="viewGamesBtn">View Games →</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Orders -->
+            <section class="orders">
+                <div class="section-card">
+                    <h3 class="section-title">Your Orders</h3>
+                    <div class="orders-list" id="ordersList">
+                        <div class="order-item">
+                            <div class="order-header">
+                                <span class="order-id">NEG12549371144</span>
+                            </div>
+                            <div class="order-content">
+                                <div class="product-image">
+                                    <img src="Images/vr.png" alt="VR Headset">
+                                </div>
+                                <div class="product-info">
+                                    <h4 class="product-type">VR Headset</h4>
+                                    <p class="product-name">Shinecon Vr Virtual Reality Glasses with Hidden Microphone and Headset - Black</p>
+                                    <div class="delivery-info">
+                                        <span class="delivery-status">Delivered</span>
+                                        <span class="delivery-date">on Saturday, 30th May, 08:51 PM</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-item">
+                            <div class="order-header">
+                                <span class="order-id">NEG12549371145</span>
+                            </div>
+                            <div class="order-content">
+                                <div class="product-image">
+                                    <img src="Images/vr.png" alt="VR Headset">
+                                </div>
+                                <div class="product-info">
+                                    <h4 class="product-type">VR Headset</h4>
+                                    <p class="product-name">Shinecon Vr Virtual Reality Glasses with Hidden Microphone and Headset - Black</p>
+                                    <div class="delivery-info">
+                                        <span class="delivery-status">Delivered</span>
+                                        <span class="delivery-date">on Saturday, 30th May, 08:51 PM</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="viewStoreBtn">View Store →</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="Images/GMIND.png" alt="GMIND">
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Company</h4>
+                        <a href="#about">About us</a>
+                        <a href="#contact">Contact us</a>
+                        <a href="#help">Help</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Legal</h4>
+                        <a href="#privacy">Privacy Policy</a>
+                        <a href="#disclaimer">Disclaimer</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Contact Info</h4>
+                        <p>345 Faulconer Drive, Suite 4<br>Charlottesville, CA, 12345</p>
+                        <p>(123) 456-7890</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Social Media</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link">Facebook</a>
+                            <a href="#" class="social-link">Twitter</a>
+                            <a href="#" class="social-link">Instagram</a>
+                            <a href="#" class="social-link">LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 GMIND. All rights reserved. Made by <a href="#" style="text-decoration: none">RAQM</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Message Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="success-content">
+            <i class="fas fa-check-circle"></i>
+            <h3>Success!</h3>
+            <p id="successMessage">Your changes have been saved successfully.</p>
+            <button class="btn btn-primary" id="closeSuccessModal">OK</button>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="delete-modal" id="deleteModal">
+        <div class="delete-content">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h3>Delete Profile</h3>
+            <p>Are you sure you want to delete your profile? This action cannot be undone.</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="cancelDelete">Cancel</button>
+                <button class="btn btn-danger" id="confirmDelete">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let isEditMode = false;
+        let userData = {
+            fullName: 'Yamen Ali',
+            email: 'yamen.ali@example.com',
+            dob: '2020-12-12',
+            address: '',
+            mobile: '',
+            gender: 'male',
+            schoolName: '',
+            schoolSystem: '',
+            gradeLevel: '',
+            profileImage: 'Images/default-avatar.png'
+        };
+
+        // DOM Elements
+        const header = document.querySelector(".header");
+        const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+        const navMenu = document.querySelector(".nav-menu");
+        const profileImage = document.getElementById('profileImage');
+        const cameraIcon = document.getElementById('cameraIcon');
+        const userName = document.getElementById('userName');
+        const userClass = document.getElementById('userClass');
+        const editProfileBtn = document.getElementById('editProfileBtn');
+        const deleteProfileBtn = document.getElementById('deleteProfileBtn');
+        const personalInfoForm = document.getElementById('personalInfoForm');
+        const educationInfoForm = document.getElementById('educationInfoForm');
+        const saveChangesBtn = document.getElementById('saveChangesBtn');
+        const viewGamesBtn = document.getElementById('viewGamesBtn');
+        const viewStoreBtn = document.getElementById('viewStoreBtn');
+        const successModal = document.getElementById('successModal');
+        const deleteModal = document.getElementById('deleteModal');
+        const closeSuccessModal = document.getElementById('closeSuccessModal');
+        const cancelDelete = document.getElementById('cancelDelete');
+        const confirmDelete = document.getElementById('confirmDelete');
+
+        // Header scroll functionality
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 50) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        });
+
+        // Mobile menu toggle
+        mobileMenuToggle.addEventListener("click", () => {
+            mobileMenuToggle.classList.toggle("active");
+            navMenu.classList.toggle("active");
+            document.body.classList.toggle("menu-open");
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll(".nav-link").forEach((link) => {
+            link.addEventListener("click", () => {
+                mobileMenuToggle.classList.remove("active");
+                navMenu.classList.remove("active");
+                document.body.classList.remove("menu-open");
+            });
+        });
+
+        // Profile picture upload functionality
+        cameraIcon.addEventListener('click', () => {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    // Validate file size (max 5MB)
+                    if (file.size > 5 * 1024 * 1024) {
+                        showError('File size must be less than 5MB');
+                        return;
+                    }
+
+                    // Validate file type
+                    if (!file.type.startsWith('image/')) {
+                        showError('Please select a valid image file');
+                        return;
+                    }
+
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        profileImage.src = e.target.result;
+                        userData.profileImage = e.target.result;
+                        showSuccess('Profile picture updated successfully');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            input.click();
+        });
+
+        // Password visibility toggle
+        document.querySelectorAll('.toggle-password').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const input = this.previousElementSibling;
+                const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                input.setAttribute('type', type);
+                this.classList.toggle('fa-eye');
+                this.classList.toggle('fa-eye-slash');
+            });
+        });
+
+        // Edit Profile functionality
+        editProfileBtn.addEventListener('click', () => {
+            isEditMode = !isEditMode;
+            
+            if (isEditMode) {
+                editProfileBtn.textContent = 'Save Profile';
+                editProfileBtn.classList.add('btn-success');
+                enableFormEditing();
+            } else {
+                editProfileBtn.textContent = 'Edit Profile';
+                editProfileBtn.classList.remove('btn-success');
+                disableFormEditing();
+                saveUserData();
+            }
+        });
+
+        // Delete Profile functionality
+        deleteProfileBtn.addEventListener('click', () => {
+            deleteModal.style.display = 'flex';
+        });
+
+        cancelDelete.addEventListener('click', () => {
+            deleteModal.style.display = 'none';
+        });
+
+        confirmDelete.addEventListener('click', () => {
+            // Simulate profile deletion
+            showSuccess('Profile deleted successfully');
+            deleteModal.style.display = 'none';
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 2000);
+        });
+
+        // Form validation and submission
+        personalInfoForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (validatePersonalInfo()) {
+                savePersonalInfo();
+                showSuccess('Personal information updated successfully');
+            }
+        });
+
+        educationInfoForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (validateEducationInfo()) {
+                saveEducationInfo();
+                showSuccess('Education information updated successfully');
+            }
+        });
+
+        // Save Changes button
+        saveChangesBtn.addEventListener('click', () => {
+            if (validateEducationInfo()) {
+                saveEducationInfo();
+                showSuccess('Education information saved successfully');
+            }
+        });
+
+        // Game actions
+        document.querySelectorAll('.game-action-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const gameName = this.getAttribute('data-game');
+                const gameItem = this.closest('.game-item');
+                
+                if (this.textContent === 'Uninstall') {
+                    if (confirm(`Are you sure you want to uninstall ${gameName}?`)) {
+                        gameItem.style.opacity = '0.5';
+                        this.textContent = 'Reinstall';
+                        this.classList.remove('btn-secondary');
+                        this.classList.add('btn-primary');
+                        showSuccess(`${gameName} uninstalled successfully`);
+                    }
+                } else {
+                    gameItem.style.opacity = '1';
+                    this.textContent = 'Uninstall';
+                    this.classList.remove('btn-primary');
+                    this.classList.add('btn-secondary');
+                    showSuccess(`${gameName} reinstalled successfully`);
+                }
+            });
+        });
+
+        // Navigation buttons
+        viewGamesBtn.addEventListener('click', () => {
+            window.location.href = 'games.html';
+        });
+
+        viewStoreBtn.addEventListener('click', () => {
+            window.location.href = 'store.html';
+        });
+
+        // Close success modal
+        closeSuccessModal.addEventListener('click', () => {
+            successModal.style.display = 'none';
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === successModal) {
+                successModal.style.display = 'none';
+            }
+            if (e.target === deleteModal) {
+                deleteModal.style.display = 'none';
+            }
+        });
+
+        // Mobile number functionality
+        const countryCodeDisplay = document.getElementById('countryCodeDisplay');
+        const countryCodeOptions = document.getElementById('countryCodeOptions');
+        const countryFlag = document.getElementById('countryFlag');
+        const countryCode = document.getElementById('countryCode');
+        const mobileInput = document.getElementById('mobile');
+        const phoneFormatHint = document.getElementById('phoneFormatHint');
+
+        // Country code dropdown functionality
+        countryCodeDisplay.addEventListener('click', () => {
+            const dropdown = countryCodeDisplay.closest('.country-code-dropdown');
+            dropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.country-code-dropdown')) {
+                document.querySelectorAll('.country-code-dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+        });
+
+        // Country option selection
+        document.querySelectorAll('.country-option').forEach(option => {
+            option.addEventListener('click', () => {
+                const code = option.getAttribute('data-code');
+                const flag = option.getAttribute('data-flag');
+                const country = option.getAttribute('data-country');
+                
+                // Update display
+                countryFlag.src = flag;
+                countryFlag.alt = `${country} Flag`;
+                countryCode.textContent = code;
+                
+                // Update user data
+                userData.countryCode = code;
+                userData.country = country;
+                
+                // Close dropdown
+                const dropdown = countryCodeDisplay.closest('.country-code-dropdown');
+                dropdown.classList.remove('active');
+                
+                // Update format hint based on country
+                updatePhoneFormatHint(code);
+                
+                // Validate current phone number
+                validatePhoneNumber();
+                
+                // Save to localStorage
+                saveUserData();
+            });
+        });
+
+        // Phone number formatting and validation
+        mobileInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, ''); // Remove non-digits
+            
+            // Format based on country code
+            const currentCode = countryCode.textContent;
+            value = formatPhoneNumber(value, currentCode);
+            
+            e.target.value = value;
+            validatePhoneNumber();
+        });
+
+        mobileInput.addEventListener('focus', () => {
+            const dropdown = countryCodeDisplay.closest('.country-code-dropdown');
+            dropdown.classList.add('focused');
+        });
+
+        mobileInput.addEventListener('blur', () => {
+            const dropdown = countryCodeDisplay.closest('.country-code-dropdown');
+            dropdown.classList.remove('focused');
+            validatePhoneNumber();
+        });
+
+        function formatPhoneNumber(number, countryCode) {
+            // Remove all non-digits
+            number = number.replace(/\D/g, '');
+            
+            switch(countryCode) {
+                case '+20': // Egypt
+                    if (number.length <= 3) return number;
+                    if (number.length <= 6) return `${number.slice(0, 3)} ${number.slice(3)}`;
+                    if (number.length <= 10) return `${number.slice(0, 3)} ${number.slice(3, 6)} ${number.slice(6)}`;
+                    return `${number.slice(0, 3)} ${number.slice(3, 6)} ${number.slice(6, 8)} ${number.slice(8)}`;
+                
+                case '+1': // USA/Canada
+                    if (number.length <= 3) return number;
+                    if (number.length <= 6) return `(${number.slice(0, 3)}) ${number.slice(3)}`;
+                    return `(${number.slice(0, 3)}) ${number.slice(3, 6)}-${number.slice(6)}`;
+                
+                case '+44': // UK
+                    if (number.length <= 4) return number;
+                    if (number.length <= 7) return `${number.slice(0, 4)} ${number.slice(4)}`;
+                    return `${number.slice(0, 4)} ${number.slice(4, 7)} ${number.slice(7)}`;
+                
+                case '+971': // UAE
+                    if (number.length <= 2) return number;
+                    if (number.length <= 5) return `${number.slice(0, 2)} ${number.slice(2)}`;
+                    return `${number.slice(0, 2)} ${number.slice(2, 5)} ${number.slice(5)}`;
+                
+                case '+966': // Saudi Arabia
+                    if (number.length <= 2) return number;
+                    if (number.length <= 5) return `${number.slice(0, 2)} ${number.slice(2)}`;
+                    return `${number.slice(0, 2)} ${number.slice(2, 5)} ${number.slice(5)}`;
+                
+                default:
+                    return number;
+            }
+        }
+
+        function updatePhoneFormatHint(countryCode) {
+            const hints = {
+                '+20': 'Format: 10 123 456 7890',
+                '+1': 'Format: (123) 456-7890',
+                '+44': 'Format: 1234 567 890',
+                '+971': 'Format: 50 123 4567',
+                '+966': 'Format: 50 123 4567'
+            };
+            
+            phoneFormatHint.textContent = hints[countryCode] || 'Format: 10-11 digits';
+        }
+
+        function validatePhoneNumber() {
+            const phoneNumber = mobileInput.value.replace(/\D/g, '');
+            const countryCode = document.getElementById('countryCode').textContent;
+            const errorElement = document.getElementById('mobileError');
+            const dropdown = countryCodeDisplay.closest('.country-code-dropdown');
+            
+            // Remove previous validation classes
+            dropdown.classList.remove('valid', 'invalid');
+            
+            if (!phoneNumber) {
+                errorElement.textContent = '';
+                errorElement.style.display = 'none';
+                return true; // Empty is valid (optional field)
+            }
+            
+            let isValid = false;
+            let expectedLength = 10;
+            
+            switch(countryCode) {
+                case '+20': // Egypt
+                    expectedLength = 10;
+                    isValid = phoneNumber.length === expectedLength && phoneNumber.startsWith('1');
+                    break;
+                case '+1': // USA/Canada
+                    expectedLength = 10;
+                    isValid = phoneNumber.length === expectedLength;
+                    break;
+                case '+44': // UK
+                    expectedLength = 10;
+                    isValid = phoneNumber.length === expectedLength;
+                    break;
+                case '+971': // UAE
+                    expectedLength = 9;
+                    isValid = phoneNumber.length === expectedLength && (phoneNumber.startsWith('5') || phoneNumber.startsWith('6'));
+                    break;
+                case '+966': // Saudi Arabia
+                    expectedLength = 9;
+                    isValid = phoneNumber.length === expectedLength && (phoneNumber.startsWith('5') || phoneNumber.startsWith('6'));
+                    break;
+                default:
+                    isValid = phoneNumber.length >= 10 && phoneNumber.length <= 11;
+            }
+            
+            if (isValid) {
+                errorElement.textContent = '';
+                errorElement.style.display = 'none';
+                dropdown.classList.add('valid');
+                return true;
+            } else {
+                const errorMessages = {
+                    '+20': 'Egypt mobile number must be 10 digits starting with 1',
+                    '+1': 'US/Canada number must be 10 digits',
+                    '+44': 'UK number must be 10 digits',
+                    '+971': 'UAE mobile number must be 9 digits starting with 5 or 6',
+                    '+966': 'Saudi mobile number must be 9 digits starting with 5 or 6'
+                };
+                
+                errorElement.textContent = errorMessages[countryCode] || `Phone number must be ${expectedLength} digits`;
+                errorElement.style.display = 'block';
+                dropdown.classList.add('invalid');
+                return false;
+            }
+        }
+
+        // Load saved country code on page load
+        function loadCountryCode() {
+            if (userData.countryCode) {
+                const option = document.querySelector(`[data-code="${userData.countryCode}"]`);
+                if (option) {
+                    const code = option.getAttribute('data-code');
+                    const flag = option.getAttribute('data-flag');
+                    const country = option.getAttribute('data-country');
+                    
+                    countryFlag.src = flag;
+                    countryFlag.alt = `${country} Flag`;
+                    countryCode.textContent = code;
+                    
+                    updatePhoneFormatHint(code);
+                }
+            }
+        }
+
+        // Form validation functions
+        function validatePersonalInfo() {
+            let isValid = true;
+            const errors = {};
+
+            // Full Name validation
+            const fullName = document.getElementById('fullName').value.trim();
+            if (!fullName) {
+                errors.fullName = 'Full name is required';
+                isValid = false;
+            } else if (fullName.length < 2) {
+                errors.fullName = 'Full name must be at least 2 characters';
+                isValid = false;
+            }
+
+            // Email validation
+            const email = document.getElementById('email').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email) {
+                errors.email = 'Email is required';
+                isValid = false;
+            } else if (!emailRegex.test(email)) {
+                errors.email = 'Please enter a valid email address';
+                isValid = false;
+            }
+
+            // Date of Birth validation
+            const dob = document.getElementById('dob').value;
+            if (!dob) {
+                errors.dob = 'Date of birth is required';
+                isValid = false;
+            }
+
+            // Mobile validation with country code
+            const mobile = mobileInput.value.replace(/\D/g, '');
+            if (mobile && !validatePhoneNumber()) {
+                errors.mobile = 'Please enter a valid mobile number';
+                isValid = false;
+            }
+
+            // Password validation
+            const newPassword = document.getElementById('newPassword').value;
+            if (newPassword && newPassword.length < 6) {
+                errors.newPassword = 'Password must be at least 6 characters';
+                isValid = false;
+            }
+
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            if (newPassword && confirmPassword !== newPassword) {
+                errors.confirmPassword = 'Passwords do not match';
+                isValid = false;
+            }
+
+            // Display errors
+            displayErrors(errors);
+            return isValid;
+        }
+
+        function validateEducationInfo() {
+            let isValid = true;
+            const errors = {};
+
+            // School Name validation
+            const schoolName = document.getElementById('schoolName').value.trim();
+            if (!schoolName) {
+                errors.schoolName = 'School name is required';
+                isValid = false;
+            }
+
+            // School System validation
+            const schoolSystem = document.getElementById('schoolSystem').value;
+            if (!schoolSystem) {
+                errors.schoolSystem = 'Please select a school system';
+                isValid = false;
+            }
+
+            // Grade Level validation
+            const gradeLevel = document.getElementById('gradeLevel').value;
+            if (!gradeLevel) {
+                errors.gradeLevel = 'Please select a grade level';
+                isValid = false;
+            }
+
+            // Display errors
+            displayErrors(errors);
+            return isValid;
+        }
+
+        function displayErrors(errors) {
+            // Clear all error messages
+            document.querySelectorAll('.error-message').forEach(error => {
+                error.textContent = '';
+                error.style.display = 'none';
+            });
+
+            // Display new errors
+            Object.keys(errors).forEach(field => {
+                const errorElement = document.getElementById(field + 'Error');
+                if (errorElement) {
+                    errorElement.textContent = errors[field];
+                    errorElement.style.display = 'block';
+                }
+            });
+        }
+
+        function enableFormEditing() {
+            document.querySelectorAll('input, select').forEach(input => {
+                input.removeAttribute('readonly');
+                input.removeAttribute('disabled');
+            });
+        }
+
+        function disableFormEditing() {
+            document.querySelectorAll('input, select').forEach(input => {
+                input.setAttribute('readonly', true);
+            });
+        }
+
+        function savePersonalInfo() {
+            userData.fullName = document.getElementById('fullName').value;
+            userData.email = document.getElementById('email').value;
+            userData.dob = document.getElementById('dob').value;
+            userData.address = document.getElementById('address').value;
+            userData.mobile = mobileInput.value;
+            userData.countryCode = countryCode.textContent;
+            userData.country = document.querySelector(`[data-code="${countryCode.textContent}"]`)?.getAttribute('data-country') || 'Egypt';
+            userData.gender = document.querySelector('input[name="gender"]:checked').value;
+
+            // Update display
+            userName.textContent = userData.fullName;
+            
+            // Save to localStorage
+            localStorage.setItem('userData', JSON.stringify(userData));
+        }
+
+        function saveEducationInfo() {
+            userData.schoolName = document.getElementById('schoolName').value;
+            userData.schoolSystem = document.getElementById('schoolSystem').value;
+            userData.gradeLevel = document.getElementById('gradeLevel').value;
+
+            // Update class name display
+            const gradeText = document.getElementById('gradeLevel').options[document.getElementById('gradeLevel').selectedIndex].text;
+            userClass.textContent = gradeText;
+
+            // Save to localStorage
+            localStorage.setItem('userData', JSON.stringify(userData));
+        }
+
+        function saveUserData() {
+            localStorage.setItem('userData', JSON.stringify(userData));
+        }
+
+        function loadUserData() {
+            const savedData = localStorage.getItem('userData');
+            if (savedData) {
+                userData = { ...userData, ...JSON.parse(savedData) };
+                
+                // Update form fields
+                document.getElementById('fullName').value = userData.fullName;
+                document.getElementById('email').value = userData.email;
+                document.getElementById('dob').value = userData.dob;
+                document.getElementById('address').value = userData.address;
+                document.getElementById('mobile').value = userData.mobile || '';
+                document.getElementById('schoolName').value = userData.schoolName;
+                document.getElementById('schoolSystem').value = userData.schoolSystem;
+                document.getElementById('gradeLevel').value = userData.gradeLevel;
+
+                // Update display
+                userName.textContent = userData.fullName;
+                if (userData.gradeLevel) {
+                    const gradeText = document.getElementById('gradeLevel').options[document.getElementById('gradeLevel').selectedIndex].text;
+                    userClass.textContent = gradeText;
+                }
+
+                // Update profile image
+                if (userData.profileImage) {
+                    profileImage.src = userData.profileImage;
+                }
+
+                // Set gender
+                if (userData.gender) {
+                    document.querySelector(`input[name="gender"][value="${userData.gender}"]`).checked = true;
+                }
+
+                // Load country code
+                loadCountryCode();
+            }
+        }
+
+        function showSuccess(message) {
+            document.getElementById('successMessage').textContent = message;
+            successModal.style.display = 'flex';
+        }
+
+        function showError(message) {
+            alert(message); // Simple error display
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUserData();
+            disableFormEditing(); // Start in view mode
+        });
+
+        // Auto-save functionality
+        let autoSaveTimeout;
+        document.querySelectorAll('input, select').forEach(input => {
+            input.addEventListener('input', () => {
+                clearTimeout(autoSaveTimeout);
+                autoSaveTimeout = setTimeout(() => {
+                    if (isEditMode) {
+                        saveUserData();
+                    }
+                }, 2000); // Auto-save after 2 seconds of inactivity
+            });
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                switch(e.key) {
+                    case 's':
+                        e.preventDefault();
+                        if (isEditMode) {
+                            saveUserData();
+                            showSuccess('Data saved automatically');
+                        }
+                        break;
+                    case 'e':
+                        e.preventDefault();
+                        editProfileBtn.click();
+                        break;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile - GMIND</title>
+    <link rel="stylesheet" href="student.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" style="text-decoration: none">
+                    <div class="logo-text">GMIND</div>
+                </a>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="aboutus.html" class="nav-link">About Us</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="games.html" class="nav-link">Games</a>
+                <a href="store.html" class="nav-link">Store</a>
+                <a href="contact_us.html" class="nav-link">Contact Us</a>
+                <a href="login.html" class="header-icon">
+                    <i class="fas fa-user"></i>
+                </a>
+                <a href="cart.html" class="header-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- User Profile Overview -->
+            <section class="profile-overview">
+                <div class="profile-card">
+                    <div class="profile-info">
+                        <div class="profile-picture">
+                            <img src="Images/default-avatar.png" alt="Profile Picture" id="profileImage">
+                            <div class="camera-icon" id="cameraIcon">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                        </div>
+                        <div class="user-details">
+                            <h2 class="user-name" id="userName">Yamen Ali</h2>
+                            <p class="user-role">Student</p>
+                            <p class="user-class" id="userClass">Class Name</p>
+                        </div>
+                        <div class="profile-actions">
+                            <button class="btn btn-primary" id="editProfileBtn">Edit Profile</button>
+                            <button class="btn btn-secondary" id="deleteProfileBtn">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Personal Information -->
+            <section class="personal-info">
+                <div class="section-card">
+                    <h3 class="section-title">Personal Information</h3>
+                    <form class="info-form" id="personalInfoForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input type="text" id="fullName" name="fullName" placeholder="Enter your Full Name" value="Yamen Ali" required>
+                                <span class="error-message" id="fullNameError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="Enter your Email" value="yamen.ali@example.com" required>
+                                <span class="error-message" id="emailError"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dob">Date of Birth</label>
+                                <div class="input-with-icon">
+                                    <input type="date" id="dob" name="dob" value="2020-12-12" required>
+                                    <i class="fas fa-calendar"></i>
+                                </div>
+                                <span class="error-message" id="dobError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" id="address" name="address" placeholder="Enter your Address">
+                                <span class="error-message" id="addressError"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="currentPassword">Current Password</label>
+                                <div class="input-with-icon">
+                                    <input type="password" id="currentPassword" name="currentPassword" placeholder="Enter your Current Password">
+                                    <i class="fas fa-eye toggle-password" id="currentPasswordToggle"></i>
+                                </div>
+                                <span class="error-message" id="currentPasswordError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm Password</label>
+                                <div class="input-with-icon">
+                                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Enter your Confirm Password">
+                                    <i class="fas fa-eye toggle-password" id="confirmPasswordToggle"></i>
+                                </div>
+                                <span class="error-message" id="confirmPasswordError"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="mobile">Mobile Number</label>
+                                <div class="phone-input">
+                                    <div class="country-code-dropdown">
+                                        <div class="country-code-display" id="countryCodeDisplay">
+                                            <img src="Images/egypt-flag.png" alt="Egypt Flag" id="countryFlag">
+                                            <span id="countryCode">+20</span>
+                                            <i class="fas fa-chevron-down"></i>
+                                        </div>
+                                        <div class="country-code-options" id="countryCodeOptions">
+                                            <div class="country-option" data-code="+20" data-flag="Images/egypt-flag.png" data-country="Egypt">
+                                                <img src="Images/egypt-flag.png" alt="Egypt Flag">
+                                                <span>+20 Egypt</span>
+                                            </div>
+                                            <div class="country-option" data-code="+1" data-flag="Images/us-flag.png" data-country="USA">
+                                                <img src="Images/us-flag.png" alt="USA Flag">
+                                                <span>+1 USA</span>
+                                            </div>
+                                            <div class="country-option" data-code="+44" data-flag="Images/uk-flag.png" data-country="UK">
+                                                <img src="Images/uk-flag.png" alt="UK Flag">
+                                                <span>+44 UK</span>
+                                            </div>
+                                            <div class="country-option" data-code="+971" data-flag="Images/uae-flag.png" data-country="UAE">
+                                                <img src="Images/uae-flag.png" alt="UAE Flag">
+                                                <span>+971 UAE</span>
+                                            </div>
+                                            <div class="country-option" data-code="+966" data-flag="Images/saudi-flag.png" data-country="Saudi Arabia">
+                                                <img src="Images/saudi-flag.png" alt="Saudi Flag">
+                                                <span>+966 Saudi Arabia</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="tel" id="mobile" name="mobile" placeholder="Enter your Mobile Number" maxlength="15">
+                                </div>
+                                <span class="error-message" id="mobileError"></span>
+                                <div class="phone-format-hint" id="phoneFormatHint">Format: 10-11 digits</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="gender" value="male" checked>
+                                        <span class="radio-custom"></span>
+                                        Male
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="gender" value="female">
+                                        <span class="radio-custom"></span>
+                                        Female
+                                    </label>
+                                </div>
+                                <span class="error-message" id="genderError"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="newPassword">New Password</label>
+                                <div class="input-with-icon">
+                                    <input type="password" id="newPassword" name="newPassword" placeholder="Enter your New Password">
+                                    <i class="fas fa-eye toggle-password" id="newPasswordToggle"></i>
+                                </div>
+                                <span class="error-message" id="newPasswordError"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Education Information -->
+            <section class="education-info">
+                <div class="section-card">
+                    <h3 class="section-title">Education Information</h3>
+                    <form class="info-form" id="educationInfoForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="schoolName">School Name</label>
+                                <input type="text" id="schoolName" name="schoolName" placeholder="Enter your School Name" required>
+                                <span class="error-message" id="schoolNameError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="schoolSystem">School System</label>
+                                <select id="schoolSystem" name="schoolSystem" required>
+                                    <option value="">Select School System</option>
+                                    <option value="american">American System</option>
+                                    <option value="british">British System</option>
+                                    <option value="igcse">IGCSE</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <span class="error-message" id="schoolSystemError"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="gradeLevel">Grade Level</label>
+                                <select id="gradeLevel" name="gradeLevel" required>
+                                    <option value="">Select Grade Level</option>
+                                    <option value="grade1">Grade 1</option>
+                                    <option value="grade2">Grade 2</option>
+                                    <option value="grade3">Grade 3</option>
+                                    <option value="grade4">Grade 4</option>
+                                    <option value="grade5">Grade 5</option>
+                                    <option value="grade6">Grade 6</option>
+                                </select>
+                                <span class="error-message" id="gradeLevelError"></span>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="saveChangesBtn">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Installed Games -->
+            <section class="installed-games">
+                <div class="section-card">
+                    <h3 class="section-title">Installed Games Information</h3>
+                    <div class="games-list" id="gamesList">
+                        <div class="game-item">
+                            <div class="game-image">
+                                <img src="Images/g1.jpg" alt="Dinosaurs Adventure">
+                            </div>
+                            <div class="game-info">
+                                <h4 class="game-title">Dinosaurs Adventure</h4>
+                                <p class="install-date">Installation Date: 17/10/2025</p>
+                                <span class="status installed">Installed</span>
+                            </div>
+                            <button class="btn btn-secondary game-action-btn" data-game="dinosaurs-adventure">Uninstall</button>
+                        </div>
+                        <div class="game-item">
+                            <div class="game-image">
+                                <img src="Images/zoo-lion.png" alt="Zoo Animals">
+                            </div>
+                            <div class="game-info">
+                                <h4 class="game-title">Zoo Animals</h4>
+                                <p class="install-date">Installation Date: 17/10/2025</p>
+                                <span class="status installed">Installed</span>
+                            </div>
+                            <button class="btn btn-secondary game-action-btn" data-game="zoo-animals">Uninstall</button>
+                        </div>
+                    </div>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="viewGamesBtn">View Games →</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Orders -->
+            <section class="orders">
+                <div class="section-card">
+                    <h3 class="section-title">Your Orders</h3>
+                    <div class="orders-list" id="ordersList">
+                        <div class="order-item">
+                            <div class="order-header">
+                                <span class="order-id">NEG12549371144</span>
+                            </div>
+                            <div class="order-content">
+                                <div class="product-image">
+                                    <img src="Images/vr.png" alt="VR Headset">
+                                </div>
+                                <div class="product-info">
+                                    <h4 class="product-type">VR Headset</h4>
+                                    <p class="product-name">Shinecon Vr Virtual Reality Glasses with Hidden Microphone and Headset - Black</p>
+                                    <div class="delivery-info">
+                                        <span class="delivery-status">Delivered</span>
+                                        <span class="delivery-date">on Saturday, 30th May, 08:51 PM</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-item">
+                            <div class="order-header">
+                                <span class="order-id">NEG12549371145</span>
+                            </div>
+                            <div class="order-content">
+                                <div class="product-image">
+                                    <img src="Images/vr.png" alt="VR Headset">
+                                </div>
+                                <div class="product-info">
+                                    <h4 class="product-type">VR Headset</h4>
+                                    <p class="product-name">Shinecon Vr Virtual Reality Glasses with Hidden Microphone and Headset - Black</p>
+                                    <div class="delivery-info">
+                                        <span class="delivery-status">Delivered</span>
+                                        <span class="delivery-date">on Saturday, 30th May, 08:51 PM</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="viewStoreBtn">View Store →</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="Images/GMIND.png" alt="GMIND">
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Company</h4>
+                        <a href="#about">About us</a>
+                        <a href="#contact">Contact us</a>
+                        <a href="#help">Help</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Legal</h4>
+                        <a href="#privacy">Privacy Policy</a>
+                        <a href="#disclaimer">Disclaimer</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Contact Info</h4>
+                        <p>345 Faulconer Drive, Suite 4<br>Charlottesville, CA, 12345</p>
+                        <p>(123) 456-7890</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Social Media</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link">Facebook</a>
+                            <a href="#" class="social-link">Twitter</a>
+                            <a href="#" class="social-link">Instagram</a>
+                            <a href="#" class="social-link">LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 GMIND. All rights reserved. Made by <a href="#" style="text-decoration: none">RAQM</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Message Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="success-content">
+            <i class="fas fa-check-circle"></i>
+            <h3>Success!</h3>
+            <p id="successMessage">Your changes have been saved successfully.</p>
+            <button class="btn btn-primary" id="closeSuccessModal">OK</button>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="delete-modal" id="deleteModal">
+        <div class="delete-content">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h3>Delete Profile</h3>
+            <p>Are you sure you want to delete your profile? This action cannot be undone.</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="cancelDelete">Cancel</button>
+                <button class="btn btn-danger" id="confirmDelete">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let isEditMode = false;
+        let userData = {
+            fullName: 'Yamen Ali',
+            email: 'yamen.ali@example.com',
+            dob: '2020-12-12',
+            address: '',
+            mobile: '',
+            gender: 'male',
+            schoolName: '',
+            schoolSystem: '',
+            gradeLevel: '',
+            profileImage: 'Images/default-avatar.png'
+        };
+
+        // DOM Elements
+        const header = document.querySelector(".header");
+        const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+        const navMenu = document.querySelector(".nav-menu");
+        const profileImage = document.getElementById('profileImage');
+        const cameraIcon = document.getElementById('cameraIcon');
+        const userName = document.getElementById('userName');
+        const userClass = document.getElementById('userClass');
+        const editProfileBtn = document.getElementById('editProfileBtn');
+        const deleteProfileBtn = document.getElementById('deleteProfileBtn');
+        const personalInfoForm = document.getElementById('personalInfoForm');
+        const educationInfoForm = document.getElementById('educationInfoForm');
+        const saveChangesBtn = document.getElementById('saveChangesBtn');
+        const viewGamesBtn = document.getElementById('viewGamesBtn');
+        const viewStoreBtn = document.getElementById('viewStoreBtn');
+        const successModal = document.getElementById('successModal');
+        const deleteModal = document.getElementById('deleteModal');
+        const closeSuccessModal = document.getElementById('closeSuccessModal');
+        const cancelDelete = document.getElementById('cancelDelete');
+        const confirmDelete = document.getElementById('confirmDelete');
+
+        // Header scroll functionality
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 50) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        });
+
+        // Mobile menu toggle
+        mobileMenuToggle.addEventListener("click", () => {
+            mobileMenuToggle.classList.toggle("active");
+            navMenu.classList.toggle("active");
+            document.body.classList.toggle("menu-open");
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll(".nav-link").forEach((link) => {
+            link.addEventListener("click", () => {
+                mobileMenuToggle.classList.remove("active");
+                navMenu.classList.remove("active");
+                document.body.classList.remove("menu-open");
+            });
+        });
+
+        // Profile picture upload functionality
+        cameraIcon.addEventListener('click', () => {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    // Validate file size (max 5MB)
+                    if (file.size > 5 * 1024 * 1024) {
+                        showError('File size must be less than 5MB');
+                        return;
+                    }
+
+                    // Validate file type
+                    if (!file.type.startsWith('image/')) {
+                        showError('Please select a valid image file');
+                        return;
+                    }
+
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        profileImage.src = e.target.result;
+                        userData.profileImage = e.target.result;
+                        showSuccess('Profile picture updated successfully');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            input.click();
+        });
+
+        // Password visibility toggle
+        document.querySelectorAll('.toggle-password').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const input = this.previousElementSibling;
+                const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                input.setAttribute('type', type);
+                this.classList.toggle('fa-eye');
+                this.classList.toggle('fa-eye-slash');
+            });
+        });
+
+        // Edit Profile functionality
+        editProfileBtn.addEventListener('click', () => {
+            isEditMode = !isEditMode;
+            
+            if (isEditMode) {
+                editProfileBtn.textContent = 'Save Profile';
+                editProfileBtn.classList.add('btn-success');
+                enableFormEditing();
+            } else {
+                editProfileBtn.textContent = 'Edit Profile';
+                editProfileBtn.classList.remove('btn-success');
+                disableFormEditing();
+                saveUserData();
+            }
+        });
+
+        // Delete Profile functionality
+        deleteProfileBtn.addEventListener('click', () => {
+            deleteModal.style.display = 'flex';
+        });
+
+        cancelDelete.addEventListener('click', () => {
+            deleteModal.style.display = 'none';
+        });
+
+        confirmDelete.addEventListener('click', () => {
+            // Simulate profile deletion
+            showSuccess('Profile deleted successfully');
+            deleteModal.style.display = 'none';
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 2000);
+        });
+
+        // Form validation and submission
+        personalInfoForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (validatePersonalInfo()) {
+                savePersonalInfo();
+                showSuccess('Personal information updated successfully');
+            }
+        });
+
+        educationInfoForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (validateEducationInfo()) {
+                saveEducationInfo();
+                showSuccess('Education information updated successfully');
+            }
+        });
+
+        // Save Changes button
+        saveChangesBtn.addEventListener('click', () => {
+            if (validateEducationInfo()) {
+                saveEducationInfo();
+                showSuccess('Education information saved successfully');
+            }
+        });
+
+        // Game actions
+        document.querySelectorAll('.game-action-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const gameName = this.getAttribute('data-game');
+                const gameItem = this.closest('.game-item');
+                
+                if (this.textContent === 'Uninstall') {
+                    if (confirm(`Are you sure you want to uninstall ${gameName}?`)) {
+                        gameItem.style.opacity = '0.5';
+                        this.textContent = 'Reinstall';
+                        this.classList.remove('btn-secondary');
+                        this.classList.add('btn-primary');
+                        showSuccess(`${gameName} uninstalled successfully`);
+                    }
+                } else {
+                    gameItem.style.opacity = '1';
+                    this.textContent = 'Uninstall';
+                    this.classList.remove('btn-primary');
+                    this.classList.add('btn-secondary');
+                    showSuccess(`${gameName} reinstalled successfully`);
+                }
+            });
+        });
+
+        // Navigation buttons
+        viewGamesBtn.addEventListener('click', () => {
+            window.location.href = 'games.html';
+        });
+
+        viewStoreBtn.addEventListener('click', () => {
+            window.location.href = 'store.html';
+        });
+
+        // Close success modal
+        closeSuccessModal.addEventListener('click', () => {
+            successModal.style.display = 'none';
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === successModal) {
+                successModal.style.display = 'none';
+            }
+            if (e.target === deleteModal) {
+                deleteModal.style.display = 'none';
+            }
+        });
+
+        // Mobile number functionality
+        const countryCodeDisplay = document.getElementById('countryCodeDisplay');
+        const countryCodeOptions = document.getElementById('countryCodeOptions');
+        const countryFlag = document.getElementById('countryFlag');
+        const countryCode = document.getElementById('countryCode');
+        const mobileInput = document.getElementById('mobile');
+        const phoneFormatHint = document.getElementById('phoneFormatHint');
+
+        // Country code dropdown functionality
+        countryCodeDisplay.addEventListener('click', () => {
+            const dropdown = countryCodeDisplay.closest('.country-code-dropdown');
+            dropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.country-code-dropdown')) {
+                document.querySelectorAll('.country-code-dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+        });
+
+        // Country option selection
+        document.querySelectorAll('.country-option').forEach(option => {
+            option.addEventListener('click', () => {
+                const code = option.getAttribute('data-code');
+                const flag = option.getAttribute('data-flag');
+                const country = option.getAttribute('data-country');
+                
+                // Update display
+                countryFlag.src = flag;
+                countryFlag.alt = `${country} Flag`;
+                countryCode.textContent = code;
+                
+                // Update user data
+                userData.countryCode = code;
+                userData.country = country;
+                
+                // Close dropdown
+                const dropdown = countryCodeDisplay.closest('.country-code-dropdown');
+                dropdown.classList.remove('active');
+                
+                // Update format hint based on country
+                updatePhoneFormatHint(code);
+                
+                // Validate current phone number
+                validatePhoneNumber();
+                
+                // Save to localStorage
+                saveUserData();
+            });
+        });
+
+        // Phone number formatting and validation
+        mobileInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, ''); // Remove non-digits
+            
+            // Format based on country code
+            const currentCode = countryCode.textContent;
+            value = formatPhoneNumber(value, currentCode);
+            
+            e.target.value = value;
+            validatePhoneNumber();
+        });
+
+        mobileInput.addEventListener('focus', () => {
+            const dropdown = countryCodeDisplay.closest('.country-code-dropdown');
+            dropdown.classList.add('focused');
+        });
+
+        mobileInput.addEventListener('blur', () => {
+            const dropdown = countryCodeDisplay.closest('.country-code-dropdown');
+            dropdown.classList.remove('focused');
+            validatePhoneNumber();
+        });
+
+        function formatPhoneNumber(number, countryCode) {
+            // Remove all non-digits
+            number = number.replace(/\D/g, '');
+            
+            switch(countryCode) {
+                case '+20': // Egypt
+                    if (number.length <= 3) return number;
+                    if (number.length <= 6) return `${number.slice(0, 3)} ${number.slice(3)}`;
+                    if (number.length <= 10) return `${number.slice(0, 3)} ${number.slice(3, 6)} ${number.slice(6)}`;
+                    return `${number.slice(0, 3)} ${number.slice(3, 6)} ${number.slice(6, 8)} ${number.slice(8)}`;
+                
+                case '+1': // USA/Canada
+                    if (number.length <= 3) return number;
+                    if (number.length <= 6) return `(${number.slice(0, 3)}) ${number.slice(3)}`;
+                    return `(${number.slice(0, 3)}) ${number.slice(3, 6)}-${number.slice(6)}`;
+                
+                case '+44': // UK
+                    if (number.length <= 4) return number;
+                    if (number.length <= 7) return `${number.slice(0, 4)} ${number.slice(4)}`;
+                    return `${number.slice(0, 4)} ${number.slice(4, 7)} ${number.slice(7)}`;
+                
+                case '+971': // UAE
+                    if (number.length <= 2) return number;
+                    if (number.length <= 5) return `${number.slice(0, 2)} ${number.slice(2)}`;
+                    return `${number.slice(0, 2)} ${number.slice(2, 5)} ${number.slice(5)}`;
+                
+                case '+966': // Saudi Arabia
+                    if (number.length <= 2) return number;
+                    if (number.length <= 5) return `${number.slice(0, 2)} ${number.slice(2)}`;
+                    return `${number.slice(0, 2)} ${number.slice(2, 5)} ${number.slice(5)}`;
+                
+                default:
+                    return number;
+            }
+        }
+
+        function updatePhoneFormatHint(countryCode) {
+            const hints = {
+                '+20': 'Format: 10 123 456 7890',
+                '+1': 'Format: (123) 456-7890',
+                '+44': 'Format: 1234 567 890',
+                '+971': 'Format: 50 123 4567',
+                '+966': 'Format: 50 123 4567'
+            };
+            
+            phoneFormatHint.textContent = hints[countryCode] || 'Format: 10-11 digits';
+        }
+
+        function validatePhoneNumber() {
+            const phoneNumber = mobileInput.value.replace(/\D/g, '');
+            const countryCode = document.getElementById('countryCode').textContent;
+            const errorElement = document.getElementById('mobileError');
+            const dropdown = countryCodeDisplay.closest('.country-code-dropdown');
+            
+            // Remove previous validation classes
+            dropdown.classList.remove('valid', 'invalid');
+            
+            if (!phoneNumber) {
+                errorElement.textContent = '';
+                errorElement.style.display = 'none';
+                return true; // Empty is valid (optional field)
+            }
+            
+            let isValid = false;
+            let expectedLength = 10;
+            
+            switch(countryCode) {
+                case '+20': // Egypt
+                    expectedLength = 10;
+                    isValid = phoneNumber.length === expectedLength && phoneNumber.startsWith('1');
+                    break;
+                case '+1': // USA/Canada
+                    expectedLength = 10;
+                    isValid = phoneNumber.length === expectedLength;
+                    break;
+                case '+44': // UK
+                    expectedLength = 10;
+                    isValid = phoneNumber.length === expectedLength;
+                    break;
+                case '+971': // UAE
+                    expectedLength = 9;
+                    isValid = phoneNumber.length === expectedLength && (phoneNumber.startsWith('5') || phoneNumber.startsWith('6'));
+                    break;
+                case '+966': // Saudi Arabia
+                    expectedLength = 9;
+                    isValid = phoneNumber.length === expectedLength && (phoneNumber.startsWith('5') || phoneNumber.startsWith('6'));
+                    break;
+                default:
+                    isValid = phoneNumber.length >= 10 && phoneNumber.length <= 11;
+            }
+            
+            if (isValid) {
+                errorElement.textContent = '';
+                errorElement.style.display = 'none';
+                dropdown.classList.add('valid');
+                return true;
+            } else {
+                const errorMessages = {
+                    '+20': 'Egypt mobile number must be 10 digits starting with 1',
+                    '+1': 'US/Canada number must be 10 digits',
+                    '+44': 'UK number must be 10 digits',
+                    '+971': 'UAE mobile number must be 9 digits starting with 5 or 6',
+                    '+966': 'Saudi mobile number must be 9 digits starting with 5 or 6'
+                };
+                
+                errorElement.textContent = errorMessages[countryCode] || `Phone number must be ${expectedLength} digits`;
+                errorElement.style.display = 'block';
+                dropdown.classList.add('invalid');
+                return false;
+            }
+        }
+
+        // Load saved country code on page load
+        function loadCountryCode() {
+            if (userData.countryCode) {
+                const option = document.querySelector(`[data-code="${userData.countryCode}"]`);
+                if (option) {
+                    const code = option.getAttribute('data-code');
+                    const flag = option.getAttribute('data-flag');
+                    const country = option.getAttribute('data-country');
+                    
+                    countryFlag.src = flag;
+                    countryFlag.alt = `${country} Flag`;
+                    countryCode.textContent = code;
+                    
+                    updatePhoneFormatHint(code);
+                }
+            }
+        }
+
+        // Form validation functions
+        function validatePersonalInfo() {
+            let isValid = true;
+            const errors = {};
+
+            // Full Name validation
+            const fullName = document.getElementById('fullName').value.trim();
+            if (!fullName) {
+                errors.fullName = 'Full name is required';
+                isValid = false;
+            } else if (fullName.length < 2) {
+                errors.fullName = 'Full name must be at least 2 characters';
+                isValid = false;
+            }
+
+            // Email validation
+            const email = document.getElementById('email').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email) {
+                errors.email = 'Email is required';
+                isValid = false;
+            } else if (!emailRegex.test(email)) {
+                errors.email = 'Please enter a valid email address';
+                isValid = false;
+            }
+
+            // Date of Birth validation
+            const dob = document.getElementById('dob').value;
+            if (!dob) {
+                errors.dob = 'Date of birth is required';
+                isValid = false;
+            }
+
+            // Mobile validation with country code
+            const mobile = mobileInput.value.replace(/\D/g, '');
+            if (mobile && !validatePhoneNumber()) {
+                errors.mobile = 'Please enter a valid mobile number';
+                isValid = false;
+            }
+
+            // Password validation
+            const newPassword = document.getElementById('newPassword').value;
+            if (newPassword && newPassword.length < 6) {
+                errors.newPassword = 'Password must be at least 6 characters';
+                isValid = false;
+            }
+
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            if (newPassword && confirmPassword !== newPassword) {
+                errors.confirmPassword = 'Passwords do not match';
+                isValid = false;
+            }
+
+            // Display errors
+            displayErrors(errors);
+            return isValid;
+        }
+
+        function validateEducationInfo() {
+            let isValid = true;
+            const errors = {};
+
+            // School Name validation
+            const schoolName = document.getElementById('schoolName').value.trim();
+            if (!schoolName) {
+                errors.schoolName = 'School name is required';
+                isValid = false;
+            }
+
+            // School System validation
+            const schoolSystem = document.getElementById('schoolSystem').value;
+            if (!schoolSystem) {
+                errors.schoolSystem = 'Please select a school system';
+                isValid = false;
+            }
+
+            // Grade Level validation
+            const gradeLevel = document.getElementById('gradeLevel').value;
+            if (!gradeLevel) {
+                errors.gradeLevel = 'Please select a grade level';
+                isValid = false;
+            }
+
+            // Display errors
+            displayErrors(errors);
+            return isValid;
+        }
+
+        function displayErrors(errors) {
+            // Clear all error messages
+            document.querySelectorAll('.error-message').forEach(error => {
+                error.textContent = '';
+                error.style.display = 'none';
+            });
+
+            // Display new errors
+            Object.keys(errors).forEach(field => {
+                const errorElement = document.getElementById(field + 'Error');
+                if (errorElement) {
+                    errorElement.textContent = errors[field];
+                    errorElement.style.display = 'block';
+                }
+            });
+        }
+
+        function enableFormEditing() {
+            document.querySelectorAll('input, select').forEach(input => {
+                input.removeAttribute('readonly');
+                input.removeAttribute('disabled');
+            });
+        }
+
+        function disableFormEditing() {
+            document.querySelectorAll('input, select').forEach(input => {
+                input.setAttribute('readonly', true);
+            });
+        }
+
+        function savePersonalInfo() {
+            userData.fullName = document.getElementById('fullName').value;
+            userData.email = document.getElementById('email').value;
+            userData.dob = document.getElementById('dob').value;
+            userData.address = document.getElementById('address').value;
+            userData.mobile = mobileInput.value;
+            userData.countryCode = countryCode.textContent;
+            userData.country = document.querySelector(`[data-code="${countryCode.textContent}"]`)?.getAttribute('data-country') || 'Egypt';
+            userData.gender = document.querySelector('input[name="gender"]:checked').value;
+
+            // Update display
+            userName.textContent = userData.fullName;
+            
+            // Save to localStorage
+            localStorage.setItem('userData', JSON.stringify(userData));
+        }
+
+        function saveEducationInfo() {
+            userData.schoolName = document.getElementById('schoolName').value;
+            userData.schoolSystem = document.getElementById('schoolSystem').value;
+            userData.gradeLevel = document.getElementById('gradeLevel').value;
+
+            // Update class name display
+            const gradeText = document.getElementById('gradeLevel').options[document.getElementById('gradeLevel').selectedIndex].text;
+            userClass.textContent = gradeText;
+
+            // Save to localStorage
+            localStorage.setItem('userData', JSON.stringify(userData));
+        }
+
+        function saveUserData() {
+            localStorage.setItem('userData', JSON.stringify(userData));
+        }
+
+        function loadUserData() {
+            const savedData = localStorage.getItem('userData');
+            if (savedData) {
+                userData = { ...userData, ...JSON.parse(savedData) };
+                
+                // Update form fields
+                document.getElementById('fullName').value = userData.fullName;
+                document.getElementById('email').value = userData.email;
+                document.getElementById('dob').value = userData.dob;
+                document.getElementById('address').value = userData.address;
+                document.getElementById('mobile').value = userData.mobile || '';
+                document.getElementById('schoolName').value = userData.schoolName;
+                document.getElementById('schoolSystem').value = userData.schoolSystem;
+                document.getElementById('gradeLevel').value = userData.gradeLevel;
+
+                // Update display
+                userName.textContent = userData.fullName;
+                if (userData.gradeLevel) {
+                    const gradeText = document.getElementById('gradeLevel').options[document.getElementById('gradeLevel').selectedIndex].text;
+                    userClass.textContent = gradeText;
+                }
+
+                // Update profile image
+                if (userData.profileImage) {
+                    profileImage.src = userData.profileImage;
+                }
+
+                // Set gender
+                if (userData.gender) {
+                    document.querySelector(`input[name="gender"][value="${userData.gender}"]`).checked = true;
+                }
+
+                // Load country code
+                loadCountryCode();
+            }
+        }
+
+        function showSuccess(message) {
+            document.getElementById('successMessage').textContent = message;
+            successModal.style.display = 'flex';
+        }
+
+        function showError(message) {
+            alert(message); // Simple error display
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUserData();
+            disableFormEditing(); // Start in view mode
+        });
+
+        // Auto-save functionality
+        let autoSaveTimeout;
+        document.querySelectorAll('input, select').forEach(input => {
+            input.addEventListener('input', () => {
+                clearTimeout(autoSaveTimeout);
+                autoSaveTimeout = setTimeout(() => {
+                    if (isEditMode) {
+                        saveUserData();
+                    }
+                }, 2000); // Auto-save after 2 seconds of inactivity
+            });
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                switch(e.key) {
+                    case 's':
+                        e.preventDefault();
+                        if (isEditMode) {
+                            saveUserData();
+                            showSuccess('Data saved automatically');
+                        }
+                        break;
+                    case 'e':
+                        e.preventDefault();
+                        editProfileBtn.click();
+                        break;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+>>>>>>> 1549dde42003a82b2852c6851d86914c2911c719

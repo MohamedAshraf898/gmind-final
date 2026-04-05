@@ -1,0 +1,99 @@
+@model Gamingv1.ViewModels.EventFormViewModel
+@{
+    ViewData["Title"] = "Edit Event";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-edit"></i> Edit Event
+        </h1>
+        <a href="@Url.Action("Events")" class="btn btn-secondary btn-sm">
+            <i class="fas fa-arrow-left"></i> Back to Events
+        </a>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Event Details</h6>
+        </div>
+        <div class="card-body">
+            <form asp-action="EditEvent" method="post">
+                <input type="hidden" asp-for="EventId" />
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Title" class="font-weight-bold">Event Title</label>
+                    <input asp-for="Title" class="form-control" placeholder="Enter event title" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description" class="font-weight-bold">Description</label>
+                    <textarea asp-for="Description" class="form-control" rows="4" placeholder="Enter event description"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ImageUrl" class="font-weight-bold">Image URL</label>
+                    <input asp-for="ImageUrl" class="form-control" placeholder="Enter image URL" />
+                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                    <small class="text-muted">URL to event banner or promotional image</small>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="StartDate" class="font-weight-bold">Start Date</label>
+                            <input asp-for="StartDate" class="form-control" type="datetime-local" />
+                            <span asp-validation-for="StartDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="EndDate" class="font-weight-bold">End Date</label>
+                            <input asp-for="EndDate" class="form-control" type="datetime-local" />
+                            <span asp-validation-for="EndDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Price" class="font-weight-bold">Price ($)</label>
+                    <input asp-for="Price" class="form-control" type="number" step="0.01" min="0" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                    <small class="text-muted">Set to 0 for free events</small>
+                </div>
+
+                <hr />
+                <div class="form-group text-right">
+                    <a href="@Url.Action("Events")" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Update Event
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Format datetime-local inputs with current timezone offset
+            var startDateInput = document.querySelector('input[name="StartDate"]');
+            var endDateInput = document.querySelector('input[name="EndDate"]');
+            
+            if (startDateInput.value) {
+                var startDate = new Date(startDateInput.value);
+                startDateInput.value = startDate.toISOString().slice(0, 16);
+            }
+            
+            if (endDateInput.value) {
+                var endDate = new Date(endDateInput.value);
+                endDateInput.value = endDate.toISOString().slice(0, 16);
+            }
+        });
+    </script>
+}

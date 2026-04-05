@@ -1,0 +1,68 @@
+@model Gamingv1.ViewModels.DynamicTopicViewModel
+@{
+    ViewData["Title"] = "Create Topic";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-plus-circle"></i> Add New Topic
+        </h1>
+        <a href="@Url.Action("Topics", new { sectionId = Model.SectionId })" class="btn btn-secondary btn-sm">
+            <i class="fas fa-arrow-left"></i> Back to Topics
+        </a>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Topic Details for Section: @Model.SectionName</h6>
+        </div>
+        <div class="card-body">
+            <form asp-action="CreateTopic" method="post">
+                <input type="hidden" asp-for="SectionId" />
+                <input type="hidden" asp-for="SectionName" />
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Title" class="font-weight-bold">Topic Title</label>
+                    <input asp-for="Title" class="form-control" placeholder="Enter topic title" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Content" class="font-weight-bold">Content</label>
+                    <textarea asp-for="Content" class="form-control" rows="6" placeholder="Enter topic content"></textarea>
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                    <small class="text-muted">HTML formatting is supported</small>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ImageUrl" class="font-weight-bold">Image URL</label>
+                    <input asp-for="ImageUrl" class="form-control" placeholder="Enter image URL (optional)" />
+                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                    <small class="text-muted">Image to display with this topic</small>
+                </div>
+
+                <hr />
+                <div class="form-group text-right">
+                    <a href="@Url.Action("Topics", new { sectionId = Model.SectionId })" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Save Topic
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Rich text editor for content
+            if (typeof(CKEDITOR) !== 'undefined') {
+                CKEDITOR.replace('Content');
+            }
+        });
+    </script>
+}

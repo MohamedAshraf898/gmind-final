@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Slider</title>
+    <style>
+      body {
+        background: #f6f7fb;
+        font-family: "Segoe UI", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .slider-container {
+        position: relative;
+        width: 1000px;
+        height: 350px;
+        margin: 40px auto 20px auto;
+      }
+      .card {
+        background: #fff;
+        color: #333;
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+        height: 320px;
+        min-height: 320px;
+        max-height: 320px;
+        width: 320px;
+        min-width: 320px;
+        max-width: 320px;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        border: 1px solid #ececec;
+        transition: box-shadow 0.3s, left 0.3s, z-index 0.3s, transform 0.3s;
+        transform: scale(0.85);
+      }
+      /* Center the 3rd card, others peek left/right */
+      .card:nth-child(1) {
+        left: 0px;
+        z-index: 2;
+        opacity: 75%;
+      }
+      .card:nth-child(2) {
+        left: 120px;
+        z-index: 3;
+      }
+      .card:nth-child(3) {
+        left: 340px;
+        z-index: 5;
+        opacity: 1;
+        transform: scale(1);
+      }
+      .card:nth-child(4) {
+        left: 560px;
+        z-index: 3;
+      }
+      .card:nth-child(5) {
+        left: 680px;
+        z-index: 2;
+      }
+      .card:nth-child(6) {
+        left: 800px;
+        z-index: 1;
+      }
+      .card-img {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+      }
+      .card-content {
+        padding: 20px 20px 16px 20px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      .card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .date-box {
+        background: #ede9fe;
+        color: #6d28d9;
+        font-weight: 600;
+        font-size: 14px;
+        border-radius: 8px;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-right: 12px;
+      }
+      .date-box span {
+        font-size: 11px;
+        color: #a78bfa;
+        font-weight: 500;
+      }
+      .event-title {
+        font-size: 17px;
+        font-weight: 600;
+        color: #3730a3;
+        margin: 0;
+      }
+      .badge-new {
+        background: #fde047;
+        color: #b45309;
+        font-size: 11px;
+        font-weight: bold;
+        border-radius: 8px;
+        padding: 2px 10px;
+        margin-left: 8px;
+        margin-top: -8px;
+        position: absolute;
+        right: 16px;
+        top: 12px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      }
+      .card-desc {
+        font-size: 14px;
+        color: #444;
+        margin: 12px 0 18px 0;
+        flex: 1;
+      }
+      .card-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .price {
+        font-weight: bold;
+        color: #22c55e;
+        font-size: 16px;
+      }
+      .join-btn {
+        background: #4f46e5;
+        border: none;
+        color: white;
+        border-radius: 8px;
+        padding: 8px 20px;
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.3s;
+        box-shadow: 0 2px 8px rgba(79, 70, 229, 0.08);
+      }
+      .join-btn:hover {
+        background: #3730a3;
+      }
+      .view-more-btn {
+        margin: 32px auto 0 auto;
+        display: block;
+        background: #4f46e5;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 36px;
+        font-size: 17px;
+        font-weight: 500;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(79, 70, 229, 0.08);
+        transition: background 0.3s;
+      }
+      .view-more-btn:hover {
+        background: #3730a3;
+      }
+      @media (max-width: 1100px) {
+        .slider-container {
+          width: 98vw;
+          max-width: 98vw;
+          height: 350px;
+        }
+        .card {
+          width: 90vw;
+          min-width: 90vw;
+          max-width: 90vw;
+        }
+        .card:nth-child(1) {
+          left: 0vw;
+        }
+        .card:nth-child(2) {
+          left: 10vw;
+          opacity: 1;
+        }
+        .card:nth-child(3) {
+          left: 30vw;
+          opacity: 1;
+          transform: scale(1);
+        }
+        .card:nth-child(4) {
+          left: 50vw;
+          opacity: 1;
+        }
+        .card:nth-child(5) {
+          left: 60vw;
+          opacity: 1;
+        }
+        .card:nth-child(6) {
+          left: 70vw;
+        }
+      }
+      .card:nth-child(1)::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 16px;
+        background: linear-gradient(
+          to right,
+          rgba(0.4, 0.5, 0.6, 0.7),
+          transparent 70%
+        );
+        z-index: 10;
+        pointer-events: none;
+      }
+      .card:nth-child(6)::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 16px;
+        background: linear-gradient(
+          to left,
+          rgba(0.4, 0.5, 0.6, 0.7),
+          transparent 70%
+        );
+        z-index: 10;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider-container" id="sliderContainer">
+      <div class="card">
+        <img
+          class="card-img"
+          src="https://images.unsplash.com/photo-1581093588401-12b66ade986d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"
+          alt="Science Fair"
+        />
+        <div class="badge-new">NEW</div>
+        <div class="card-content">
+          <div class="card-header">
+            <div class="date-box">08<span>Nov</span></div>
+            <h3 class="event-title">Science Fair Extravaganza</h3>
+          </div>
+          <div class="card-desc">
+            Explore amazing experiments and hands-on science fun!
+          </div>
+          <div class="card-bottom">
+            <span class="price">100 EG</span>
+            <button class="join-btn">Join Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <img
+          class="card-img"
+          src="https://images.unsplash.com/photo-1581093588401-12b66ade986d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"
+          alt="Robotics Workshop"
+        />
+        <div class="card-content">
+          <div class="card-header">
+            <div class="date-box">12<span>Nov</span></div>
+            <h3 class="event-title">Robotics Workshop</h3>
+          </div>
+          <div class="card-desc">
+            Build and program your own robot in a fun workshop!
+          </div>
+          <div class="card-bottom">
+            <span class="price">120 EG</span>
+            <button class="join-btn">Join Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <img
+          class="card-img"
+          src="https://images.unsplash.com/photo-1581093588401-12b66ade986d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"
+          alt="Space Discovery"
+        />
+        <div class="card-content">
+          <div class="card-header">
+            <div class="date-box">15<span>Nov</span></div>
+            <h3 class="event-title">Space Discovery</h3>
+          </div>
+          <div class="card-desc">
+            Explore the stars, planets, and the universe beyond.
+          </div>
+          <div class="card-bottom">
+            <span class="price">90 EG</span>
+            <button class="join-btn">Join Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <img
+          class="card-img"
+          src="https://images.unsplash.com/photo-1581093588401-12b66ade986d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"
+          alt="Eco-Friendly Day"
+        />
+        <div class="card-content">
+          <div class="card-header">
+            <div class="date-box">20<span>Nov</span></div>
+            <h3 class="event-title">Eco-Friendly Day</h3>
+          </div>
+          <div class="card-desc">
+            Learn about sustainability and eco-friendly inventions.
+          </div>
+          <div class="card-bottom">
+            <span class="price">80 EG</span>
+            <button class="join-btn">Join Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <img
+          class="card-img"
+          src="https://images.unsplash.com/photo-1581093588401-12b66ade986d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"
+          alt="Digital Art Lab"
+        />
+        <div class="card-content">
+          <div class="card-header">
+            <div class="date-box">25<span>Nov</span></div>
+            <h3 class="event-title">Digital Art Lab</h3>
+          </div>
+          <div class="card-desc">
+            Unleash creativity through art & tech experiments.
+          </div>
+          <div class="card-bottom">
+            <span class="price">95 EG</span>
+            <button class="join-btn">Join Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <img
+          class="card-img"
+          src="https://images.unsplash.com/photo-1581093588401-12b66ade986d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"
+          alt="Math Puzzle Day"
+        />
+        <div class="card-content">
+          <div class="card-header">
+            <div class="date-box">30<span>Nov</span></div>
+            <h3 class="event-title">Math Puzzle Day</h3>
+          </div>
+          <div class="card-desc">
+            Challenge your brain with exciting math activities.
+          </div>
+          <div class="card-bottom">
+            <span class="price">70 EG</span>
+            <button class="join-btn">Join Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      style="
+        width: 1000px;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+        position: relative;
+        top: -30px;
+      "
+    >
+      <button
+        id="prevBtn"
+        style="
+          background: #4f46e5;
+          color: #fff;
+          border: none;
+          border-radius: 50%;
+          width: 44px;
+          height: 44px;
+          font-size: 22px;
+          cursor: pointer;
+        "
+      >
+        &#8592;
+      </button>
+      <button
+        id="nextBtn"
+        style="
+          background: #4f46e5;
+          color: #fff;
+          border: none;
+          border-radius: 50%;
+          width: 44px;
+          height: 44px;
+          font-size: 22px;
+          cursor: pointer;
+        "
+      >
+        &#8594;
+      </button>
+    </div>
+    <button class="view-more-btn">View More &rarr;</button>
+    <script>
+      const positions = [
+        { left: 0, z: 2, scale: 0.85, opacity: 0.75 },
+        { left: 120, z: 3, scale: 0.85, opacity: 1 },
+        { left: 340, z: 5, scale: 1, opacity: 1 },
+        { left: 560, z: 3, scale: 0.85, opacity: 1 },
+        { left: 680, z: 2, scale: 0.85, opacity: 1 },
+        { left: 800, z: 1, scale: 0.85, opacity: 1 },
+      ];
+      const cards = Array.from(
+        document.querySelectorAll(".slider-container .card")
+      );
+      let offset = 0;
+      function updateCards() {
+        for (let i = 0; i < cards.length; i++) {
+          const pos = positions[i];
+          if (!pos) continue;
+          cards[(i + offset) % cards.length].style.left = pos.left + "px";
+          cards[(i + offset) % cards.length].style.zIndex = pos.z;
+          cards[(i + offset) % cards.length].style.opacity = pos.opacity;
+          cards[
+            (i + offset) % cards.length
+          ].style.transform = `scale(${pos.scale})`;
+        }
+      }
+      document.getElementById("prevBtn").onclick = function () {
+        offset = (offset - 1 + cards.length) % cards.length;
+        updateCards();
+      };
+      document.getElementById("nextBtn").onclick = function () {
+        offset = (offset + 1) % cards.length;
+        updateCards();
+      };
+      updateCards();
+    </script>
+  </body>
+</html>

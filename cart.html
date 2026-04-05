@@ -1,0 +1,687 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="cart.css" />
+    <link rel="stylesheet" href="produt_details.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header / Navigation -->
+    <header>
+      <div class="container nav-container">
+        <span class="gmind-logo-text">GMIND</span>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="#">Games</a></li>
+            <li><a href="store.html" class="active">Store</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="auth-links">
+          <a href="cart.html" class="btn btn-icon cart-header-link">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-badge" id="cart-badge">0</span>
+          </a>
+          <a href="#" class="btn btn-icon btn-primary">
+            <i class="fas fa-user"></i>
+          </a>
+        </div>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <button class="mobile-menu-close" id="mobile-menu-close">&times;</button>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="games.html">Games</a></li>
+        <li><a href="store.html" class="active">Store</a></li>
+        <li><a href="contact_us.html">Contact Us</a></li>
+      </ul>
+      <div class="auth-links">
+        <a href="cart.html" class="btn btn-icon cart-header-link">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-badge" id="cart-badge">0</span>
+        </a>
+        <a href="#" class="btn btn-icon btn-primary">
+          <i class="fas fa-user"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="cart-container container">
+      <h1 class="cart-title section-title">Your cart</h1>
+      <div class="cart-content">
+        <div class="cart-items">
+          <!-- Cart Item Example -->
+          <!-- Repeat for more items as needed -->
+        </div>
+        <div class="cart-summary">
+          <div class="cart-summary-title">Order Summary</div>
+          <div class="cart-summary-row">
+            <span>Subtotal</span>
+            <span class="cart-summary-value">565 EG</span>
+          </div>
+          <div class="cart-summary-row">
+            <span>Discount (-20%)</span>
+            <span class="cart-summary-value cart-summary-discount"
+              >-113 EG</span
+            >
+          </div>
+          <div class="cart-summary-row">
+            <span>Delivery Fee</span>
+            <span class="cart-summary-value">15 EG</span>
+          </div>
+          <div class="cart-summary-row cart-summary-total">
+            <span>Total</span>
+            <span class="cart-summary-value">467 EG</span>
+          </div>
+          <div class="cart-summary-promo">
+            <input
+              type="text"
+              class="cart-promo-input"
+              placeholder="Add promo code"
+            />
+            <button class="cart-promo-apply">Apply</button>
+          </div>
+          <button class="btn btn-primary cart-checkout-btn">
+            Go to Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <img src="Images/GMIND.png" />
+          </div>
+          <div class="footer-links">
+            <div class="footer-section">
+              <h4>Company</h4>
+              <a href="#about">About us</a>
+              <a href="#contact">Contact us</a>
+              <a href="#help">Help</a>
+            </div>
+            <div class="footer-section">
+              <h4>Legal</h4>
+              <a href="#privacy">Privacy Policy</a>
+              <a href="#disclaimer">Disclaimer</a>
+            </div>
+            <div class="footer-section">
+              <h4>Contact Info</h4>
+              <p>
+                345 Faulconer Drive, Suite 4<br />Charlottesville, CA, 12345
+              </p>
+              <p>(123) 456-7890</p>
+            </div>
+            <div class="footer-section">
+              <h4>Social Media</h4>
+              <div class="social-links">
+                <a href="#" class="social-link">Facebook</a>
+                <a href="#" class="social-link">Twitter</a>
+                <a href="#" class="social-link">Instagram</a>
+                <a href="#" class="social-link">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2024 GMIND. All rights reserved.Made by
+            <a href="#" style="text-decoration: none">RAQM</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Header scroll effect
+      window.addEventListener("scroll", function () {
+        const header = document.querySelector(".header");
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // Mobile menu functionality
+      const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileMenuOverlay = document.getElementById("mobile-menu-overlay");
+      const mobileMenuClose = document.getElementById("mobile-menu-close");
+
+      function openMobileMenu() {
+        mobileMenuToggle.classList.add("active");
+        mobileMenu.classList.add("active");
+        mobileMenuOverlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeMobileMenu() {
+        mobileMenuToggle.classList.remove("active");
+        mobileMenu.classList.remove("active");
+        mobileMenuOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      // Event listeners for mobile menu
+      mobileMenuToggle.addEventListener("click", openMobileMenu);
+      mobileMenuClose.addEventListener("click", closeMobileMenu);
+      mobileMenuOverlay.addEventListener("click", closeMobileMenu);
+
+      // Close menu when clicking on a link
+      const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+      mobileMenuLinks.forEach((link) => {
+        link.addEventListener("click", closeMobileMenu);
+      });
+
+      // Close menu on escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
+          closeMobileMenu();
+        }
+      });
+    </script>
+    <script>
+      function updateCartBadge() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+        document.querySelectorAll("#cart-badge").forEach((badge) => {
+          badge.textContent = count > 0 ? count : "";
+          badge.style.display = count > 0 ? "inline-block" : "none";
+        });
+      }
+
+      function renderCart() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const cartItemsContainer = document.querySelector(".cart-items");
+        cartItemsContainer.innerHTML = "";
+        if (cart.length === 0) {
+          cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+          updateCartBadge();
+          return;
+        }
+        cart.forEach((item, idx) => {
+          const itemDiv = document.createElement("div");
+          itemDiv.className = "cart-item";
+          itemDiv.innerHTML = `
+      <div class="cart-item-image">
+        <img src="${item.image}" alt="Product Image" />
+      </div>
+      <div class="cart-item-details">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-meta">
+          <span class="cart-item-desc">${item.desc}</span>
+          <span class="cart-item-price">${item.price} EG</span>
+          <div class="cart-item-qty">
+            <button class="qty-btn qty-minus" data-idx="${idx}">-</button>
+            <input type="text" class="qty-input" value="${item.quantity}" readonly />
+            <button class="qty-btn qty-plus" data-idx="${idx}">+</button>
+          </div>
+        </div>
+      </div>
+      <button class="cart-item-remove" title="Remove item" data-idx="${idx}">
+        <i class="fas fa-trash"></i>
+      </button>
+    `;
+          cartItemsContainer.appendChild(itemDiv);
+        });
+        // Add event listeners for quantity and remove
+        document.querySelectorAll(".qty-minus").forEach((btn) => {
+          btn.onclick = function () {
+            updateQuantity(this.dataset.idx, -1);
+          };
+        });
+        document.querySelectorAll(".qty-plus").forEach((btn) => {
+          btn.onclick = function () {
+            updateQuantity(this.dataset.idx, 1);
+          };
+        });
+        document.querySelectorAll(".cart-item-remove").forEach((btn) => {
+          btn.onclick = function () {
+            removeItem(this.dataset.idx);
+          };
+        });
+        updateCartBadge();
+        updateSummary();
+      }
+      function updateQuantity(idx, delta) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart[idx].quantity += delta;
+        if (cart[idx].quantity < 1) cart[idx].quantity = 1;
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+      }
+      function removeItem(idx) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.splice(idx, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+      }
+      function updateSummary() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let subtotal = 0;
+        cart.forEach((item) => {
+          subtotal += parseFloat(item.price) * item.quantity;
+        });
+        document
+          .querySelectorAll(".cart-summary-row")[0]
+          .querySelector(".cart-summary-value").textContent = subtotal + " EG";
+        // Example: discount and total calculation
+        let discount = Math.round(subtotal * 0.2);
+        document
+          .querySelectorAll(".cart-summary-row")[1]
+          .querySelector(".cart-summary-value").textContent =
+          "-" + discount + " EG";
+        let delivery = 15;
+        document
+          .querySelectorAll(".cart-summary-row")[2]
+          .querySelector(".cart-summary-value").textContent = delivery + " EG";
+        let total = subtotal - discount + delivery;
+        document.querySelector(
+          ".cart-summary-total .cart-summary-value"
+        ).textContent = total + " EG";
+      }
+      document.addEventListener("DOMContentLoaded", function () {
+        renderCart();
+        updateCartBadge();
+      });
+    </script>
+    <style>
+      .cart-badge {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        background: #e50b4e;
+        color: #fff;
+        border-radius: 50%;
+        font-size: 12px;
+        font-weight: 700;
+        min-width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 6px;
+        z-index: 10;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+      }
+      .cart-header-link {
+        position: relative;
+      }
+    </style>
+  </body>
+</html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="cart.css" />
+    <link rel="stylesheet" href="produt_details.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header / Navigation -->
+    <header>
+      <div class="container nav-container">
+        <span class="gmind-logo-text">GMIND</span>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="#">Games</a></li>
+            <li><a href="store.html" class="active">Store</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="auth-links">
+          <a href="cart.html" class="btn btn-icon cart-header-link">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-badge" id="cart-badge">0</span>
+          </a>
+          <a href="#" class="btn btn-icon btn-primary">
+            <i class="fas fa-user"></i>
+          </a>
+        </div>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <button class="mobile-menu-close" id="mobile-menu-close">&times;</button>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="games.html">Games</a></li>
+        <li><a href="store.html" class="active">Store</a></li>
+        <li><a href="contact_us.html">Contact Us</a></li>
+      </ul>
+      <div class="auth-links">
+        <a href="cart.html" class="btn btn-icon cart-header-link">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-badge" id="cart-badge">0</span>
+        </a>
+        <a href="#" class="btn btn-icon btn-primary">
+          <i class="fas fa-user"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="cart-container container">
+      <h1 class="cart-title section-title">Your cart</h1>
+      <div class="cart-content">
+        <div class="cart-items">
+          <!-- Cart Item Example -->
+          <!-- Repeat for more items as needed -->
+        </div>
+        <div class="cart-summary">
+          <div class="cart-summary-title">Order Summary</div>
+          <div class="cart-summary-row">
+            <span>Subtotal</span>
+            <span class="cart-summary-value">565 EG</span>
+          </div>
+          <div class="cart-summary-row">
+            <span>Discount (-20%)</span>
+            <span class="cart-summary-value cart-summary-discount"
+              >-113 EG</span
+            >
+          </div>
+          <div class="cart-summary-row">
+            <span>Delivery Fee</span>
+            <span class="cart-summary-value">15 EG</span>
+          </div>
+          <div class="cart-summary-row cart-summary-total">
+            <span>Total</span>
+            <span class="cart-summary-value">467 EG</span>
+          </div>
+          <div class="cart-summary-promo">
+            <input
+              type="text"
+              class="cart-promo-input"
+              placeholder="Add promo code"
+            />
+            <button class="cart-promo-apply">Apply</button>
+          </div>
+          <button class="btn btn-primary cart-checkout-btn">
+            Go to Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <img src="Images/GMIND.png" />
+          </div>
+          <div class="footer-links">
+            <div class="footer-section">
+              <h4>Company</h4>
+              <a href="#about">About us</a>
+              <a href="#contact">Contact us</a>
+              <a href="#help">Help</a>
+            </div>
+            <div class="footer-section">
+              <h4>Legal</h4>
+              <a href="#privacy">Privacy Policy</a>
+              <a href="#disclaimer">Disclaimer</a>
+            </div>
+            <div class="footer-section">
+              <h4>Contact Info</h4>
+              <p>
+                345 Faulconer Drive, Suite 4<br />Charlottesville, CA, 12345
+              </p>
+              <p>(123) 456-7890</p>
+            </div>
+            <div class="footer-section">
+              <h4>Social Media</h4>
+              <div class="social-links">
+                <a href="#" class="social-link">Facebook</a>
+                <a href="#" class="social-link">Twitter</a>
+                <a href="#" class="social-link">Instagram</a>
+                <a href="#" class="social-link">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2024 GMIND. All rights reserved.Made by
+            <a href="#" style="text-decoration: none">RAQM</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Header scroll effect
+      window.addEventListener("scroll", function () {
+        const header = document.querySelector(".header");
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // Mobile menu functionality
+      const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileMenuOverlay = document.getElementById("mobile-menu-overlay");
+      const mobileMenuClose = document.getElementById("mobile-menu-close");
+
+      function openMobileMenu() {
+        mobileMenuToggle.classList.add("active");
+        mobileMenu.classList.add("active");
+        mobileMenuOverlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeMobileMenu() {
+        mobileMenuToggle.classList.remove("active");
+        mobileMenu.classList.remove("active");
+        mobileMenuOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      // Event listeners for mobile menu
+      mobileMenuToggle.addEventListener("click", openMobileMenu);
+      mobileMenuClose.addEventListener("click", closeMobileMenu);
+      mobileMenuOverlay.addEventListener("click", closeMobileMenu);
+
+      // Close menu when clicking on a link
+      const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+      mobileMenuLinks.forEach((link) => {
+        link.addEventListener("click", closeMobileMenu);
+      });
+
+      // Close menu on escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
+          closeMobileMenu();
+        }
+      });
+    </script>
+    <script>
+      function updateCartBadge() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+        document.querySelectorAll("#cart-badge").forEach((badge) => {
+          badge.textContent = count > 0 ? count : "";
+          badge.style.display = count > 0 ? "inline-block" : "none";
+        });
+      }
+
+      function renderCart() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const cartItemsContainer = document.querySelector(".cart-items");
+        cartItemsContainer.innerHTML = "";
+        if (cart.length === 0) {
+          cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+          updateCartBadge();
+          return;
+        }
+        cart.forEach((item, idx) => {
+          const itemDiv = document.createElement("div");
+          itemDiv.className = "cart-item";
+          itemDiv.innerHTML = `
+      <div class="cart-item-image">
+        <img src="${item.image}" alt="Product Image" />
+      </div>
+      <div class="cart-item-details">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-meta">
+          <span class="cart-item-desc">${item.desc}</span>
+          <span class="cart-item-price">${item.price} EG</span>
+          <div class="cart-item-qty">
+            <button class="qty-btn qty-minus" data-idx="${idx}">-</button>
+            <input type="text" class="qty-input" value="${item.quantity}" readonly />
+            <button class="qty-btn qty-plus" data-idx="${idx}">+</button>
+          </div>
+        </div>
+      </div>
+      <button class="cart-item-remove" title="Remove item" data-idx="${idx}">
+        <i class="fas fa-trash"></i>
+      </button>
+    `;
+          cartItemsContainer.appendChild(itemDiv);
+        });
+        // Add event listeners for quantity and remove
+        document.querySelectorAll(".qty-minus").forEach((btn) => {
+          btn.onclick = function () {
+            updateQuantity(this.dataset.idx, -1);
+          };
+        });
+        document.querySelectorAll(".qty-plus").forEach((btn) => {
+          btn.onclick = function () {
+            updateQuantity(this.dataset.idx, 1);
+          };
+        });
+        document.querySelectorAll(".cart-item-remove").forEach((btn) => {
+          btn.onclick = function () {
+            removeItem(this.dataset.idx);
+          };
+        });
+        updateCartBadge();
+        updateSummary();
+      }
+      function updateQuantity(idx, delta) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart[idx].quantity += delta;
+        if (cart[idx].quantity < 1) cart[idx].quantity = 1;
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+      }
+      function removeItem(idx) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.splice(idx, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+      }
+      function updateSummary() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let subtotal = 0;
+        cart.forEach((item) => {
+          subtotal += parseFloat(item.price) * item.quantity;
+        });
+        document
+          .querySelectorAll(".cart-summary-row")[0]
+          .querySelector(".cart-summary-value").textContent = subtotal + " EG";
+        // Example: discount and total calculation
+        let discount = Math.round(subtotal * 0.2);
+        document
+          .querySelectorAll(".cart-summary-row")[1]
+          .querySelector(".cart-summary-value").textContent =
+          "-" + discount + " EG";
+        let delivery = 15;
+        document
+          .querySelectorAll(".cart-summary-row")[2]
+          .querySelector(".cart-summary-value").textContent = delivery + " EG";
+        let total = subtotal - discount + delivery;
+        document.querySelector(
+          ".cart-summary-total .cart-summary-value"
+        ).textContent = total + " EG";
+      }
+      document.addEventListener("DOMContentLoaded", function () {
+        renderCart();
+        updateCartBadge();
+      });
+    </script>
+    <style>
+      .cart-badge {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        background: #e50b4e;
+        color: #fff;
+        border-radius: 50%;
+        font-size: 12px;
+        font-weight: 700;
+        min-width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 6px;
+        z-index: 10;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+      }
+      .cart-header-link {
+        position: relative;
+      }
+    </style>
+  </body>
+</html>
+>>>>>>> 1549dde42003a82b2852c6851d86914c2911c719

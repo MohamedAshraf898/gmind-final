@@ -1,0 +1,251 @@
+@model Gamingv1.ViewModels.GameUploadViewModel
+@{
+    ViewData["Title"] = "Edit Game";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-edit"></i> Edit Game
+        </h1>
+        <a href="@Url.Action("Games")" class="btn btn-secondary btn-sm">
+            <i class="fas fa-arrow-left"></i> Back to Games
+        </a>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Game Details</h6>
+        </div>
+        <div class="card-body">
+            <form asp-action="EditGame" method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="GameId" />
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Title" class="font-weight-bold">Title</label>
+                    <input asp-for="Title" class="form-control" placeholder="Enter game title" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description" class="font-weight-bold">Description</label>
+                    <textarea asp-for="Description" class="form-control" rows="4" placeholder="Enter game description"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Price" class="font-weight-bold">Price ($)</label>
+                            <input asp-for="Price" class="form-control" type="number" step="0.01" min="0" />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="CategoryId" class="font-weight-bold">Category</label>
+                            <select asp-for="CategoryId" class="form-control">
+                                <option value="">-- Select Category --</option>
+                                @foreach (var category in Model.Categories)
+                                {
+                                    <option value="@category.CategoryId">@category.Name</option>
+                                }
+                            </select>
+                            <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="DownloadLink" class="font-weight-bold">Download Link</label>
+                    <input asp-for="DownloadLink" class="form-control" placeholder="Enter download link" />
+                    <span asp-validation-for="DownloadLink" class="text-danger"></span>
+                    <small class="text-muted">Direct download link or app store URL</small>
+                </div>
+
+                @if (Model.ImageUrls != null && Model.ImageUrls.Any())
+                {
+                    <div class="form-group">
+                        <label class="font-weight-bold">Current Images</label>
+                        <div class="row">
+                            @foreach (var imageUrl in Model.ImageUrls)
+                            {
+                                <div class="col-md-3 mb-3">
+                                    <div class="card">
+                                        <img src="@imageUrl" class="card-img-top" alt="Game image" style="height: 150px; object-fit: cover;">
+                                        <div class="card-body p-2 text-center">
+                                            <a href="@Url.Action("DeleteGameImage", new { gameId = Model.GameId, imageUrl = imageUrl })" 
+                                               class="btn btn-sm btn-danger delete-image"
+                                               data-toggle="modal" data-target="#deleteImageModal" data-image-url="@imageUrl">
+                                                <i class="fas fa-trash-alt"></i> Remove
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+
+                <div class="form-group">
+                    <label asp-for="ImageFiles" class="font-weight-bold">Upload New Images</label>
+                    <div class="custom-file mb-3">
+                        <input type="file" asp-for="ImageFiles" class="custom-file-input" multiple accept="image/*" id="imageFiles">
+                        <label class="custom-file-label" for="imageFiles">Choose files...</label>
+                    </div>
+                    <div id="imagePreviewContainer" class="d-flex flex-wrap gap-2 mb-3"></div>
+                    <small class="text-muted">Upload multiple images for the game. Recommended size: 800x600 pixels.</small>
+                </div>
+
+                <div class="form-group">
+                    <label class="font-weight-bold">External Image URLs (Optional)</label>
+                    <div id="imageUrlsContainer">
+                        @if (Model.ImageUrls != null && Model.ImageUrls.Any())
+                        {
+                            @for (int i = 0; i < Model.ImageUrls.Count; i++)
+                            {
+                                <div class="input-group mb-2">
+                                    <input type="text" name="ImageUrls[@i]" value="@Model.ImageUrls[i]" class="form-control" placeholder="Enter image URL" />
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-outline-danger remove-image">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="input-group mb-2">
+                                <input type="text" name="ImageUrls[0]" class="form-control" placeholder="Enter image URL" />
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-outline-danger remove-image">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <button type="button" id="addImageBtn" class="btn btn-sm btn-outline-primary">
+                        <i class="fas fa-plus"></i> Add Another Image
+                    </button>
+                </div>
+
+                <hr />
+                <div class="form-group text-right">
+                    <a href="@Url.Action("Games")" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Update Game
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Add image URL field
+            $("#addImageBtn").click(function () {
+                var count = $("#imageUrlsContainer .input-group").length;
+                var newRow = `
+                    <div class="input-group mb-2">
+                        <input type="text" name="ImageUrls[${count}]" class="form-control" placeholder="Enter image URL" />
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-outline-danger remove-image">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                $("#imageUrlsContainer").append(newRow);
+            });
+
+            // Remove image URL field
+            $(document).on("click", ".remove-image", function () {
+                var container = $("#imageUrlsContainer");
+                if (container.find(".input-group").length > 1) {
+                    $(this).closest(".input-group").remove();
+                    // Renumber indices
+                    container.find(".input-group").each(function (index) {
+                        $(this).find("input").attr("name", `ImageUrls[${index}]`);
+                    });
+                } else {
+                    // If last one, just clear the value
+                    $(this).closest(".input-group").find("input").val("");
+                }
+            });
+            
+            // Show file name when selected
+            $('.custom-file-input').on('change', function () {
+                var fileLabel = $(this).next('.custom-file-label');
+                var files = $(this)[0].files;
+                
+                if (files.length > 1) {
+                    fileLabel.html(files.length + ' files selected');
+                } else if (files.length == 1) {
+                    fileLabel.html(files[0].name);
+                }
+                
+                // Clear the preview container
+                $('#imagePreviewContainer').empty();
+                
+                // Show image previews
+                for (var i = 0; i < files.length; i++) {
+                    if (files[i]) {
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            $('#imagePreviewContainer').append(`
+                                <div class="position-relative mr-2 mb-2">
+                                    <img src="${e.target.result}" class="img-thumbnail" style="height: 100px; width: auto;">
+                                </div>
+                            `);
+                        }
+                        reader.readAsDataURL(files[i]);
+                    }
+                }
+            });
+
+            // Add at least one image URL field if none exists
+            if ($("#imageUrlsContainer .input-group").length === 0) {
+                $("#addImageBtn").click();
+            }
+            
+            // Setup delete image confirmation
+            $(document).on('click', '.delete-image', function(e) {
+                e.preventDefault();
+                var imageUrl = $(this).data('image-url');
+                $('#confirmDeleteImageBtn').attr('href', $(this).attr('href'));
+                $('#imageToDelete').attr('src', imageUrl);
+                $('#deleteImageUrl').text(imageUrl);
+            });
+        });
+    </script>
+}
+
+<!-- Delete Image Confirmation Modal -->
+<div class="modal fade" id="deleteImageModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Image Deletion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <p>Are you sure you want to delete this image?</p>
+                <img id="imageToDelete" src="" alt="Image to delete" class="img-fluid mb-2" style="max-height: 200px;">
+                <p class="text-muted small" id="deleteImageUrl"></p>
+                <p class="text-danger">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <a id="confirmDeleteImageBtn" href="#" class="btn btn-danger">Delete Image</a>
+            </div>
+        </div>
+    </div>
+</div>

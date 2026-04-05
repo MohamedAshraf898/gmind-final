@@ -1,0 +1,190 @@
+@model Gamingv1.ViewModels.LinkParentStudentViewModel
+@{
+    ViewData["Title"] = "Link Parent and Student";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-link"></i> Link Parent and Student
+        </h1>
+        <a href="@Url.Action("UsersWithRoles")" class="btn btn-secondary btn-sm">
+            <i class="fas fa-arrow-left"></i> Back to Users
+        </a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle"></i> @TempData["Success"]
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-triangle"></i> @TempData["Error"]
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Link a Parent with a Student</h6>
+        </div>
+        <div class="card-body">
+            <form asp-action="LinkParentStudent" method="post">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="ParentId" class="font-weight-bold">Select Parent</label>
+                    <select asp-for="ParentId" class="form-control select2">
+                        <option value="">-- Select Parent --</option>
+                        @foreach (var parent in Model.Parents)
+                        {
+                            <option value="@parent.Id">@parent.Name (@parent.Email)</option>
+                        }
+                    </select>
+                    <span asp-validation-for="ParentId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="StudentId" class="font-weight-bold">Select Student</label>
+                    <select asp-for="StudentId" class="form-control select2">
+                        <option value="">-- Select Student --</option>
+                        @foreach (var student in Model.Students)
+                        {
+                            <option value="@student.Id">@student.Name (@student.Email)</option>
+                        }
+                    </select>
+                    <span asp-validation-for="StudentId" class="text-danger"></span>
+                </div>
+
+                <hr />
+                <div class="form-group text-right">
+                    <a href="@Url.Action("UsersWithRoles")" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-link"></i> Create Relationship
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Existing Parent-Student Relationships</h6>
+        </div>
+        <div class="card-body">
+            @if (Model.ExistingRelationships.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="relationshipsTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Parent</th>
+                                <th>Student</th>
+                                <th>Created</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var relationship in Model.ExistingRelationships)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href="@Url.Action("UserDetails", new { id = relationship.Parent.Id })">
+                                            @relationship.Parent.Name
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("UserDetails", new { id = relationship.Student.Id })">
+                                            @relationship.Student.Name
+                                        </a>
+                                    </td>
+                                    <td>@relationship.CreatedAt.ToString("MMM dd, yyyy")</td>
+                                    <td>
+                                        <a href="@Url.Action("DeleteParentStudentLink", new { relationshipId = relationship.RelationshipId })" 
+                                           class="btn btn-sm btn-danger"
+                                           data-toggle="modal" 
+                                           data-target="#deleteLinkModal"
+                                           data-relationship-id="@relationship.RelationshipId"
+                                           data-parent-name="@relationship.Parent.Name"
+                                           data-student-name="@relationship.Student.Name">
+                                            <i class="fas fa-unlink"></i> Remove
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <p class="text-center text-muted">No parent-student relationships found.</p>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Delete Link Modal -->
+<div class="modal fade" id="deleteLinkModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Remove Relationship</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to remove the relationship between:</p>
+                <p><strong>Parent:</strong> <span id="parentName"></span></p>
+                <p><strong>Student:</strong> <span id="studentName"></span></p>
+                <p class="text-danger">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <a id="confirmDeleteLinkBtn" href="#" class="btn btn-danger">Remove Relationship</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Initialize Select2
+            $('.select2').select2({
+                theme: 'bootstrap4',
+                width: '100%'
+            });
+            
+            // Initialize DataTable
+            $('#relationshipsTable').DataTable({
+                order: [[2, 'desc']]
+            });
+            
+            // Setup delete link modal
+            $('#deleteLinkModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var relationshipId = button.data('relationship-id');
+                var parentName = button.data('parent-name');
+                var studentName = button.data('student-name');
+                
+                var modal = $(this);
+                modal.find('#parentName').text(parentName);
+                modal.find('#studentName').text(studentName);
+                modal.find('#confirmDeleteLinkBtn').attr('href', 
+                    '@Url.Action("DeleteParentStudentLink")?relationshipId=' + relationshipId);
+            });
+        });
+    </script>
+}

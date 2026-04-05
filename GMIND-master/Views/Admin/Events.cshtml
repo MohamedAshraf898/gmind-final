@@ -1,0 +1,219 @@
+@model List<Gamingv1.Models.Event>
+@{
+    ViewData["Title"] = "Manage Events";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-calendar-alt"></i> Manage Events
+        </h1>
+        <div>
+            <a href="@Url.Action("Index")" class="btn btn-secondary btn-sm">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+            <a href="@Url.Action("CreateEvent")" class="btn btn-primary btn-sm">
+                <i class="fas fa-plus"></i> Add New Event
+            </a>
+        </div>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle"></i> @TempData["Success"]
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-triangle"></i> @TempData["Error"]
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <h6 class="m-0 font-weight-bold text-primary">
+                All Events (@Model.Count)
+            </h6>
+            <a href="@Url.Action("EventRegistrations")" class="btn btn-outline-info btn-sm">
+                <i class="fas fa-clipboard-list"></i> View Registrations
+            </a>
+        </div>
+        <div class="card-body">
+            @if (Model.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="eventsTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Date & Time</th>
+                                <th>Price</th>
+                                <th>Registrations</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var eventItem in Model)
+                            {
+                                var isUpcoming = eventItem.StartDate > DateTime.Now;
+                                var isOngoing = eventItem.StartDate <= DateTime.Now && eventItem.EndDate >= DateTime.Now;
+                                var isPast = eventItem.EndDate < DateTime.Now;
+                                
+                                <tr>
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(eventItem.ImageUrl))
+                                        {
+                                            <img src="@eventItem.ImageUrl" alt="@eventItem.Title" 
+                                                 class="img-thumbnail" style="width: 60px; height: 60px; object-fit: cover;">
+                                        }
+                                        else
+                                        {
+                                            <div class="bg-light d-flex align-items-center justify-content-center" 
+                                                 style="width: 60px; height: 60px;">
+                                                <i class="fas fa-calendar text-muted"></i>
+                                            </div>
+                                        }
+                                    </td>
+                                    <td>
+                                        <strong>@eventItem.Title</strong>
+                                        <br>
+                                        <small class="text-muted">
+                                            @(eventItem.Description.Length > 50 ? eventItem.Description.Substring(0, 50) + "..." : eventItem.Description)
+                                        </small>
+                                    </td>
+                                    <td>
+                                        <strong>@eventItem.StartDate.ToString("MMM dd, yyyy")</strong>
+                                        <br>
+                                        <small class="text-muted">
+                                            @eventItem.StartDate.ToString("HH:mm") - @eventItem.EndDate.ToString("HH:mm")
+                                        </small>
+                                    </td>
+                                    <td>
+                                        @if (eventItem.Price > 0)
+                                        {
+                                            <strong class="text-success">$@eventItem.Price.ToString("N2")</strong>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-success">Free</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-info">
+                                            @eventItem.EventRegistrations.Count registrations
+                                        </span>
+                                    </td>
+                                    <td>
+                                        @if (isUpcoming)
+                                        {
+                                            <span class="badge badge-primary">Upcoming</span>
+                                        }
+                                        else if (isOngoing)
+                                        {
+                                            <span class="badge badge-success">Ongoing</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-secondary">Past</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm" role="group">
+                                            <a href="@Url.Action("EditEvent", new { id = eventItem.EventId })" 
+                                               class="btn btn-outline-primary" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a href="@Url.Action("EventRegistrations", new { eventId = eventItem.EventId })" 
+                                               class="btn btn-outline-info" title="View Registrations">
+                                                <i class="fas fa-users"></i>
+                                            </a>
+                                            <button type="button" class="btn btn-outline-danger" 
+                                                    onclick="confirmDelete(@eventItem.EventId, '@eventItem.Title')" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="text-center py-5">
+                    <i class="fas fa-calendar-alt fa-4x text-gray-300 mb-3"></i>
+                    <h5 class="text-gray-600">No Events Found</h5>
+                    <p class="text-gray-500">Get started by creating your first event.</p>
+                    <a href="@Url.Action("CreateEvent")" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add New Event
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-exclamation-triangle text-warning"></i> Confirm Delete
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete the event <strong id="eventTitle"></strong>?</p>
+                <p class="text-danger">
+                    <i class="fas fa-info-circle"></i> 
+                    This action will permanently delete the event and all registrations.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form id="deleteForm" method="post" style="display: inline;">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash"></i> Delete Event
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function confirmDelete(eventId, eventTitle) {
+            document.getElementById('eventTitle').textContent = eventTitle;
+            document.getElementById('deleteForm').action = '@Url.Action("DeleteEvent")/' + eventId;
+            $('#deleteModal').modal('show');
+        }
+
+        $(document).ready(function() {
+            $('#eventsTable').DataTable({
+                "pageLength": 25,
+                "order": [[2, "desc"]],
+                "columnDefs": [
+                    { "orderable": false, "targets": [0, 6] }
+                ]
+            });
+        });
+    </script>
+}

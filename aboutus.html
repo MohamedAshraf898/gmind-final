@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | GMIND</title>
+    <link rel="stylesheet" href="about.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Scroll header functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const header = document.querySelector("header");
+
+        // Header scroll effect
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 100) {
+            header.classList.add("scrolled");
+          } else {
+            header.classList.remove("scrolled");
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <!-- Header / Navigation -->
+    <header>
+      <div class="container nav-container">
+        <!-- Replace logo image with text for GMIND logo -->
+        <span class="gmind-logo-text">GMIND</span>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html" class="active">About Us</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="games.html">Games</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="contact_us.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="auth-links">
+          <a href="login.html" class="btn">Log in</a>
+          <a href="signup.html" class="btn btn-primary">Sign Up</a>
+        </div>
+        <!-- Mobile menu toggle -->
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <button class="mobile-menu-close" id="mobile-menu-close">&times;</button>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html" class="active">About Us</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="games.html">Games</a></li>
+        <li><a href="store.html">Store</a></li>
+        <li><a href="contact_us.html">Contact Us</a></li>
+      </ul>
+      <div class="auth-links">
+        <a href="login.html" class="btn">Log in</a>
+        <a href="signup.html" class="btn btn-primary">Sign Up</a>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">
+            <span class="hero-title-main">LEARN THROUGH GAMES</span><br />
+            <span class="hero-title-secondary"
+              >We turn learning into an adventure with expertly crafted
+              educational games loved by kids, trusted by parents, and supported
+              by teachers</span
+            >
+          </h1>
+          <a
+            href="#games"
+            class="btn btn-primary"
+            style="background-color: #443d96"
+            style="border-radius: 10px !important"
+            >Explore Games</a
+          >
+        </div>
+        <div class="hero-visuals">
+          <img
+            src="Images/about-us-hero.png"
+            alt="Hero Character"
+            class="about-us-hero-img"
+          />
+          <div class="hero-reflection"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact Section (new, before features) -->
+    <section class="impact-section">
+      <div class="impact-container">
+        <div class="impact-left">
+          <div class="impact-title-group">
+            <span class="impact-accent"></span>
+            <div>
+              <h2 class="impact-title">
+                We Are GMind , and We're Here<br />To Revolutionize Education<br /><span
+                  class="impact-highlight"
+                  >Through 3D games</span
+                >
+              </h2>
+            </div>
+          </div>
+          <img
+            src="Images/boy-about-us.jpg"
+            alt="VR Experience"
+            class="impact-img"
+          />
+        </div>
+        <div class="impact-right">
+          <div class="impact-cards-row">
+            <div class="impact-card">
+              <img
+                src="Images/kid.jpg"
+                alt="Impact Card 1"
+                class="impact-card-img"
+              />
+            </div>
+            <div class="impact-card">
+              <img
+                src="Images/impact.jpg"
+                alt="Impact Card 2"
+                class="impact-card-img"
+              />
+            </div>
+          </div>
+          <p class="impact-desc">
+            Lorem ipsum dolor sit amet consectetur. Vel tristique <br />
+            tellus dui non facilisis lorem nulla diam. Diam aliquam
+          </p>
+          <div class="impact-stats-row">
+            <div class="impact-stat">
+              <span class="impact-stat-number">100+</span><br />Schools
+            </div>
+            <div class="impact-stat">
+              <span class="impact-stat-number">5k+</span><br />Students
+            </div>
+            <div class="impact-stat">
+              <span class="impact-stat-number">1k+</span><br />Parteners
+            </div>
+            <div class="impact-stat">
+              <span class="impact-stat-number">200+</span><br />Events
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features container">
+      <div class="feature">
+        <div class="feature-icon" style="background: #7ed957">01</div>
+        <h3>Workshops & Events</h3>
+        <p>
+          Interactive educational workshops and events and gamified learning
+          sessions, designed to spark curiosity and engagement.
+        </p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon" style="background: #e50b4e">02</div>
+        <h3>Games & Apps</h3>
+        <p>
+          Tailored AR/VR educational games aligned with curricula to enhance
+          classroom experiences for teachers and students.
+        </p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon" style="background: #f7b602">03</div>
+        <h3>Games At Home</h3>
+        <p>
+          Engaging and educational games that allow parents to support their
+          children's learning journey at home.
+        </p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon" style="background: #02c4b2">04</div>
+        <h3>Customized Games</h3>
+        <p>
+          Bespoke game development services for educational institutions,
+          combining creativity and innovation to meet specific learning goals.
+        </p>
+      </div>
+    </section>
+
+    <!-- Trusted By Section -->
+    <section class="trusted-by">
+      <div class="container">
+        <h2>We are trusted by</h2>
+        <div class="trusted-logos">
+          <img src="Images/g1.jpg" alt="Partner 1" />
+          <img src="Images/hero.png" alt="Partner 2" />
+          <img src="Images/GMIND.png" alt="Partner 3" />
+          <img src="Images/vr.png" alt="Partner 4" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+      <div class="container">
+        <h2>Our Team</h2>
+        <p>
+          Our dedicated team combines creativity, education, and technology
+          <br />
+          to bring your children impactful learning through games.
+        </p>
+        <div class="team-members">
+          <div class="member">
+            <img src="Images/Character.png" alt="Team Member" />
+            <div class="job-title">CEO</div>
+            <h4>Jane Doe</h4>
+          </div>
+          <div class="member">
+            <img src="Images/hero.png" alt="Team Member" />
+            <div class="job-title">Lead Developer</div>
+            <h4>John Smith</h4>
+          </div>
+          <div class="member">
+            <img src="Images/g1.jpg" alt="Team Member" />
+            <div class="job-title">Designer</div>
+            <h4>Mary Lee</h4>
+          </div>
+          <div class="member">
+            <img src="Images/vr.png" alt="Team Member" />
+            <div class="job-title">Education Expert</div>
+            <h4>Alex Kim</h4>
+          </div>
+          <div class="member">
+            <img src="Images/GMIND.png" alt="Team Member" />
+            <div class="job-title">Marketing</div>
+            <h4>Sam Patel</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <div class="container">
+        <h2 class="testimonials-title">
+          WHAT OUR CUSTOMER <span class="testimonials-title-green">SAY'S</span>
+        </h2>
+        <p class="testimonials-subtitle">
+          Empowering success through exceptional user experiences
+        </p>
+        <div class="testimonial-grid">
+          <div class="testimonial">
+            <img src="Images/g1.jpg" alt="Avatar" class="testimonial-avatar" />
+            <div class="testimonial-content">
+              <div class="testimonial-name">
+                Zack Swire <span class="testimonial-handle">@swire</span>
+              </div>
+              <p>
+                If you're a Coach or a Creator, and you'd like to create better
+                videos quickly, check out GMIND! Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Fugiat voluptatum doloribus quas
+                ipsam, sit velit, ab quidem numquam dolores iste incidunt
+                molestias voluptate voluptas. Ratione ipsa perferendis fugiat
+                blanditiis et.
+              </p>
+            </div>
+          </div>
+          <div class="testimonial">
+            <img
+              src="Images/hero.png"
+              alt="Avatar"
+              class="testimonial-avatar"
+            />
+            <div class="testimonial-content">
+              <div class="testimonial-name">
+                Victor <span class="testimonial-handle">@victoruxui</span>
+              </div>
+              <p>
+                GMIND is the best! Lorem ipsum, dolor sit amet consectetur
+                adipisicing elit. Cum ratione quasi exercitationem, tenetur
+                officia eligendi numquam quis nam optio, doloremque cumque sunt
+                soluta cupiditate corrupti vel eius beatae esse dolor.
+              </p>
+            </div>
+          </div>
+          <div class="testimonial">
+            <img src="Images/vr.png" alt="Avatar" class="testimonial-avatar" />
+            <div class="testimonial-content">
+              <div class="testimonial-name">
+                Luca Restagno <span class="testimonial-handle">@ikoichi</span>
+              </div>
+              <p>
+                I'm really impressed by the video composition and the final
+                result. Brilliant!
+              </p>
+            </div>
+          </div>
+
+          <div class="testimonial">
+            <img
+              src="Images/GMIND.png"
+              alt="Avatar"
+              class="testimonial-avatar"
+            />
+            <div class="testimonial-content">
+              <div class="testimonial-name">
+                Jordan Godbey
+                <span class="testimonial-handle">@jordangodbey</span>
+              </div>
+              <p>
+                Loving how easy it is to record my course on GMIND. Makes it
+                look super cool too!
+              </p>
+            </div>
+          </div>
+          <div class="testimonial">
+            <img src="Images/g1.jpg" alt="Avatar" class="testimonial-avatar" />
+            <div class="testimonial-content">
+              <div class="testimonial-name">
+                Justin Moore
+                <span class="testimonial-handle">@justinmoorefam</span>
+              </div>
+              <p>
+                I recorded my entire Gifted to Paid course using GMIND. Very
+                bullish on Grant and the team.
+              </p>
+            </div>
+          </div>
+          <div class="testimonial">
+            <img
+              src="Images/hero.png"
+              alt="Avatar"
+              class="testimonial-avatar"
+            />
+            <div class="testimonial-content">
+              <div class="testimonial-name">
+                Tom Osman <span class="testimonial-handle">@tomosman</span>
+              </div>
+              <p>GMIND is the bomb btw.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact" class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <img src="Images/GMIND.png" />
+          </div>
+          <div class="footer-links">
+            <div class="footer-section">
+              <h4>Company</h4>
+              <a href="#about">About us</a>
+              <a href="#contact">Contact us</a>
+              <a href="#help">Help</a>
+            </div>
+            <div class="footer-section">
+              <h4>Legal</h4>
+              <a href="#privacy">Privacy Policy</a>
+              <a href="#disclaimer">Disclaimer</a>
+            </div>
+            <div class="footer-section">
+              <h4>Contact Info</h4>
+              <p>
+                345 Faulconer Drive, Suite 4<br />Charlottesville, CA, 12345
+              </p>
+              <p>(123) 456-7890</p>
+            </div>
+            <div class="footer-section">
+              <h4>Social Media</h4>
+              <div class="social-links">
+                <a href="#" class="social-link">Facebook</a>
+                <a href="#" class="social-link">Twitter</a>
+                <a href="#" class="social-link">Instagram</a>
+                <a href="#" class="social-link">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2024 GMIND. All rights reserved.Made by
+            <a href="#" style="text-decoration: none">RAQM</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu functionality
+      const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileMenuOverlay = document.getElementById("mobile-menu-overlay");
+      const mobileMenuClose = document.getElementById("mobile-menu-close");
+
+      function openMobileMenu() {
+        mobileMenuToggle.classList.add("active");
+        mobileMenu.classList.add("active");
+        mobileMenuOverlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeMobileMenu() {
+        mobileMenuToggle.classList.remove("active");
+        mobileMenu.classList.remove("active");
+        mobileMenuOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      // Event listeners for mobile menu
+      mobileMenuToggle.addEventListener("click", openMobileMenu);
+      mobileMenuClose.addEventListener("click", closeMobileMenu);
+      mobileMenuOverlay.addEventListener("click", closeMobileMenu);
+
+      // Close menu when clicking on a link
+      const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+      mobileMenuLinks.forEach((link) => {
+        link.addEventListener("click", closeMobileMenu);
+      });
+
+      // Close menu on escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
+          closeMobileMenu();
+        }
+      });
+
+      // Intersection Observer for scroll-triggered animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      // Add animation classes to elements
+      document.addEventListener("DOMContentLoaded", function () {
+        // Add scroll animation classes to sections
+        const sections = document.querySelectorAll("section");
+        sections.forEach((section) => {
+          section.classList.add("animate-on-scroll");
+          observer.observe(section);
+        });
+
+        // Add staggered animations to feature cards
+        const features = document.querySelectorAll(".feature");
+        features.forEach((feature, index) => {
+          feature.style.animationDelay = `${0.1 * (index + 1)}s`;
+        });
+
+        // Add staggered animations to team members
+        const members = document.querySelectorAll(".member");
+        members.forEach((member, index) => {
+          member.style.animationDelay = `${0.1 * (index + 1)}s`;
+        });
+
+        // Add staggered animations to testimonials
+        const testimonials = document.querySelectorAll(".testimonial");
+        testimonials.forEach((testimonial, index) => {
+          testimonial.style.animationDelay = `${0.1 * (index + 1)}s`;
+        });
+
+        // Add staggered animations to trusted logos
+        const logos = document.querySelectorAll(".trusted-logos img");
+        logos.forEach((logo, index) => {
+          logo.style.animationDelay = `${0.1 * (index + 1)}s`;
+        });
+
+        // Add staggered animations to impact stats
+        const stats = document.querySelectorAll(".impact-stat");
+        stats.forEach((stat, index) => {
+          stat.style.animationDelay = `${1 + 0.1 * (index + 1)}s`;
+        });
+
+        // Add staggered animations to impact cards
+        const cards = document.querySelectorAll(".impact-card");
+        cards.forEach((card, index) => {
+          card.style.animationDelay = `${0.8 + 0.1 * (index + 1)}s`;
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              target.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          });
+        });
+
+        // Add hover effects to navigation
+        const navLinks = document.querySelectorAll("nav a");
+        navLinks.forEach((link) => {
+          link.addEventListener("mouseenter", function () {
+            this.style.transform = "translateY(-2px)";
+          });
+
+          link.addEventListener("mouseleave", function () {
+            this.style.transform = "translateY(0)";
+          });
+        });
+
+        // Add click effects to buttons
+        const buttons = document.querySelectorAll(".btn");
+        buttons.forEach((button) => {
+          button.addEventListener("click", function () {
+            this.style.transform = "scale(0.95)";
+            setTimeout(() => {
+              this.style.transform = "";
+            }, 150);
+          });
+        });
+
+        // Parallax effect for hero image
+        window.addEventListener("scroll", function () {
+          const scrolled = window.pageYOffset;
+          const heroImg = document.querySelector(".about-us-hero-img");
+          const heroReflection = document.querySelector(".hero-reflection");
+          if (heroImg) {
+            const rate = scrolled * -0.5;
+            heroImg.style.transform = `translateY(${rate}px) scaleX(-1)`;
+            if (heroReflection) {
+              heroReflection.style.transform = `translateY(${rate}px) scaleY(-1) scaleX(-1)`;
+            }
+          }
+        });
+
+        // Add loading animation
+        window.addEventListener("load", function () {
+          document.body.classList.add("loaded");
+        });
+
+        // Add typing effect to hero title
+        const heroTitle = document.querySelector(".hero-title-main");
+        if (heroTitle) {
+          const text = heroTitle.textContent;
+          heroTitle.textContent = "";
+          let i = 0;
+          const typeWriter = () => {
+            if (i < text.length) {
+              heroTitle.textContent += text.charAt(i);
+              i++;
+              setTimeout(typeWriter, 100);
+            }
+          };
+          setTimeout(typeWriter, 1000);
+        }
+      });
+
+      // Add CSS for loading state
+      const style = document.createElement("style");
+      style.textContent = `
+        body:not(.loaded) {
+          overflow: hidden;
+        }
+        
+        .animate-on-scroll {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: all 0.8s ease-out;
+        }
+        
+        .animate-on-scroll.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        
+        /* Enhanced hover effects */
+        .feature:hover .feature-icon {
+          animation: pulse 0.6s ease-in-out;
+        }
+        
+        .member:hover img {
+          animation: float 2s ease-in-out infinite;
+        }
+        
+        .testimonial:hover {
+          animation: pulse 0.3s ease-in-out;
+        }
+        
+        /* Smooth transitions for all interactive elements */
+        * {
+          transition: all 0.3s ease;
+        }
+        
+        /* Loading animation */
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        
+        body.loaded {
+          animation: fadeIn 0.5s ease-out;
+        }
+      `;
+      document.head.appendChild(style);
+    </script>
+  </body>
+</html>

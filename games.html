@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GMIND - Games</title>
+    <link rel="stylesheet" href="games.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="nav-brand">
+          <a href="index.html" style="text-decoration: none">
+            <div class="logo-text">GMIND</div>
+          </a>
+        </div>
+        <nav class="nav-menu">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="aboutus.html" class="nav-link">About Us</a>
+          <a href="events.html" class="nav-link">Events</a>
+          <a href="store.html" class="nav-link">Store</a>
+          <a href="games.html" class="nav-link active">Games</a>
+          <a href="contact_us.html" class="nav-link">Contact Us</a>
+          <a href="login.html" class="header-icon">
+            <i class="fas fa-user"></i>
+          </a>
+          <a href="cart.html" class="header-icon">
+            <i class="fas fa-shopping-cart"></i>
+          </a>
+        </nav>
+        <div class="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-backgrounds">
+        <div
+          class="hero-bg active"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1920&h=1080&fit=crop');
+          "
+        ></div>
+        <div
+          class="hero-bg"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop');
+          "
+        ></div>
+        <div
+          class="hero-bg"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop');
+          "
+        ></div>
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-left">
+            <div class="hero-subtitle">VR Game</div>
+            <h1 class="hero-title">JOURNEY TO MARS</h1>
+            <p class="hero-description">
+              Provides an immersive experience of space travel, from launch to
+              landing on Mars
+            </p>
+            <div class="hero-buttons">
+              <button class="btn btn-primary">install Now</button>
+              <button class="btn btn-secondary">See More</button>
+            </div>
+          </div>
+          <div class="hero-right">
+            <div class="game-previews">
+              <div class="preview-card active" data-index="0">
+                <img
+                  src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=200&h=150&fit=crop"
+                  alt="Zoo Animals"
+                />
+                <div class="preview-title">
+                  ZOO <br />
+                  ANIMALS
+                </div>
+              </div>
+              <div class="preview-card" data-index="1">
+                <img
+                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=150&fit=crop"
+                  alt="Dinosaur Adventures"
+                />
+                <div class="preview-title">
+                  DINOSAUR <br />
+                  ADVENTURES
+                </div>
+              </div>
+              <div class="preview-card" data-index="2">
+                <img
+                  src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&h=150&fit=crop"
+                  alt="Natural Disasters"
+                />
+                <div class="preview-title">
+                  NATURAL <br />
+                  DISASTERS
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navigation-controls">
+        <button class="nav-arrow" id="prevBtn">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="nav-arrow" id="nextBtn">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- VR Games Section -->
+    <section class="games-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">VR GAMES</h2>
+          <a href="#" class="view-all">View All</a>
+        </div>
+        <div class="games-grid">
+          <div class="game-card">
+            <a
+              href="game-details.html?game=journey-to-mars&image=https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1920&h=1080&fit=crop&title=JOURNEY TO MARS&description=Provides an immersive experience of space travel, from launch to landing on Mars"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=300&h=200&fit=crop"
+                  alt="Journey To Mars"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Journey To Mars</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+          <div class="game-card">
+            <a
+              href="game-details.html?game=sun-and-system&image=https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=1920&h=1080&fit=crop&title=SUN AND SYSTEM&description=Explore the solar system and learn about planets and stars"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=300&h=200&fit=crop"
+                  alt="Sun and System"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Sun and System</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+          <div class="game-card">
+            <a
+              href="game-details.html?game=help-the-people&image=https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&title=HELP THE PEOPLE&description=Learn about natural disasters and how to help communities"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=200&fit=crop"
+                  alt="Help the people"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Help the people</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+          <div class="game-card">
+            <a
+              href="game-details.html?game=tropical-environment&image=https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop&title=TROPICAL ENVIRONMENT&description=Explore tropical ecosystems and learn about biodiversity"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop"
+                  alt="Tropical Environment"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Tropical Environment</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+          <div class="game-card">
+            <a
+              href="game-details.html?game=oceanic-environment&image=https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&h=1080&fit=crop&title=OCEANIC ENVIRONMENT&description=Dive into ocean ecosystems and marine life"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=300&h=200&fit=crop"
+                  alt="Oceanic Environment"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Oceanic Environment</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+          <div class="game-card">
+            <a
+              href="game-details.html?game=polar-environment&image=https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&h=1080&fit=crop&title=POLAR ENVIRONMENT&description=Explore polar regions and learn about Arctic and Antarctic life"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=300&h=200&fit=crop"
+                  alt="Polar Environment"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Polar Environment</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+          <div class="game-card">
+            <a
+              href="game-details.html?game=ecology-game&image=https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1920&h=1080&fit=crop&title=ECOLOGY GAME&description=Learn about environmental conservation and sustainability"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=300&h=200&fit=crop"
+                  alt="Finish another Ecology Game"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Finish another Ecology Game</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+          <div class="game-card">
+            <a
+              href="game-details.html?game=desert-environment&image=https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&title=DESERT ENVIRONMENT&description=Explore desert ecosystems and learn about desert life"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=200&fit=crop"
+                  alt="Desert Environment"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Desert Environment</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AR Games Section -->
+    <section class="games-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">AR GAMES</h2>
+          <a href="#" class="view-all">View All</a>
+        </div>
+        <div class="games-grid">
+          <div class="game-card">
+            <a
+              href="game-details.html?game=images-of-moon&image=https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&title=IMAGES OF THE MOON&description=Explore the lunar surface and learn about moon phases"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=200&fit=crop"
+                  alt="Images of The Moon"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Images of The Moon</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+          <div class="game-card">
+            <a
+              href="game-details.html?game=solar-system&image=https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=1920&h=1080&fit=crop&title=SOLAR SYSTEM&description=Explore the planets and learn about our solar system"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=300&h=200&fit=crop"
+                  alt="Solar System"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Solar System</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+          <div class="game-card">
+            <a
+              href="game-details.html?game=building-blocks&image=https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop&title=BUILDING BLOCKS&description=Learn construction and engineering through interactive building"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop"
+                  alt="Building Blocks"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Building Blocks</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+          <div class="game-card">
+            <a
+              href="game-details.html?game=animal-world&image=https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=1920&h=1080&fit=crop&title=ANIMAL WORLD&description=Discover different animals and their habitats"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=300&h=200&fit=crop"
+                  alt="Animal World"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Animal World</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+          <div class="game-card">
+            <a
+              href="game-details.html?game=animals-booklet&image=https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop&title=ANIMALS BOOKLET&description=Interactive animal encyclopedia for learning"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop"
+                  alt="Animals Booklet"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Animals Booklet</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+          <div class="game-card">
+            <a
+              href="game-details.html?game=dinosaur-world&image=https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1920&h=1080&fit=crop&title=DINOSAUR WORLD&description=Travel back in time to explore prehistoric creatures"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=300&h=200&fit=crop"
+                  alt="Dinosaur World"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Dinosaur World</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+          <div class="game-card">
+            <a
+              href="game-details.html?game=dinosaur-cards&image=https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop&title=DINOSAUR CARDS&description=Collect and learn about different dinosaur species"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop"
+                  alt="Dinosaur Cards"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Dinosaur Cards</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+          <div class="game-card">
+            <a
+              href="game-details.html?game=natural-disasters&image=https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&title=NATURAL DISASTERS&description=Learn about natural phenomena and safety measures"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=200&fit=crop"
+                  alt="Natural Disasters"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Natural Disasters</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Board Games Section -->
+    <section class="games-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Board Games</h2>
+          <a href="#" class="view-all">View All</a>
+        </div>
+        <div class="games-grid">
+          <div class="game-card">
+            <a
+              href="game-details.html?game=board-moon&image=https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&title=BOARD MOON&description=Strategic board game about lunar exploration"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=200&fit=crop"
+                  alt="Images of The Moon"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Images of The Moon</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+          <div class="game-card">
+            <a
+              href="game-details.html?game=board-solar&image=https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=1920&h=1080&fit=crop&title=BOARD SOLAR&description=Educational board game about the solar system"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=300&h=200&fit=crop"
+                  alt="Solar System"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Solar System</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+          <div class="game-card">
+            <a
+              href="game-details.html?game=board-blocks&image=https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop&title=BOARD BLOCKS&description=Construction themed board game for strategy"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop"
+                  alt="Building Blocks"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Building Blocks</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+          <div class="game-card">
+            <a
+              href="game-details.html?game=board-animals&image=https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=1920&h=1080&fit=crop&title=BOARD ANIMALS&description=Wildlife themed board game for family fun"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=300&h=200&fit=crop"
+                  alt="Animal World"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Animal World</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+          <div class="game-card">
+            <a
+              href="game-details.html?game=board-booklet&image=https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop&title=BOARD BOOKLET&description=Educational board game with animal facts"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop"
+                  alt="Animals Booklet"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Animals Booklet</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+          <div class="game-card">
+            <a
+              href="game-details.html?game=board-dinosaur&image=https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1920&h=1080&fit=crop&title=BOARD DINOSAUR&description=Prehistoric themed board game adventure"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=300&h=200&fit=crop"
+                  alt="Dinosaur World"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Dinosaur World</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+          <div class="game-card">
+            <a
+              href="game-details.html?game=board-cards&image=https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop&title=BOARD CARDS&description=Card-based dinosaur collection game"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop"
+                  alt="Dinosaur Cards"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Dinosaur Cards</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+          <div class="game-card">
+            <a
+              href="game-details.html?game=board-disasters&image=https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&title=BOARD DISASTERS&description=Strategy board game about natural phenomena"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="game-image">
+                <img
+                  src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=200&fit=crop"
+                  alt="Natural Disasters"
+                />
+                <div class="game-tag">500 eg</div>
+              </div>
+              <h3 class="game-title">Natural Disasters</h3>
+              <button class="install-btn">install</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <img src="Images/GMIND.png" />
+          </div>
+          <div class="footer-links">
+            <div class="footer-section">
+              <h4>Company</h4>
+              <a href="#about">About us</a>
+              <a href="#contact">Contact us</a>
+              <a href="#help">Help</a>
+            </div>
+            <div class="footer-section">
+              <h4>Legal</h4>
+              <a href="#privacy">Privacy Policy</a>
+              <a href="#disclaimer">Disclaimer</a>
+            </div>
+            <div class="footer-section">
+              <h4>Contact Info</h4>
+              <p>
+                345 Faulconer Drive, Suite 4<br />Charlottesville, CA, 12345
+              </p>
+              <p>(123) 456-7890</p>
+            </div>
+            <div class="footer-section">
+              <h4>Social Media</h4>
+              <div class="social-links">
+                <a href="#" class="social-link">Facebook</a>
+                <a href="#" class="social-link">Twitter</a>
+                <a href="#" class="social-link">Instagram</a>
+                <a href="#" class="social-link">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2024 GMIND. All rights reserved.Made by
+            <a href="#" style="text-decoration: none">RAQM</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Header scroll functionality
+      const header = document.querySelector(".header");
+      const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+      const navMenu = document.querySelector(".nav-menu");
+
+      // Header scroll effect
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // Mobile menu toggle
+      mobileMenuToggle.addEventListener("click", () => {
+        mobileMenuToggle.classList.toggle("active");
+        navMenu.classList.toggle("active");
+        document.body.classList.toggle("menu-open");
+      });
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenuToggle.classList.remove("active");
+          navMenu.classList.remove("active");
+          document.body.classList.remove("menu-open");
+        });
+      });
+
+      // Hero background switching functionality
+      const heroBgs = document.querySelectorAll(".hero-bg");
+      const previewCards = document.querySelectorAll(".preview-card");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      let currentIndex = 0;
+
+      function showBackground(index) {
+        // Remove active class from all backgrounds and cards
+        heroBgs.forEach((bg) => bg.classList.remove("active"));
+        previewCards.forEach((card) => card.classList.remove("active"));
+
+        // Add active class to current background and card
+        heroBgs[index].classList.add("active");
+        previewCards[index].classList.add("active");
+
+        // Update current index
+        currentIndex = index;
+        updateArrowStates();
+      }
+
+      function nextBackground() {
+        const nextIndex = (currentIndex + 1) % heroBgs.length;
+        showBackground(nextIndex);
+      }
+
+      function prevBackground() {
+        const prevIndex = (currentIndex - 1 + heroBgs.length) % heroBgs.length;
+        showBackground(prevIndex);
+      }
+
+      // Event listeners for preview cards
+      previewCards.forEach((card, index) => {
+        card.addEventListener("click", () => {
+          showBackground(index);
+          // Move cards to the correct position for the selected card
+          moveCardsToPosition(index);
+        });
+      });
+
+      // Card movement animation
+      function moveCards(direction) {
+        const previewCards = document.querySelectorAll(".preview-card");
+        const cardWidth = 328; // card width + gap
+        const maxCards = previewCards.length;
+
+        // Check boundaries
+        if (direction === "next" && currentIndex >= maxCards - 1) {
+          console.log("Already at last card, cannot go next");
+          return;
+        }
+
+        if (direction === "prev" && currentIndex <= 0) {
+          console.log("Already at first card, cannot go previous");
+          return;
+        }
+
+        previewCards.forEach((card, index) => {
+          let currentX = 0;
+          const currentTransform = card.style.transform;
+          if (currentTransform) {
+            const match = currentTransform.match(/translateX\(([-\d]+)px\)/);
+            if (match) {
+              currentX = parseInt(match[1]);
+            }
+          }
+
+          let newX;
+          if (direction === "next") {
+            newX = currentX - cardWidth;
+          } else {
+            newX = currentX + cardWidth;
+          }
+
+          console.log(`Moving card ${index} from ${currentX} to ${newX}`);
+          card.style.transition = "transform 0.5s ease-in-out";
+          card.style.transform = `translateX(${newX}px)`;
+        });
+      }
+
+      // Function to move cards to a specific position
+      function moveCardsToPosition(targetIndex) {
+        const previewCards = document.querySelectorAll(".preview-card");
+        const cardWidth = 328; // card width + gap
+
+        // Calculate the target position for the cards
+        const targetX = -(targetIndex * cardWidth);
+
+        previewCards.forEach((card, index) => {
+          card.style.transition = "transform 0.5s ease-in-out";
+          card.style.transform = `translateX(${targetX}px)`;
+        });
+      }
+
+      // Function to update arrow button states
+      function updateArrowStates() {
+        if (currentIndex <= 0) {
+          prevBtn.style.opacity = "0.5";
+          prevBtn.style.cursor = "not-allowed";
+        } else {
+          prevBtn.style.opacity = "1";
+          prevBtn.style.cursor = "pointer";
+        }
+
+        if (currentIndex >= previewCards.length - 1) {
+          nextBtn.style.opacity = "0.5";
+          nextBtn.style.cursor = "not-allowed";
+        } else {
+          nextBtn.style.opacity = "1";
+          nextBtn.style.cursor = "pointer";
+        }
+      }
+
+      // Arrow button event listeners with card movement
+      nextBtn.addEventListener("click", () => {
+        if (currentIndex < previewCards.length - 1) {
+          const nextIndex = currentIndex + 1;
+          showBackground(nextIndex);
+          moveCardsToPosition(nextIndex);
+          updateArrowStates();
+        }
+      });
+
+      prevBtn.addEventListener("click", () => {
+        if (currentIndex > 0) {
+          const prevIndex = currentIndex - 1;
+          showBackground(prevIndex);
+          moveCardsToPosition(prevIndex);
+          updateArrowStates();
+        }
+      });
+
+      // Keyboard navigation
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft" && currentIndex > 0) {
+          const prevIndex = currentIndex - 1;
+          showBackground(prevIndex);
+          moveCardsToPosition(prevIndex);
+        } else if (
+          e.key === "ArrowRight" &&
+          currentIndex < previewCards.length - 1
+        ) {
+          const nextIndex = currentIndex + 1;
+          showBackground(nextIndex);
+          moveCardsToPosition(nextIndex);
+        }
+      });
+
+      // Initialize arrow states
+      updateArrowStates();
+
+      // Scroll-triggered animations for game cards
+      function animateOnScroll() {
+        const gameCards = document.querySelectorAll(".game-card");
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate");
+            }
+          });
+        }, observerOptions);
+
+        gameCards.forEach((card) => {
+          observer.observe(card);
+        });
+      }
+
+      // Initialize scroll animations
+      animateOnScroll();
+    </script>
+  </body>
+</html>
